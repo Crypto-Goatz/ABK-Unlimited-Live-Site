@@ -353,6 +353,60 @@ function createTestimonialsTab(ss) {
       "",
       "Deck Building"
     ],
+    [
+      "test-4",
+      "Michael & Sarah Thompson",
+      "Homeowners, Mt. Lebanon, PA",
+      "ABK Unlimited transformed our dated kitchen into a stunning modern space. Anthony and his team were professional, clean, and finished on time. The attention to detail was incredible — from the custom cabinetry to the backsplash installation. Highly recommend!",
+      "5",
+      "",
+      "Kitchen Remodel"
+    ],
+    [
+      "test-5",
+      "Jennifer Martinez",
+      "Homeowner, Sewickley, PA",
+      "We hired ABK for a complete home renovation and couldn't be happier. They handled everything from design to final walkthrough. Communication was excellent throughout the 4-month project. Our house feels brand new!",
+      "5",
+      "",
+      "Full Home Renovation"
+    ],
+    [
+      "test-6",
+      "Robert & Linda Chen",
+      "Homeowners, Cranberry Township, PA",
+      "ABK turned our unfinished basement into an amazing entertainment space with a wet bar and home theater. The craftsmanship is top-notch. They stayed within budget and even suggested cost-saving alternatives without sacrificing quality.",
+      "5",
+      "",
+      "Basement Finishing"
+    ],
+    [
+      "test-7",
+      "David Patterson",
+      "Homeowner, Moon Township, PA",
+      "Our new composite deck is beautiful! ABK handled all permits and built a custom design that perfectly complements our home. The outdoor living space has completely changed how we use our backyard.",
+      "5",
+      "",
+      "Deck Construction"
+    ],
+    [
+      "test-8",
+      "Amanda & James Wilson",
+      "Homeowners, Upper St. Clair, PA",
+      "We renovated two bathrooms with ABK and the results exceeded our expectations. The tile work is flawless, and they helped us select fixtures that elevated the design. Professional crew that respected our home.",
+      "5",
+      "",
+      "Bathroom Remodel"
+    ],
+    [
+      "test-9",
+      "Patricia O'Brien",
+      "Homeowner, Bethel Park, PA",
+      "ABK built a beautiful 500 sq ft addition that seamlessly matches our existing home. The structural work and finishing are impeccable. Worth every penny — they truly care about quality.",
+      "5",
+      "",
+      "Home Addition"
+    ],
   ];
 
   sheet.getRange(1, 1, data.length, headers.length).setValues(data);
