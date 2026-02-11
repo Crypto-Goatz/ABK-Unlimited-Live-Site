@@ -30,6 +30,8 @@ function createABKSheet() {
   createTeamTab(ss);
   createFAQsTab(ss);
   createSEOTab(ss);
+  createWebhooksTab(ss);
+  createCustomEndpointsTab(ss);
 
   // Now delete the default sheet
   if (defaultSheet) {
@@ -40,7 +42,7 @@ function createABKSheet() {
   formatAllSheets(ss);
 
   Logger.log("");
-  Logger.log("🎉 Done! All 8 tabs created and populated.");
+  Logger.log("🎉 Done! All 10 tabs created and populated.");
   Logger.log("📎 Sheet URL: " + ss.getUrl());
   Logger.log("🔑 Sheet ID for .env: " + ssId);
 
@@ -762,6 +764,42 @@ function createSEOTab(ss) {
   sheet.setColumnWidth(2, 450);
   sheet.setColumnWidth(3, 500);
   sheet.setColumnWidth(4, 120);
+}
+
+// ─── WEBHOOKS ─────────────────────────────────────────────────
+
+function createWebhooksTab(ss) {
+  var sheet = ss.insertSheet("webhooks");
+  var headers = ["id", "slug", "name", "status", "auth_type", "auth_secret", "action_type", "action_config", "created_at", "updated_at"];
+  sheet.getRange(1, 1, 1, headers.length).setValues([headers]);
+  sheet.setColumnWidth(1, 120);
+  sheet.setColumnWidth(2, 150);
+  sheet.setColumnWidth(3, 200);
+  sheet.setColumnWidth(4, 80);
+  sheet.setColumnWidth(5, 100);
+  sheet.setColumnWidth(6, 200);
+  sheet.setColumnWidth(7, 120);
+  sheet.setColumnWidth(8, 400);
+  sheet.setColumnWidth(9, 160);
+  sheet.setColumnWidth(10, 160);
+}
+
+// ─── CUSTOM ENDPOINTS ─────────────────────────────────────────
+
+function createCustomEndpointsTab(ss) {
+  var sheet = ss.insertSheet("custom_endpoints");
+  var headers = ["id", "slug", "name", "method", "status", "input_schema", "actions", "response_template", "auth_required", "created_at"];
+  sheet.getRange(1, 1, 1, headers.length).setValues([headers]);
+  sheet.setColumnWidth(1, 120);
+  sheet.setColumnWidth(2, 150);
+  sheet.setColumnWidth(3, 200);
+  sheet.setColumnWidth(4, 80);
+  sheet.setColumnWidth(5, 80);
+  sheet.setColumnWidth(6, 300);
+  sheet.setColumnWidth(7, 400);
+  sheet.setColumnWidth(8, 300);
+  sheet.setColumnWidth(9, 100);
+  sheet.setColumnWidth(10, 160);
 }
 
 // ─── FORMATTING ────────────────────────────────────────────────

@@ -58,7 +58,7 @@ export default async function ServiceDetailPage({
 
   return (
     <>
-      <Header siteName={config.name} phone={config.phone} />
+      <Header />
       <main className="min-h-screen">
         <article className="py-20">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -128,7 +128,7 @@ export default async function ServiceDetailPage({
           </div>
         </article>
       </main>
-      <Footer siteName={config.name} phone={config.phone} email={config.email} />
+      <Footer />
     </>
   );
 }

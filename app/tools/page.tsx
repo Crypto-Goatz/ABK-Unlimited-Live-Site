@@ -3,18 +3,25 @@ import Link from "next/link"
 import { Header } from "@/components/site/Header"
 import { Footer } from "@/components/site/Footer"
 import { Calculator, Clock, Palette, ArrowRight, Wand2 } from "lucide-react"
-import { getSiteConfig } from "@/config/site.config"
 
 export const metadata: Metadata = {
   title: "Free Tools | ABK Unlimited Pittsburgh Home Remodeling",
   description:
-    "Free home remodeling tools from ABK Unlimited. Project cost calculator, timeline estimator, and design inspiration gallery for Pittsburgh homeowners.",
+    "Free home remodeling tools from ABK Unlimited. AI home visualizer, project cost calculator, timeline estimator, and design inspiration gallery for Pittsburgh homeowners.",
+  openGraph: {
+    title: "Free Planning Tools | ABK Unlimited",
+    description:
+      "Plan your home remodel with our free tools. AI visualizer, cost calculator, timeline estimator, and design gallery.",
+    url: "https://abkunlimited.com/tools",
+    type: "website",
+  },
 }
 
 const tools = [
   {
     title: "AI Home Visualizer",
-    description: "Upload a photo of your room or home and see AI-powered design transformations instantly.",
+    description:
+      "Upload a photo of your room or home and see AI-powered design transformations instantly. Experiment with different styles, materials, and layouts before committing to a renovation plan.",
     href: "/tools/visualizer",
     icon: Wand2,
     color: "bg-gradient-to-br from-primary to-accent",
@@ -22,44 +29,53 @@ const tools = [
   },
   {
     title: "Project Cost Calculator",
-    description: "Get instant estimates for your remodeling project based on room size, scope, and finish level.",
+    description:
+      "Get instant estimates for your remodeling project based on room size, scope, and finish level. Compare budget, midrange, and premium options.",
     href: "/tools/cost-calculator",
     icon: Calculator,
     color: "bg-primary",
+    featured: false,
   },
   {
     title: "Timeline Estimator",
-    description: "See how long your renovation project will take from design to completion.",
+    description:
+      "See how long your renovation project will take from design to completion. Plan around your schedule with realistic timelines.",
     href: "/tools/timeline-estimator",
     icon: Clock,
     color: "bg-accent",
+    featured: false,
   },
   {
     title: "Design Gallery",
-    description: "Browse thousands of design ideas and inspiration for your home remodeling project.",
+    description:
+      "Browse thousands of design ideas and inspiration for your home remodeling project. Filter by room, style, and budget.",
     href: "/tools/design-gallery",
     icon: Palette,
     color: "bg-secondary",
+    featured: false,
   },
 ]
 
 export default function ToolsPage() {
-  const config = getSiteConfig();
   return (
-    <>
-      <Header siteName={config.name} phone={config.phone} />
+    <div className="min-h-screen bg-background">
+      <Header />
       <main>
         {/* Hero */}
-        <section className="relative pt-32 pb-16 bg-secondary">
-          <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <section className="relative pt-32 pb-20 bg-secondary overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-secondary via-secondary to-primary/20" />
+          <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
             <div className="max-w-3xl">
               <span className="inline-block px-4 py-1.5 bg-primary/20 text-primary rounded-full text-sm font-medium mb-6">
                 Free Tools
               </span>
-              <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">Plan Your Project with Our Free Tools</h1>
-              <p className="text-xl text-white/80">
-                Use our free planning tools to estimate costs, understand timelines, and find design inspiration for
-                your next home remodeling project.
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+                Plan Your Project with Our Free Tools
+              </h1>
+              <p className="text-xl text-white/80 leading-relaxed">
+                Use our free planning tools to estimate costs, understand
+                timelines, visualize designs, and find inspiration for your next
+                home remodeling project.
               </p>
             </div>
           </div>
@@ -73,10 +89,16 @@ export default function ToolsPage() {
                 <Link
                   key={tool.href}
                   href={tool.href}
-                  className={`group ${'featured' in tool && tool.featured ? 'md:col-span-2 lg:col-span-2' : ''}`}
+                  className={`group ${
+                    tool.featured ? "md:col-span-2 lg:col-span-2" : ""
+                  }`}
                 >
-                  <div className={`bg-card rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all border border-border h-full ${'featured' in tool && tool.featured ? 'ring-2 ring-primary/20' : ''}`}>
-                    {'featured' in tool && tool.featured && (
+                  <div
+                    className={`bg-card rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all border border-border h-full ${
+                      tool.featured ? "ring-2 ring-primary/20" : ""
+                    }`}
+                  >
+                    {tool.featured && (
                       <span className="inline-block px-3 py-1 bg-primary/10 text-primary text-xs font-semibold rounded-full mb-4">
                         NEW - AI Powered
                       </span>
@@ -89,9 +111,12 @@ export default function ToolsPage() {
                     <h2 className="text-2xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
                       {tool.title}
                     </h2>
-                    <p className="text-muted-foreground mb-6">{tool.description}</p>
+                    <p className="text-muted-foreground mb-6">
+                      {tool.description}
+                    </p>
                     <span className="text-primary font-medium flex items-center gap-2">
-                      {'featured' in tool && tool.featured ? 'Try It Free' : 'Use Tool'} <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                      {tool.featured ? "Try It Free" : "Use Tool"}{" "}
+                      <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                     </span>
                   </div>
                 </Link>
@@ -100,7 +125,7 @@ export default function ToolsPage() {
           </div>
         </section>
       </main>
-      <Footer siteName={config.name} phone={config.phone} email={config.email} />
-    </>
+      <Footer />
+    </div>
   )
 }

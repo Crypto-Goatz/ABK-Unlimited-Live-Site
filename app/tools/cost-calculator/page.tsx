@@ -37,7 +37,7 @@ export default function CostCalculatorPage() {
 
   return (
     <>
-      <Header siteName={process.env.NEXT_PUBLIC_SITE_NAME || "ABK Unlimited"} phone={process.env.NEXT_PUBLIC_SITE_PHONE} />
+      <Header />
       <main>
         {/* Hero */}
         <section className="relative pt-32 pb-16 bg-secondary">
@@ -192,7 +192,7 @@ export default function CostCalculatorPage() {
           </div>
         </section>
       </main>
-      <Footer siteName={process.env.NEXT_PUBLIC_SITE_NAME || "ABK Unlimited"} phone={process.env.NEXT_PUBLIC_SITE_PHONE} email={process.env.NEXT_PUBLIC_SITE_EMAIL} />
+      <Footer />
     </>
   )
 }

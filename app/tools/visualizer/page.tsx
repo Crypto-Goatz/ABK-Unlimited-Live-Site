@@ -2,7 +2,6 @@ import type { Metadata } from "next"
 import { Header } from "@/components/site/Header"
 import { Footer } from "@/components/site/Footer"
 import VisualizerApp from "./components/VisualizerApp"
-import { getSiteConfig } from "@/config/site.config"
 
 export const metadata: Metadata = {
   title: "AI Home Visualizer | ABK Unlimited Pittsburgh Home Remodeling",
@@ -11,10 +10,9 @@ export const metadata: Metadata = {
 }
 
 export default function VisualizerPage() {
-  const config = getSiteConfig();
   return (
     <>
-      <Header siteName={config.name} phone={config.phone} />
+      <Header />
       <main className="min-h-screen">
         {/* Hero */}
         <section className="relative pt-32 pb-8 bg-secondary">
@@ -55,7 +53,7 @@ export default function VisualizerPage() {
           </div>
         </section>
       </main>
-      <Footer siteName={config.name} phone={config.phone} email={config.email} />
+      <Footer />
     </>
   )
 }

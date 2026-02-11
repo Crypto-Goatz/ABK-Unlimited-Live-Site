@@ -73,6 +73,36 @@ export const SHEETS_SCHEMA = {
       "updated_at",
     ],
   },
+  webhooks: {
+    description: "Webhook endpoint configurations",
+    columns: [
+      "id",
+      "slug",
+      "name",
+      "status",
+      "auth_type",
+      "auth_secret",
+      "action_type",
+      "action_config",
+      "created_at",
+      "updated_at",
+    ],
+  },
+  custom_endpoints: {
+    description: "Custom API endpoint definitions",
+    columns: [
+      "id",
+      "slug",
+      "name",
+      "method",
+      "status",
+      "input_schema",
+      "actions",
+      "response_template",
+      "auth_required",
+      "created_at",
+    ],
+  },
 } as const;
 
 export type SheetName = keyof typeof SHEETS_SCHEMA;
@@ -146,4 +176,30 @@ export interface CustomAppRow {
   definition: string;
   created_at: string;
   updated_at: string;
+}
+
+export interface WebhookRow {
+  id: string;
+  slug: string;
+  name: string;
+  status: string;
+  auth_type: string;
+  auth_secret: string;
+  action_type: string;
+  action_config: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface CustomEndpointRow {
+  id: string;
+  slug: string;
+  name: string;
+  method: string;
+  status: string;
+  input_schema: string;
+  actions: string;
+  response_template: string;
+  auth_required: string;
+  created_at: string;
 }

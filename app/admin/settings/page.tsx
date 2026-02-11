@@ -14,6 +14,9 @@ import {
   Trash2,
   Palette,
   ImageIcon,
+  Shield,
+  Share2,
+  FileCode,
 } from "lucide-react";
 
 interface IntegrationStatus {
@@ -22,6 +25,9 @@ interface IntegrationStatus {
   gemini: boolean;
   cro9: boolean;
   crm: boolean;
+  googleOAuth: boolean;
+  socialPlanner: boolean;
+  appsScript: boolean;
 }
 
 interface EnvStatus {
@@ -235,6 +241,14 @@ export default function SettingsPage() {
       ]
     : [];
 
+  const advancedIntegrations = status
+    ? [
+        { name: "Google OAuth", connected: status.googleOAuth, description: "Admin sign-in via Google", icon: Shield },
+        { name: "Social Planner", connected: status.socialPlanner, description: "Auto-post blogs to social media", icon: Share2 },
+        { name: "Apps Script", connected: status.appsScript, description: "Scheduled blog auto-publishing", icon: FileCode },
+      ]
+    : [];
+
   const envItems = envStatus
     ? [
         { label: "Service Account Email", value: envStatus.GOOGLE_SERVICE_ACCOUNT_EMAIL },
@@ -435,6 +449,46 @@ export default function SettingsPage() {
           )}
         </CardContent>
       </Card>
+
+      {/* Advanced Integrations */}
+      {advancedIntegrations.length > 0 && (
+        <Card>
+          <CardHeader>
+            <CardTitle>Advanced Integrations</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="divide-y divide-gray-100">
+              {advancedIntegrations.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <div key={item.name} className="flex items-center justify-between py-3">
+                    <div className="flex items-center gap-3">
+                      <Icon className="h-5 w-5 text-gray-400" />
+                      <div>
+                        <p className="font-medium">{item.name}</p>
+                        <p className="text-sm text-gray-500">{item.description}</p>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      {item.connected ? (
+                        <>
+                          <CheckCircle2 className="h-5 w-5 text-green-500" />
+                          <span className="text-sm text-green-600">Configured</span>
+                        </>
+                      ) : (
+                        <>
+                          <XCircle className="h-5 w-5 text-gray-300" />
+                          <span className="text-sm text-gray-400">Not configured</span>
+                        </>
+                      )}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </CardContent>
+        </Card>
+      )}
 
       {/* CRM Connection */}
       <Card>

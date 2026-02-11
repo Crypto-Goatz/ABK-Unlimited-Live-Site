@@ -20,6 +20,8 @@ const VALID_SHEETS: SheetName[] = [
   "seo",
   "site_config",
   "custom_apps",
+  "webhooks",
+  "custom_endpoints",
 ];
 
 /**

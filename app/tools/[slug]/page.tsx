@@ -1,7 +1,7 @@
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { AppRenderer } from "@/components/apps/AppRenderer";
-import { getSiteConfig } from "@/config/site.config";
+
 import { getSheetData } from "@/lib/google/sheets";
 import { parseAppDefinition } from "@/config/app-schema";
 import { notFound } from "next/navigation";
@@ -51,7 +51,6 @@ export default async function ToolPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const config = getSiteConfig();
   const apps = await getActiveApps();
   const app = apps.find((a) => a.slug === slug);
 
@@ -70,7 +69,7 @@ export default async function ToolPage({
   return (
     <>
       {showHeader && (
-        <Header siteName={config.name} phone={config.phone} />
+        <Header />
       )}
       <main className="min-h-screen py-12 sm:py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -88,11 +87,7 @@ export default async function ToolPage({
         </div>
       </main>
       {showFooter && (
-        <Footer
-          siteName={config.name}
-          phone={config.phone}
-          email={config.email}
-        />
+        <Footer />
       )}
     </>
   );

@@ -15,7 +15,7 @@ export function checkRequiredEnv(): string[] {
     "GOOGLE_SHEETS_ID",
     "GOOGLE_DRIVE_FOLDER_ID",
     "GOOGLE_SERVICE_ACCOUNT_KEY",
-    "ADMIN_PASSWORD",
+    "GOOGLE_OAUTH_CLIENT_ID",
     "SESSION_SECRET",
   ];
 
@@ -31,7 +31,10 @@ export function getIntegrationStatus() {
     googleDrive: !!process.env.GOOGLE_DRIVE_FOLDER_ID,
     gemini: !!process.env.GEMINI_API_KEY,
     cro9: !!process.env.NEXT_PUBLIC_CRO9_KEY,
-    crm: !!process.env.CRM_CLIENT_ID,
+    crm: !!process.env.CRM_CLIENT_ID || !!process.env.CRM_API_KEY,
     crmTracking: !!process.env.NEXT_PUBLIC_CRM_TRACKING_ID,
+    googleOAuth: !!process.env.GOOGLE_OAUTH_CLIENT_ID,
+    socialPlanner: !!process.env.CRM_CLIENT_ID,
+    appsScript: !!process.env.BLOG_PUBLISH_API_KEY,
   };
 }

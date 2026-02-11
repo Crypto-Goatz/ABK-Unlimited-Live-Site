@@ -194,4 +194,8 @@ export const LOCAL_DATA: Record<string, Record<string, string>[]> = {
   ],
 
   custom_apps: [],
+
+  webhooks: [],
+
+  custom_endpoints: [],
 };
