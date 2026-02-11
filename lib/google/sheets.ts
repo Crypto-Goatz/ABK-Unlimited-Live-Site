@@ -1,32 +1,43 @@
 import { getSheetsClient } from "./auth";
 import { SHEETS_SCHEMA, type SheetName } from "@/config/sheets-schema";
+import { LOCAL_DATA } from "@/data/abk-content";
 
-const SPREADSHEET_ID = process.env.GOOGLE_SHEETS_ID!;
+const SPREADSHEET_ID = process.env.GOOGLE_SHEETS_ID;
 
 export type Row = Record<string, string>;
 
 /**
  * Read all rows from a named sheet tab.
- * Returns an array of objects keyed by column headers.
+ * Falls back to local data when Google Sheets is not configured.
  */
 export async function getSheetData(sheetName: SheetName): Promise<Row[]> {
-  const sheets = getSheetsClient();
-  const res = await sheets.spreadsheets.values.get({
-    spreadsheetId: SPREADSHEET_ID,
-    range: `${sheetName}!A:Z`,
-  });
+  // Fallback to local data when Sheets not configured
+  if (!SPREADSHEET_ID || !process.env.GOOGLE_SERVICE_ACCOUNT_KEY) {
+    return LOCAL_DATA[sheetName] || [];
+  }
 
-  const rows = res.data.values;
-  if (!rows || rows.length < 2) return [];
-
-  const headers = rows[0];
-  return rows.slice(1).map((row) => {
-    const obj: Row = {};
-    headers.forEach((header, i) => {
-      obj[header] = row[i] || "";
+  try {
+    const sheets = getSheetsClient();
+    const res = await sheets.spreadsheets.values.get({
+      spreadsheetId: SPREADSHEET_ID,
+      range: `${sheetName}!A:Z`,
     });
-    return obj;
-  });
+
+    const rows = res.data.values;
+    if (!rows || rows.length < 2) return [];
+
+    const headers = rows[0];
+    return rows.slice(1).map((row) => {
+      const obj: Row = {};
+      headers.forEach((header, i) => {
+        obj[header] = row[i] || "";
+      });
+      return obj;
+    });
+  } catch {
+    // If Sheets fails, fall back to local data
+    return LOCAL_DATA[sheetName] || [];
+  }
 }
 
 /**
