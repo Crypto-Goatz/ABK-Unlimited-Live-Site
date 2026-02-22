@@ -44,15 +44,39 @@ export const config: LeadIntelligenceConfig = {
   // ============================================================================
   services: [
     {
-      id: 'roofing',
-      name: 'Roofing',
+      id: 'hardscaping',
+      name: 'Hardscaping',
       category: 'exterior',
-      urgencyMultiplier: 1.5, // Weather-dependent, often urgent
-      avgProjectValue: 12000,
-      keywords: ['roof', 'roofing', 'shingles', 'leak', 'gutter'],
+      urgencyMultiplier: 1.0,
+      avgProjectValue: 18000,
+      keywords: ['hardscape', 'patio', 'retaining wall', 'walkway', 'stone', 'outdoor kitchen'],
       seasonalBoost: {
-        months: [3, 4, 5, 9, 10, 11], // Spring & Fall
+        months: [3, 4, 5, 6, 7, 8, 9, 10], // Spring through Fall
         multiplier: 1.3,
+      },
+    },
+    {
+      id: 'paving',
+      name: 'Paving',
+      category: 'exterior',
+      urgencyMultiplier: 1.0,
+      avgProjectValue: 15000,
+      keywords: ['paver', 'paving', 'driveway', 'stamped concrete', 'cobblestone'],
+      seasonalBoost: {
+        months: [4, 5, 6, 7, 8, 9, 10], // Spring through Fall
+        multiplier: 1.2,
+      },
+    },
+    {
+      id: 'outdoor-firepits',
+      name: 'Outdoor Firepits',
+      category: 'exterior',
+      urgencyMultiplier: 1.0,
+      avgProjectValue: 12000,
+      keywords: ['firepit', 'fire pit', 'fireplace', 'fire feature', 'fire table'],
+      seasonalBoost: {
+        months: [8, 9, 10, 11], // Late summer through Fall
+        multiplier: 1.4,
       },
     },
     {

@@ -137,7 +137,7 @@ const faqs = [
   {
     question: "What types of projects can be financed?",
     answer:
-      "All of our services are eligible for financing, including kitchen remodeling, bathroom renovations, basement finishing, deck building, home additions, roofing, and custom home construction.",
+      "All of our services are eligible for financing, including kitchen remodeling, bathroom renovations, basement finishing, deck building, home additions, hardscaping, paving, and custom home construction.",
   },
 ]
 

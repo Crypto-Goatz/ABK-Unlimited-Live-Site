@@ -26,7 +26,7 @@ import {
 export const metadata: Metadata = {
   title: "Home Remodeling Services | ABK Unlimited Pittsburgh",
   description:
-    "Full-service home remodeling in Pittsburgh. Kitchen, bathroom, basement, flooring, decks, home additions, roofing, and custom homes. Licensed & insured. Free estimates.",
+    "Full-service home remodeling in Pittsburgh. Kitchen, bathroom, basement, flooring, decks, home additions, hardscaping, paving, and custom homes. Licensed & insured. Free estimates.",
   openGraph: {
     title: "Home Remodeling Services | ABK Unlimited Pittsburgh",
     description:
@@ -88,12 +88,12 @@ const outdoorServices = [
     image: "/home-addition-seamless-architecture.jpg",
   },
   {
-    icon: Home,
-    title: "Roofing",
-    slug: "roofing",
+    icon: Layers,
+    title: "Hardscaping",
+    slug: "hardscaping",
     description:
-      "Complete roof replacement and repair. Asphalt shingles, metal roofing, and flat roofing systems installed by certified professionals.",
-    image: "/custom-new-construction-home-exterior.jpg",
+      "Custom stone patios, retaining walls, walkways, and outdoor kitchens. Natural stone and manufactured options built to last.",
+    image: "/hardscape-patio-outdoor-living.jpg",
   },
   {
     icon: HardHat,
@@ -175,7 +175,7 @@ export default function RemodellingPage() {
               "@type": "HomeAndConstructionBusiness",
               name: "ABK Unlimited",
               description:
-                "Full-service home remodeling contractor in Pittsburgh, PA. Kitchen, bathroom, basement, decks, additions, roofing, and custom homes.",
+                "Full-service home remodeling contractor in Pittsburgh, PA. Kitchen, bathroom, basement, decks, additions, hardscaping, paving, and custom homes.",
               url: "https://abkunlimited.com/remodelling",
               telephone: "+1-412-944-1683",
               email: "info@abkunlimited.com",

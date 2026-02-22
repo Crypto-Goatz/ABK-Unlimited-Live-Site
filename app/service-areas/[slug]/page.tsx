@@ -91,7 +91,7 @@ const areaData: Record<string, AreaData> = {
       "Sewickley's historic charm demands a contractor who respects architectural heritage while delivering modern functionality. ABK Unlimited has extensive experience working with older homes, ensuring updates enhance rather than compromise the character that makes Sewickley properties so special. From period-appropriate kitchens to seamless additions, we blend old and new beautifully.",
     population: "3,827",
     medianHomeValue: "$385,000",
-    popularServices: ["Kitchen Remodeling", "Home Additions", "Roofing", "Bathroom Remodeling"],
+    popularServices: ["Kitchen Remodeling", "Home Additions", "Hardscaping", "Bathroom Remodeling"],
     testimonial: {
       quote: "Updating a century-old home is tricky, but ABK nailed it. Our new addition looks like it was always part of the house. Remarkable attention to detail.",
       author: "James & Linda W.",
@@ -106,7 +106,7 @@ const areaData: Record<string, AreaData> = {
       "Moon Township is a rapidly growing community with a diverse mix of housing. Located near the airport, it attracts families and professionals who want quality homes without city prices. ABK Unlimited helps Moon Township homeowners add value to their properties with smart remodeling choices, from kitchen updates that boost resale value to outdoor decks that expand livable space.",
     population: "24,185",
     medianHomeValue: "$240,000",
-    popularServices: ["Deck Building", "Kitchen Remodeling", "Basement Finishing", "Roofing"],
+    popularServices: ["Deck Building", "Kitchen Remodeling", "Basement Finishing", "Paving"],
     testimonial: {
       quote: "ABK built us an amazing composite deck with built-in lighting. It's become our favorite room in the house -- even though it's outside! Highly recommend.",
       author: "Mike C.",
@@ -121,7 +121,7 @@ const areaData: Record<string, AreaData> = {
       "Robinson Township sits at a crossroads of convenience, offering easy access to highways and amenities. The area features a growing mix of residential neighborhoods alongside commercial development. ABK Unlimited handles both residential remodels and light commercial construction in Robinson, bringing the same quality and professionalism to every project.",
     population: "14,416",
     medianHomeValue: "$225,000",
-    popularServices: ["Kitchen Remodeling", "Bathroom Remodeling", "Flooring Installation", "Roofing"],
+    popularServices: ["Kitchen Remodeling", "Bathroom Remodeling", "Flooring Installation", "Outdoor Firepits"],
     testimonial: {
       quote: "Quick, clean, and professional. ABK installed new flooring throughout our entire first floor in just four days. Looks absolutely beautiful.",
       author: "Donna K.",
@@ -148,14 +148,14 @@ const areaData: Record<string, AreaData> = {
     slug: "wexford",
     description: "North Hills community with established neighborhoods and strong property values.",
     longDescription:
-      "Wexford, located in Pine and Marshall Townships, is a thriving North Hills community with well-maintained homes and strong property values. ABK Unlimited helps Wexford homeowners protect and increase their investment with high-quality remodeling work. From roof replacements that protect your home to bathroom remodels that add luxury, we deliver results that last.",
+      "Wexford, located in Pine and Marshall Townships, is a thriving North Hills community with well-maintained homes and strong property values. ABK Unlimited helps Wexford homeowners protect and increase their investment with high-quality remodeling work. From custom hardscaping that transforms your outdoor space to bathroom remodels that add luxury, we deliver results that last.",
     population: "10,753",
     medianHomeValue: "$340,000",
-    popularServices: ["Bathroom Remodeling", "Roofing", "Basement Finishing", "Kitchen Remodeling"],
+    popularServices: ["Bathroom Remodeling", "Hardscaping", "Basement Finishing", "Kitchen Remodeling"],
     testimonial: {
-      quote: "After getting multiple quotes, ABK was the most thorough and reasonably priced. Our new roof looks fantastic and they cleaned up perfectly when done.",
+      quote: "After getting multiple quotes, ABK was the most thorough and reasonably priced. Our new patio and firepit area looks fantastic and they cleaned up perfectly when done.",
       author: "Greg S.",
-      project: "Roof Replacement",
+      project: "Hardscaping & Firepit",
     },
   },
 }
@@ -167,7 +167,9 @@ const serviceIcons: Record<string, typeof ChefHat> = {
   "Deck Building": Fence,
   "Home Additions": Building2,
   "Custom Homes": HardHat,
-  "Roofing": Home,
+  "Hardscaping": Layers,
+  "Paving": Footprints,
+  "Outdoor Firepits": Home,
   "Flooring Installation": Footprints,
 }
 

@@ -79,7 +79,7 @@ const serviceAreas = [
     name: "Wexford",
     slug: "wexford",
     description:
-      "North Hills community with established neighborhoods and quality homes. We regularly complete bathroom remodels, basement finishing, and roofing projects here.",
+      "North Hills community with established neighborhoods and quality homes. We regularly complete bathroom remodels, basement finishing, and hardscaping projects here.",
     highlights: ["Established area", "Quality housing", "Strong community"],
   },
 ]
