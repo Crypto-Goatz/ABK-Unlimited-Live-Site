@@ -2,6 +2,9 @@ import { NextRequest, NextResponse } from "next/server";
 import { getSheetData } from "@/lib/google/sheets";
 import { createCRMClientFromEnv } from "@/lib/crm-client";
 import { getSiteConfigFromSheet } from "@/lib/google/sheets";
+import { executeWorkflow, deployDependencies } from "@/lib/0n-runner";
+import { getEmailTemplate } from "@/lib/email-templates";
+import { startSequence } from "@/lib/email-sequence";
 
 interface WebhookConfig {
   slug: string;
@@ -118,6 +121,59 @@ export async function POST(
         }
         await client.enrollInWorkflow(contactId, workflowId);
         return NextResponse.json({ success: true, action: "crm_workflow" });
+      }
+
+      case "run_0n_workflow": {
+        // Execute a .0n SWITCH file workflow — the core of 0nMCP automation
+        const workflowName = (config.workflow || "email-sequence") as string;
+
+        // Extract contact data from the webhook payload
+        const firstName = body.firstName || body.first_name || body.contact?.firstName || "Friend";
+        const lastName = body.lastName || body.last_name || body.contact?.lastName || "";
+        const email = body.email || body.contact?.email || "";
+        const phone = body.phone || body.contact?.phone || "";
+        const contactId = body.contactId || body.contact_id || body.contact?.id || "";
+        const service = body.service || body.custom_field?.service_interested || "general";
+        const source = body.source || body.lead_source || "webhook";
+
+        // Start the email sequence (uses our proven engine)
+        const seqResult = await startSequence({
+          firstName,
+          lastName,
+          email,
+          phone,
+          service,
+          source,
+          crmContactId: contactId,
+        });
+
+        // Also tag the contact in CRM
+        if (contactId) {
+          const siteConfig: Record<string, string> = await getSiteConfigFromSheet().catch(() => ({}));
+          const token = siteConfig.crm_access_token || process.env.CRM_API_KEY || "";
+          if (token) {
+            await fetch(`https://services.leadconnectorhq.com/contacts/${contactId}`, {
+              method: "PUT",
+              headers: {
+                Authorization: `Bearer ${token}`,
+                Version: "2021-07-28",
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                tags: ["email sequence - active", "website contact", "abk website"],
+              }),
+            }).catch(() => {});
+          }
+        }
+
+        return NextResponse.json({
+          success: true,
+          action: "run_0n_workflow",
+          workflow: workflowName,
+          sequenceId: seqResult.sequenceId,
+          firstEmailSent: seqResult.firstEmailSent,
+          contact: { firstName, email, contactId },
+        });
       }
 
       case "forward": {
