@@ -103,6 +103,63 @@ export const SHEETS_SCHEMA = {
       "created_at",
     ],
   },
+  customers: {
+    description: "Customer database synced with CRM",
+    columns: [
+      "id",
+      "crm_contact_id",
+      "first_name",
+      "last_name",
+      "email",
+      "phone",
+      "address",
+      "city",
+      "state",
+      "zip",
+      "source",
+      "lead_score",
+      "lead_temperature",
+      "tags",
+      "services_interested",
+      "estimated_value",
+      "status",
+      "notes",
+      "gclid",
+      "fbclid",
+      "utm_source",
+      "utm_medium",
+      "utm_campaign",
+      "ga_client_id",
+      "first_visit_page",
+      "conversion_page",
+      "created_at",
+      "updated_at",
+      "last_synced",
+    ],
+  },
+  analytics_events: {
+    description: "GA4 and CRO9 analytics events for feedback loop",
+    columns: [
+      "id",
+      "customer_id",
+      "crm_contact_id",
+      "event_name",
+      "event_category",
+      "source",
+      "medium",
+      "campaign",
+      "gclid",
+      "fbclid",
+      "page_path",
+      "referrer",
+      "ga_client_id",
+      "session_id",
+      "device_type",
+      "city",
+      "conversion_value",
+      "timestamp",
+    ],
+  },
 } as const;
 
 export type SheetName = keyof typeof SHEETS_SCHEMA;
@@ -202,4 +259,57 @@ export interface CustomEndpointRow {
   response_template: string;
   auth_required: string;
   created_at: string;
+}
+
+export interface CustomerRow {
+  id: string;
+  crm_contact_id: string;
+  first_name: string;
+  last_name: string;
+  email: string;
+  phone: string;
+  address: string;
+  city: string;
+  state: string;
+  zip: string;
+  source: string;
+  lead_score: string;
+  lead_temperature: string;
+  tags: string;
+  services_interested: string;
+  estimated_value: string;
+  status: string;
+  notes: string;
+  gclid: string;
+  fbclid: string;
+  utm_source: string;
+  utm_medium: string;
+  utm_campaign: string;
+  ga_client_id: string;
+  first_visit_page: string;
+  conversion_page: string;
+  created_at: string;
+  updated_at: string;
+  last_synced: string;
+}
+
+export interface AnalyticsEventRow {
+  id: string;
+  customer_id: string;
+  crm_contact_id: string;
+  event_name: string;
+  event_category: string;
+  source: string;
+  medium: string;
+  campaign: string;
+  gclid: string;
+  fbclid: string;
+  page_path: string;
+  referrer: string;
+  ga_client_id: string;
+  session_id: string;
+  device_type: string;
+  city: string;
+  conversion_value: string;
+  timestamp: string;
 }

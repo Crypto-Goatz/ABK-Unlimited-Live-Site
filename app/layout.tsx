@@ -3,6 +3,8 @@ import type { Metadata } from "next"
 import { Inter, Geist_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import Script from "next/script"
+import { Suspense } from "react"
+import { AttributionTracker } from "@/components/site/AttributionTracker"
 import "./globals.css"
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
@@ -30,6 +32,7 @@ export default function RootLayout({
 }>) {
   const cro9Key = process.env.NEXT_PUBLIC_CRO9_KEY
   const crmTrackingId = process.env.NEXT_PUBLIC_CRM_TRACKING_ID
+  const ga4Id = process.env.NEXT_PUBLIC_GA4_MEASUREMENT_ID
 
   return (
     <html lang="en">
@@ -94,17 +97,50 @@ export default function RootLayout({
         {children}
         <Analytics />
 
-        {/* CRO9 Analytics Tracker */}
+        {/* Attribution Tracker — captures gclid, fbclid, UTMs, GA client ID */}
+        <Suspense fallback={null}>
+          <AttributionTracker />
+        </Suspense>
+
+        {/* Google Analytics 4 */}
+        {ga4Id && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${ga4Id}`}
+              strategy="afterInteractive"
+            />
+            <Script id="ga4-config" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${ga4Id}', {
+                  send_page_view: true,
+                  cookie_flags: 'SameSite=None;Secure',
+                });
+              `}
+            </Script>
+          </>
+        )}
+
+        {/* CRO9 Analytics + SXO Behavioral Tracker */}
         {cro9Key && (
           <Script
             src="https://cdn.cro9.app/tracker.min.js"
             data-api-key={cro9Key}
             data-consent-mode="gdpr"
+            data-track-clicks="true"
+            data-track-scroll="true"
+            data-track-forms="true"
+            data-track-rage-clicks="true"
+            data-track-dead-clicks="true"
+            data-track-exit-intent="true"
+            data-sxo-mode="full"
             strategy="afterInteractive"
           />
         )}
 
-        {/* CRM Tracking Script */}
+        {/* CRM Tracking Script — lead tracking + chat widget support */}
         {crmTrackingId && (
           <Script
             src="https://links.rocketclients.com/js/external-tracking.js"

@@ -29,6 +29,7 @@ export default function AdminDashboardPage() {
     { name: "Google OAuth", key: "googleOAuth" as const, description: "Admin authentication" },
     { name: "Social Planner", key: "socialPlanner" as const, description: "Automated social posting" },
     { name: "Apps Script", key: "appsScript" as const, description: "Blog auto-publishing" },
+    { name: "Google Analytics 4", key: "ga4" as const, description: "Traffic & conversion tracking" },
   ];
 
   const quickLinks = [

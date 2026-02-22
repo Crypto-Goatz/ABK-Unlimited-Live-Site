@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { z } from 'zod'
-import { createCRMContact, addCRMNote, addCRMTags } from '@/lib/crm-api'
+import { createCustomer } from '@/lib/crm-sync'
+import { recordAnalyticsEvent } from '@/lib/analytics-loop'
 
-// Validation schema for contact form
+// Validation schema for contact form — now includes attribution fields
 const contactSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters'),
   email: z.string().email('Invalid email address'),
@@ -10,73 +11,99 @@ const contactSchema = z.object({
   subject: z.string().optional(),
   message: z.string().min(10, 'Message must be at least 10 characters'),
   page_source: z.string().optional(),
+  // Attribution fields from client-side tracker
+  gclid: z.string().optional(),
+  fbclid: z.string().optional(),
+  msclkid: z.string().optional(),
+  utm_source: z.string().optional(),
+  utm_medium: z.string().optional(),
+  utm_campaign: z.string().optional(),
+  utm_term: z.string().optional(),
+  utm_content: z.string().optional(),
+  ga_client_id: z.string().optional(),
+  session_id: z.string().optional(),
+  referrer: z.string().optional(),
+  landing_page: z.string().optional(),
+  conversion_page: z.string().optional(),
+  device_type: z.string().optional(),
 })
 
-// Helper to split full name into first/last
 function splitName(fullName: string): { firstName: string; lastName?: string } {
   const parts = fullName.trim().split(/\s+/)
-  if (parts.length === 1) {
-    return { firstName: parts[0] }
-  }
-  return {
-    firstName: parts[0],
-    lastName: parts.slice(1).join(' '),
-  }
+  if (parts.length === 1) return { firstName: parts[0] }
+  return { firstName: parts[0], lastName: parts.slice(1).join(' ') }
 }
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
+    const data = contactSchema.parse(body)
+    const { firstName, lastName } = splitName(data.name)
 
-    // Validate input
-    const validatedData = contactSchema.parse(body)
+    // Determine services from subject
+    const serviceMap: Record<string, string> = {
+      'Kitchen Remodeling': 'kitchen',
+      'Bathroom Renovation': 'bathroom',
+      'Basement Finishing': 'basement',
+      'Deck Building': 'deck',
+      'Home Addition': 'addition',
+      'Roofing': 'roofing',
+      'Siding': 'siding',
+      'Flooring': 'flooring',
+      'Emergency Repair': 'emergency',
+    }
+    const servicesInterested = data.subject && serviceMap[data.subject]
+      ? [serviceMap[data.subject]]
+      : []
 
-    // Split name into first/last
-    const { firstName, lastName } = splitName(validatedData.name)
-
-    // Create contact in CRM
-    const contactResult = await createCRMContact({
+    // Create customer → syncs to both CRM + Google Sheets with full attribution
+    const result = await createCustomer({
       firstName,
       lastName,
-      email: validatedData.email,
-      phone: validatedData.phone,
+      email: data.email,
+      phone: data.phone,
       source: 'Website - Contact Form',
       tags: ['Website Contact', 'ABK Website'],
+      servicesInterested,
+      notes: `Subject: ${data.subject || 'General Inquiry'}\nMessage: ${data.message}\nSource Page: ${data.page_source || 'Unknown'}`,
+      // Attribution
+      gclid: data.gclid,
+      fbclid: data.fbclid,
+      utmSource: data.utm_source,
+      utmMedium: data.utm_medium,
+      utmCampaign: data.utm_campaign,
+      gaClientId: data.ga_client_id,
+      firstVisitPage: data.landing_page,
+      conversionPage: data.conversion_page || data.page_source,
     })
 
-    if (!contactResult.success) {
-      console.error('Failed to create CRM contact:', contactResult.error)
-      // Still return success to user - don't fail the form submission
-    }
-
-    // If contact was created, add note with message
-    if (contactResult.contact?.id) {
-      const noteBody = `
-**Contact Form Submission**
-Subject: ${validatedData.subject || 'General Inquiry'}
-Message: ${validatedData.message}
-Source Page: ${validatedData.page_source || 'Unknown'}
-      `.trim()
-
-      await addCRMNote(contactResult.contact.id, noteBody)
-
-      // Add subject-specific tags
-      if (validatedData.subject) {
-        await addCRMTags(contactResult.contact.id, [`Subject: ${validatedData.subject}`])
-      }
-    }
-
-    console.log('Contact submission processed:', {
-      name: validatedData.name,
-      email: validatedData.email,
-      crmContactId: contactResult.contact?.id,
-    })
+    // Record analytics event for the feedback loop
+    await recordAnalyticsEvent({
+      customerId: result.customerId,
+      crmContactId: result.crmContactId,
+      eventName: 'contact_form_submission',
+      eventCategory: 'conversion',
+      attribution: {
+        gclid: data.gclid,
+        fbclid: data.fbclid,
+        msclkid: data.msclkid,
+        utmSource: data.utm_source,
+        utmMedium: data.utm_medium,
+        utmCampaign: data.utm_campaign,
+        gaClientId: data.ga_client_id,
+        sessionId: data.session_id,
+        referrer: data.referrer,
+        landingPage: data.landing_page,
+        deviceType: data.device_type,
+      },
+      pagePath: data.conversion_page || data.page_source || '/contact',
+      conversionValue: servicesInterested.length > 0 ? 500 : 100, // Estimated lead value
+    }).catch(() => {})
 
     return NextResponse.json({
       success: true,
-      message: 'Message received! We\'ll get back to you soon.',
+      message: "Message received! We'll get back to you soon.",
     })
-
   } catch (error) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(

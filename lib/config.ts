@@ -36,5 +36,6 @@ export function getIntegrationStatus() {
     googleOAuth: !!process.env.GOOGLE_OAUTH_CLIENT_ID,
     socialPlanner: !!process.env.CRM_CLIENT_ID,
     appsScript: !!process.env.BLOG_PUBLISH_API_KEY,
+    ga4: !!process.env.NEXT_PUBLIC_GA4_MEASUREMENT_ID,
   };
 }
