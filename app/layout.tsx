@@ -11,10 +11,30 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
 const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono" })
 
 export const metadata: Metadata = {
-  title: "ABK Unlimited | Pittsburgh's Trusted General Contractor | Kitchen & Bath Remodeling",
+  metadataBase: new URL("https://abkunlimited.com"),
+  title: {
+    default: "ABK Unlimited | Pittsburgh's Trusted General Contractor | Kitchen & Bath Remodeling",
+    template: "%s | ABK Unlimited Pittsburgh",
+  },
   description:
     "Award-winning Pittsburgh general contractor specializing in kitchen remodeling, bathroom renovations, basement finishing & deck building. Licensed & insured. Free estimates. Call (412) 944-1683.",
-  robots: "index, follow",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || undefined,
+  },
+  alternates: {
+    canonical: "https://abkunlimited.com",
+  },
   openGraph: {
     title: "ABK Unlimited | Pittsburgh's Trusted General Contractor",
     description:
@@ -22,6 +42,13 @@ export const metadata: Metadata = {
     url: "https://abkunlimited.com",
     type: "website",
     siteName: "ABK Unlimited",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "ABK Unlimited | Pittsburgh's Trusted General Contractor",
+    description:
+      "Award-winning contractor serving Greater Pittsburgh. Kitchen remodeling, bathroom renovations, basement finishing, deck building, and more.",
   },
 }
 
