@@ -17,6 +17,10 @@ import {
   Shield,
   Share2,
   FileCode,
+  RefreshCw,
+  BarChart3,
+  MessageSquare,
+  Zap,
 } from "lucide-react";
 
 interface IntegrationStatus {
@@ -45,13 +49,59 @@ function maskValue(val: string): string {
   return val.slice(0, 4) + "****" + val.slice(-4);
 }
 
+type ApiKeyField = {
+  id: string;
+  label: string;
+  description: string;
+  apiKey: string; // key name for save-key endpoint
+  icon: typeof Key;
+  placeholder: string;
+};
+
+const API_KEY_FIELDS: ApiKeyField[] = [
+  {
+    id: "gemini",
+    label: "Gemini API Key",
+    description: "Enable AI content generation powered by Google Gemini.",
+    apiKey: "gemini",
+    icon: Zap,
+    placeholder: "Enter Gemini API key...",
+  },
+  {
+    id: "cro9",
+    label: "CRO9 / SXO Analytics Key",
+    description: "Enable behavioral analytics, heatmaps, and search experience optimization.",
+    apiKey: "cro9",
+    icon: BarChart3,
+    placeholder: "Enter CRO9 key...",
+  },
+  {
+    id: "ga4",
+    label: "GA4 Measurement ID",
+    description: "Google Analytics 4 tracking for traffic and conversion data.",
+    apiKey: "ga4",
+    icon: BarChart3,
+    placeholder: "G-XXXXXXXXXX",
+  },
+  {
+    id: "crm_tracking",
+    label: "CRM Tracking ID",
+    description: "CRM tracking pixel for attribution and lead scoring.",
+    apiKey: "crm_tracking",
+    icon: MessageSquare,
+    placeholder: "Enter CRM tracking ID...",
+  },
+];
+
 export default function SettingsPage() {
   const [status, setStatus] = useState<IntegrationStatus | null>(null);
   const [envStatus, setEnvStatus] = useState<EnvStatus | null>(null);
-  const [geminiKey, setGeminiKey] = useState("");
-  const [saving, setSaving] = useState(false);
-  const [saveMessage, setSaveMessage] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
+
+  // API key states
+  const [keyValues, setKeyValues] = useState<Record<string, string>>({});
+  const [keySaving, setKeySaving] = useState<Record<string, boolean>>({});
+  const [keyMessages, setKeyMessages] = useState<Record<string, { text: string; success: boolean }>>({});
 
   // Logo state
   const [logoImageId, setLogoImageId] = useState<string | null>(null);
@@ -61,12 +111,16 @@ export default function SettingsPage() {
 
   // Color state
   const [colors, setColors] = useState({
-    primary: "#2563eb",
-    secondary: "#1e40af",
+    primary: "#14664f",
+    secondary: "#1a1a2e",
     accent: "#f59e0b",
   });
   const [colorSaving, setColorSaving] = useState(false);
   const [colorMessage, setColorMessage] = useState<string | null>(null);
+
+  // Redeploy state
+  const [redeploying, setRedeploying] = useState(false);
+  const [redeployMessage, setRedeployMessage] = useState<string | null>(null);
 
   useEffect(() => {
     async function loadSettings() {
@@ -86,7 +140,7 @@ export default function SettingsPage() {
           setEnvStatus(envData);
         }
       } catch {
-        // Settings endpoints may not exist yet, that's ok
+        // Settings endpoints may not exist yet
       }
 
       // Load site_config for logo and colors
@@ -115,25 +169,90 @@ export default function SettingsPage() {
     loadSettings();
   }, []);
 
-  const handleSaveGeminiKey = async () => {
-    setSaving(true);
-    setSaveMessage(null);
+  // Save API key to Vercel env var
+  const handleSaveKey = async (field: ApiKeyField) => {
+    const value = keyValues[field.id];
+    if (!value?.trim()) return;
+
+    setKeySaving((s) => ({ ...s, [field.id]: true }));
+    setKeyMessages((m) => ({ ...m, [field.id]: undefined as unknown as { text: string; success: boolean } }));
+
     try {
-      const res = await fetch("/api/content", {
+      const res = await fetch("/api/settings/save-key", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ key: field.apiKey, value: value.trim() }),
+      });
+
+      if (!res.ok) {
+        const data = await res.json();
+        throw new Error(data.error || "Failed to save");
+      }
+
+      setKeyMessages((m) => ({
+        ...m,
+        [field.id]: { text: `${field.label} saved. Redeploy to activate.`, success: true },
+      }));
+      setKeyValues((v) => ({ ...v, [field.id]: "" }));
+    } catch (err) {
+      const message = err instanceof Error ? err.message : "Failed to save";
+      setKeyMessages((m) => ({
+        ...m,
+        [field.id]: { text: message, success: false },
+      }));
+    } finally {
+      setKeySaving((s) => ({ ...s, [field.id]: false }));
+    }
+  };
+
+  // Save Gemini key — fallback to site_config if Vercel API not configured
+  const handleSaveGeminiLegacy = async () => {
+    const value = keyValues["gemini"];
+    if (!value?.trim()) return;
+
+    setKeySaving((s) => ({ ...s, gemini: true }));
+
+    try {
+      // Try Vercel env var first
+      const res = await fetch("/api/settings/save-key", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ key: "gemini", value: value.trim() }),
+      });
+
+      if (res.ok) {
+        setKeyMessages((m) => ({
+          ...m,
+          gemini: { text: "Gemini API key saved. Redeploy to activate.", success: true },
+        }));
+        setKeyValues((v) => ({ ...v, gemini: "" }));
+        return;
+      }
+
+      // Fallback to site_config sheet
+      const sheetRes = await fetch("/api/content", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           sheet: "site_config",
-          data: { key: "gemini_api_key", value: geminiKey },
+          data: { key: "gemini_api_key", value: value.trim() },
         }),
       });
-      if (!res.ok) throw new Error("Failed to save");
-      setSaveMessage("Gemini API key saved successfully");
-      setGeminiKey("");
+
+      if (!sheetRes.ok) throw new Error("Failed to save via both Vercel and Sheets");
+
+      setKeyMessages((m) => ({
+        ...m,
+        gemini: { text: "Gemini API key saved to config sheet.", success: true },
+      }));
+      setKeyValues((v) => ({ ...v, gemini: "" }));
     } catch {
-      setSaveMessage("Failed to save Gemini API key");
+      setKeyMessages((m) => ({
+        ...m,
+        gemini: { text: "Failed to save Gemini API key. Check Vercel configuration.", success: false },
+      }));
     } finally {
-      setSaving(false);
+      setKeySaving((s) => ({ ...s, gemini: false }));
     }
   };
 
@@ -168,7 +287,7 @@ export default function SettingsPage() {
       setLogoImageId(uploaded.id);
       setLogoMessage("Logo uploaded successfully");
     } catch {
-      setLogoMessage("Failed to upload logo");
+      setLogoMessage("Failed to upload logo. Google Drive may not be configured.");
     } finally {
       setLogoUploading(false);
       if (fileInputRef.current) fileInputRef.current.value = "";
@@ -197,37 +316,54 @@ export default function SettingsPage() {
     setColorSaving(true);
     setColorMessage(null);
     try {
-      await Promise.all([
-        fetch("/api/content", {
+      // Save to Vercel env vars
+      const colorVars = [
+        { key: "NEXT_PUBLIC_COLOR_PRIMARY", value: colors.primary },
+        { key: "NEXT_PUBLIC_COLOR_SECONDARY", value: colors.secondary },
+        { key: "NEXT_PUBLIC_COLOR_ACCENT", value: colors.accent },
+      ];
+
+      for (const { key, value } of colorVars) {
+        const res = await fetch("/api/settings/save-key", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            sheet: "site_config",
-            data: { key: "primary_color", value: colors.primary },
-          }),
-        }),
-        fetch("/api/content", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            sheet: "site_config",
-            data: { key: "secondary_color", value: colors.secondary },
-          }),
-        }),
-        fetch("/api/content", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            sheet: "site_config",
-            data: { key: "accent_color", value: colors.accent },
-          }),
-        }),
-      ]);
-      setColorMessage("Colors saved successfully");
+          body: JSON.stringify({ key: key.replace("NEXT_PUBLIC_COLOR_", "").toLowerCase(), value }),
+        });
+        // If Vercel API fails, try site_config sheet
+        if (!res.ok) {
+          await fetch("/api/content", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              sheet: "site_config",
+              data: { key: key.replace("NEXT_PUBLIC_", "").toLowerCase(), value },
+            }),
+          });
+        }
+      }
+      setColorMessage("Colors saved successfully. Redeploy to see changes.");
     } catch {
       setColorMessage("Failed to save colors");
     } finally {
       setColorSaving(false);
+    }
+  };
+
+  const handleRedeploy = async () => {
+    setRedeploying(true);
+    setRedeployMessage(null);
+    try {
+      const res = await fetch("/api/setup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ action: "trigger-redeploy" }),
+      });
+      if (!res.ok) throw new Error("Failed to trigger redeploy");
+      setRedeployMessage("Redeployment triggered. Changes will be live in ~60 seconds.");
+    } catch {
+      setRedeployMessage("Failed to trigger redeploy. You may need to redeploy from the Vercel dashboard.");
+    } finally {
+      setRedeploying(false);
     }
   };
 
@@ -271,12 +407,137 @@ export default function SettingsPage() {
 
   return (
     <div className="space-y-6">
-      <div>
-        <h1 className="text-2xl font-bold">Settings</h1>
-        <p className="text-gray-600 mt-1">
-          Manage your integrations and configuration.
-        </p>
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="text-2xl font-bold">Settings</h1>
+          <p className="text-gray-600 mt-1">
+            Manage your integrations and configuration.
+          </p>
+        </div>
+        <button
+          onClick={handleRedeploy}
+          disabled={redeploying}
+          className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-600 text-white text-sm font-medium rounded-lg hover:bg-emerald-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+        >
+          <RefreshCw className={`h-4 w-4 ${redeploying ? "animate-spin" : ""}`} />
+          {redeploying ? "Deploying..." : "Redeploy Site"}
+        </button>
       </div>
+
+      {redeployMessage && (
+        <div
+          className={`p-3 rounded-lg text-sm ${
+            redeployMessage.includes("triggered")
+              ? "bg-emerald-50 text-emerald-700 border border-emerald-200"
+              : "bg-red-50 text-red-700 border border-red-200"
+          }`}
+        >
+          {redeployMessage}
+        </div>
+      )}
+
+      {/* Integration Status */}
+      <Card>
+        <CardHeader>
+          <CardTitle>Integration Status</CardTitle>
+        </CardHeader>
+        <CardContent>
+          {integrationItems.length > 0 ? (
+            <div className="divide-y divide-gray-100">
+              {integrationItems.map((item) => (
+                <div key={item.name} className="flex items-center justify-between py-3">
+                  <div>
+                    <p className="font-medium">{item.name}</p>
+                    <p className="text-sm text-gray-500">{item.description}</p>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    {item.connected ? (
+                      <>
+                        <CheckCircle2 className="h-5 w-5 text-green-500" />
+                        <span className="text-sm text-green-600">Connected</span>
+                      </>
+                    ) : (
+                      <>
+                        <XCircle className="h-5 w-5 text-red-500" />
+                        <span className="text-sm text-red-600">Not connected</span>
+                      </>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <p className="text-gray-500 text-sm">
+              Unable to load integration status.
+            </p>
+          )}
+        </CardContent>
+      </Card>
+
+      {/* API Keys */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Key className="h-5 w-5" />
+            API Keys &amp; Integrations
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <p className="text-sm text-gray-600 mb-6">
+            API keys are saved as encrypted environment variables. After saving, click
+            &quot;Redeploy Site&quot; to activate changes.
+          </p>
+          <div className="space-y-6">
+            {API_KEY_FIELDS.map((field) => {
+              const Icon = field.icon;
+              const msg = keyMessages[field.id];
+              return (
+                <div key={field.id} className="border border-gray-100 rounded-xl p-4">
+                  <div className="flex items-center gap-2 mb-1">
+                    <Icon className="h-4 w-4 text-gray-500" />
+                    <label className="text-sm font-semibold text-gray-800">
+                      {field.label}
+                    </label>
+                  </div>
+                  <p className="text-xs text-gray-500 mb-3">{field.description}</p>
+                  <div className="flex gap-3">
+                    <input
+                      type="password"
+                      value={keyValues[field.id] || ""}
+                      onChange={(e) =>
+                        setKeyValues((v) => ({ ...v, [field.id]: e.target.value }))
+                      }
+                      placeholder={field.placeholder}
+                      className="flex-1 px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    />
+                    <button
+                      onClick={() =>
+                        field.id === "gemini"
+                          ? handleSaveGeminiLegacy()
+                          : handleSaveKey(field)
+                      }
+                      disabled={keySaving[field.id] || !keyValues[field.id]?.trim()}
+                      className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                    >
+                      <Save className="h-4 w-4" />
+                      {keySaving[field.id] ? "Saving..." : "Save"}
+                    </button>
+                  </div>
+                  {msg && (
+                    <p
+                      className={`text-xs mt-2 ${
+                        msg.success ? "text-green-600" : "text-red-600"
+                      }`}
+                    >
+                      {msg.text}
+                    </p>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </CardContent>
+      </Card>
 
       {/* Logo Upload */}
       <Card>
@@ -288,7 +549,7 @@ export default function SettingsPage() {
         </CardHeader>
         <CardContent>
           <p className="text-sm text-gray-600 mb-4">
-            Upload your site logo. It will appear in the header and footer across all pages.
+            Upload your site logo. Requires Google Drive integration.
           </p>
           {logoImageId && (
             <div className="mb-4 p-4 bg-gray-50 rounded-lg flex items-center gap-4">
@@ -350,7 +611,7 @@ export default function SettingsPage() {
         </CardHeader>
         <CardContent>
           <p className="text-sm text-gray-600 mb-4">
-            Customize your site&apos;s brand colors. Changes take effect on the next page load.
+            Customize your site&apos;s brand colors. Redeploy after saving.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-4">
             {(
@@ -386,7 +647,6 @@ export default function SettingsPage() {
               </div>
             ))}
           </div>
-          {/* Preview bar */}
           <div className="flex rounded-lg overflow-hidden h-8 mb-4">
             <div className="flex-1" style={{ backgroundColor: colors.primary }} />
             <div className="flex-1" style={{ backgroundColor: colors.secondary }} />
@@ -407,44 +667,6 @@ export default function SettingsPage() {
               }`}
             >
               {colorMessage}
-            </p>
-          )}
-        </CardContent>
-      </Card>
-
-      {/* Integration Status */}
-      <Card>
-        <CardHeader>
-          <CardTitle>Integration Status</CardTitle>
-        </CardHeader>
-        <CardContent>
-          {integrationItems.length > 0 ? (
-            <div className="divide-y divide-gray-100">
-              {integrationItems.map((item) => (
-                <div key={item.name} className="flex items-center justify-between py-3">
-                  <div>
-                    <p className="font-medium">{item.name}</p>
-                    <p className="text-sm text-gray-500">{item.description}</p>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    {item.connected ? (
-                      <>
-                        <CheckCircle2 className="h-5 w-5 text-green-500" />
-                        <span className="text-sm text-green-600">Connected</span>
-                      </>
-                    ) : (
-                      <>
-                        <XCircle className="h-5 w-5 text-red-500" />
-                        <span className="text-sm text-red-600">Not connected</span>
-                      </>
-                    )}
-                  </div>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <p className="text-gray-500 text-sm">
-              Unable to load integration status. The status API may not be configured yet.
             </p>
           )}
         </CardContent>
@@ -509,7 +731,7 @@ export default function SettingsPage() {
         </CardContent>
       </Card>
 
-      {/* Environment Variables (Masked) */}
+      {/* Configuration Status */}
       <Card>
         <CardHeader>
           <CardTitle>Configuration Status</CardTitle>
@@ -531,51 +753,28 @@ export default function SettingsPage() {
             </div>
           ) : (
             <p className="text-gray-500 text-sm">
-              Unable to load environment status. The env API may not be configured yet.
+              Unable to load environment status.
             </p>
           )}
         </CardContent>
       </Card>
 
-      {/* Gemini API Key Input */}
+      {/* Setup Wizard Link */}
       <Card>
         <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Key className="h-5 w-5" />
-            Gemini API Key
-          </CardTitle>
+          <CardTitle>Initial Setup</CardTitle>
         </CardHeader>
         <CardContent>
           <p className="text-sm text-gray-600 mb-4">
-            Enter your Gemini API key to enable AI content generation. This will be saved
-            to your site_config sheet.
+            Run the setup wizard to connect Google Sheets, Drive, and generate initial content.
           </p>
-          <div className="flex gap-3">
-            <input
-              type="password"
-              value={geminiKey}
-              onChange={(e) => setGeminiKey(e.target.value)}
-              placeholder="Enter Gemini API key..."
-              className="flex-1 px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-            />
-            <button
-              onClick={handleSaveGeminiKey}
-              disabled={saving || !geminiKey.trim()}
-              className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-            >
-              <Save className="h-4 w-4" />
-              {saving ? "Saving..." : "Save"}
-            </button>
-          </div>
-          {saveMessage && (
-            <p
-              className={`text-sm mt-2 ${
-                saveMessage.includes("success") ? "text-green-600" : "text-red-600"
-              }`}
-            >
-              {saveMessage}
-            </p>
-          )}
+          <a
+            href="/admin/setup"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-gray-800 text-white text-sm font-medium rounded-lg hover:bg-gray-900 transition-colors"
+          >
+            <Zap className="h-4 w-4" />
+            Run Setup Wizard
+          </a>
         </CardContent>
       </Card>
     </div>

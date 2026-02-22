@@ -28,5 +28,7 @@ export async function GET() {
     GEMINI_API_KEY: mask(process.env.GEMINI_API_KEY),
     CRO9_API_KEY: mask(process.env.NEXT_PUBLIC_CRO9_KEY),
     CRM_API_KEY: mask(process.env.CRM_API_KEY),
+    CRM_LOCATION_ID: mask(process.env.CRM_LOCATION_ID),
+    GA4_MEASUREMENT_ID: mask(process.env.NEXT_PUBLIC_GA4_MEASUREMENT_ID),
   });
 }

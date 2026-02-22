@@ -11,8 +11,10 @@ export async function GET() {
     gemini: !!process.env.GEMINI_API_KEY,
     cro9: !!process.env.NEXT_PUBLIC_CRO9_KEY,
     crm: !!(process.env.CRM_API_KEY || process.env.CRM_CLIENT_ID),
+    crmTracking: !!process.env.NEXT_PUBLIC_CRM_TRACKING_ID,
     googleOAuth: !!(process.env.GOOGLE_OAUTH_CLIENT_ID && process.env.GOOGLE_OAUTH_CLIENT_SECRET),
     socialPlanner: false,
     appsScript: false,
+    ga4: !!process.env.NEXT_PUBLIC_GA4_MEASUREMENT_ID,
   });
 }

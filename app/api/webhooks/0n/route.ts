@@ -143,7 +143,7 @@ function extractContactFromWebhook(payload: Record<string, unknown>): Record<str
     lastName: contact.lastName || contact.last_name || '',
     email: contact.email || '',
     phone: contact.phone || '',
-    service: contact.customField?.service_interested || contact.service || 'general',
+    service: (contact.customField as Record<string, unknown>)?.service_interested || contact.service || 'general',
     source: contact.source || payload.source || 'webhook',
     crmContactId: contact.id || contact.contactId || payload.contactId || '',
   }
