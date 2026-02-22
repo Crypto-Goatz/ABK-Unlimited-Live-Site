@@ -72,7 +72,9 @@ const projectTypes = [
   "Deck Building",
   "Home Addition",
   "Flooring Installation",
-  "Roofing",
+  "Hardscaping",
+  "Paving",
+  "Outdoor Firepit",
   "Custom Home",
   "Other",
 ]

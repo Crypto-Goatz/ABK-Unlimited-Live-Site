@@ -8,8 +8,10 @@ const footerLinks = {
     { name: "Bathroom Remodeling", href: "/services/bathroom-remodeling" },
     { name: "Basement Finishing", href: "/services/basement-finishing" },
     { name: "Deck Building", href: "/services/deck-building" },
+    { name: "Hardscaping", href: "/services/hardscaping" },
+    { name: "Paving", href: "/services/paving" },
+    { name: "Outdoor Firepits", href: "/services/outdoor-firepits" },
     { name: "Home Additions", href: "/services/home-additions" },
-    { name: "Flooring Installation", href: "/services/flooring-installation" },
   ],
   Company: [
     { name: "About Us", href: "/about" },

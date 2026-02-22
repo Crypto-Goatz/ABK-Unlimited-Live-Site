@@ -27,7 +27,7 @@ const phases = [
       "Licensed crews, premium materials, and relentless attention to detail. From foundation to finish, we build it right the first time.",
     image: "/home-addition-construction.jpg",
     alt: "Home addition under construction in Pittsburgh neighborhood",
-    services: ["Kitchen & Bath", "Additions & Decks", "Roofing & Structure"],
+    services: ["Kitchen & Bath", "Additions & Decks", "Hardscaping & Outdoor"],
   },
   {
     id: "live",

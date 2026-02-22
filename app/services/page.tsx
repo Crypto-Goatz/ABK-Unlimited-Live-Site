@@ -9,7 +9,7 @@ import { ArrowRight, Phone, CheckCircle } from "lucide-react"
 export const metadata: Metadata = {
   title: "Our Services | ABK Unlimited Pittsburgh General Contractor",
   description:
-    "Full-service residential and commercial contractor. Kitchen remodeling, bathroom renovations, basement finishing, deck building, home additions, flooring, custom homes, roofing, and commercial construction.",
+    "Full-service residential and commercial contractor. Kitchen remodeling, bathroom renovations, basement finishing, deck building, home additions, flooring, hardscaping, paving, outdoor firepits, and custom homes.",
   openGraph: {
     title: "Our Services | ABK Unlimited",
     description:
@@ -126,18 +126,48 @@ const services = [
     ],
   },
   {
-    title: "Roofing",
-    slug: "roofing",
-    image: "/custom-new-construction-home-exterior.jpg",
+    title: "Hardscaping",
+    slug: "hardscaping",
+    image: "/hardscape-patio-outdoor-living.jpg",
     description:
-      "Protect your home with a professionally installed roof. We handle full replacements, repairs, and inspections using top-quality materials backed by manufacturer warranties.",
+      "Transform your outdoor space with custom hardscaping. From elegant stone patios and retaining walls to walkways and outdoor kitchens, we build stunning outdoor environments that last a lifetime.",
     features: [
-      "Full roof replacement",
-      "Shingle & metal options",
-      "Storm damage repair",
-      "Gutter installation",
-      "Attic ventilation",
-      "Warranty-backed work",
+      "Natural stone patios",
+      "Retaining walls & terracing",
+      "Custom walkways & paths",
+      "Outdoor kitchens",
+      "Seat walls & planters",
+      "Drainage solutions",
+    ],
+  },
+  {
+    title: "Paving",
+    slug: "paving",
+    image: "/paver-driveway-herringbone-pattern.jpg",
+    description:
+      "Upgrade your driveway, walkways, and outdoor surfaces with professional paving. We install interlocking pavers, stamped concrete, and natural stone with precision and artistry.",
+    features: [
+      "Interlocking paver driveways",
+      "Stamped concrete patios",
+      "Permeable paver systems",
+      "Pool deck paving",
+      "Cobblestone & brick accents",
+      "Commercial parking areas",
+    ],
+  },
+  {
+    title: "Outdoor Firepits",
+    slug: "outdoor-firepits",
+    image: "/outdoor-firepit-patio-evening.jpg",
+    description:
+      "Create the ultimate gathering spot with a custom-built firepit or outdoor fireplace. From rustic stone fire circles to modern gas-powered features, we design outdoor fire elements that become the heart of your backyard.",
+    features: [
+      "Custom stone firepits",
+      "Gas & wood-burning options",
+      "Outdoor fireplaces",
+      "Built-in seating walls",
+      "Fire table installations",
+      "Complete patio packages",
     ],
   },
   {

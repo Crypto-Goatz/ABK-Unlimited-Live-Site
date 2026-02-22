@@ -22,11 +22,11 @@ import {
 
 const services = [
   {
-    title: "Roofing",
-    description: "Replacement & repair",
-    icon: Home,
-    href: "/services/roofing",
-    image: "/custom-new-construction-home-exterior.jpg",
+    title: "Hardscaping",
+    description: "Patios, walls & walkways",
+    icon: Layers,
+    href: "/services/hardscaping",
+    image: "/hardscape-patio-outdoor-living.jpg",
   },
   {
     title: "Remodelling",
