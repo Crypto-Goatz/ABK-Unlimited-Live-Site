@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import Link from "next/link"
+import Script from "next/script"
 import { Header } from "@/components/site/Header"
 import { Footer } from "@/components/site/Footer"
 import { Button } from "@/components/ui/button"
@@ -153,15 +154,20 @@ export default function TestimonialsPage() {
                 platform. Every review is from a real client.
               </p>
             </div>
-            <div className="bg-card rounded-2xl shadow-sm border border-border overflow-hidden">
+            <div className="rounded-2xl overflow-hidden">
               <iframe
-                src="https://services.leadconnectorhq.com/reputation/widget/497AdD39erWgmOu8JTCw"
-                className="w-full border-0"
-                style={{ minHeight: "800px" }}
-                title="ABK Unlimited Client Reviews"
-                loading="lazy"
+                className="lc_reviews_widget"
+                src="https://reputationhub.site/reputation/widgets/review_widget/497AdD39erWgmOu8JTCw"
+                frameBorder={0}
+                scrolling="no"
+                style={{ minWidth: "100%", width: "100%" }}
+                title="ABK Unlimited Customer Reviews"
               />
             </div>
+            <Script
+              src="https://reputationhub.site/reputation/assets/review-widget.js"
+              strategy="lazyOnload"
+            />
           </div>
         </section>
 
