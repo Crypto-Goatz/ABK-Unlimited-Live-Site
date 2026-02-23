@@ -8,6 +8,8 @@ const SCOPES = [
   "https://www.googleapis.com/auth/script.scriptapp",
 ];
 
+const GMAIL_SCOPES = ["https://www.googleapis.com/auth/gmail.send"];
+
 let cachedAuth: InstanceType<typeof google.auth.GoogleAuth> | null = null;
 
 export function getGoogleAuth() {
@@ -55,4 +57,29 @@ export function getSheetsClientWithAuth(auth: InstanceType<typeof google.auth.Go
 
 export function getDriveClientWithAuth(auth: InstanceType<typeof google.auth.GoogleAuth>) {
   return google.drive({ version: "v3", auth });
+}
+
+/**
+ * Gmail client with domain-wide delegation (impersonates sender)
+ * Requires gmail.send scope authorized in Google Workspace admin
+ */
+export function getGmailClient() {
+  const keyBase64 = process.env.GOOGLE_SERVICE_ACCOUNT_KEY;
+  if (!keyBase64) return null;
+
+  const credentials = JSON.parse(
+    Buffer.from(keyBase64, "base64").toString("utf-8")
+  );
+
+  const impersonateEmail =
+    process.env.GOOGLE_IMPERSONATE_EMAIL || "brian@abkunlimited.com";
+
+  const auth = new google.auth.JWT({
+    email: credentials.client_email,
+    key: credentials.private_key,
+    scopes: GMAIL_SCOPES,
+    subject: impersonateEmail,
+  });
+
+  return google.gmail({ version: "v1", auth });
 }

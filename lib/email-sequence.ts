@@ -12,6 +12,7 @@
  */
 
 import { getSheetData, appendSheetRow, updateSheetRow } from './google/sheets'
+import { getGmailClient } from './google/auth'
 import { getEmailTemplate, SEQUENCE_SCHEDULE, type EmailStep } from './email-templates'
 
 // ─── Types ───────────────────────────────────────────────────────────
@@ -83,7 +84,40 @@ async function sendViaCRM(contactId: string, subject: string, html: string): Pro
   }
 }
 
-// ─── SendGrid (actual delivery) ──────────────────────────────────────
+// ─── Gmail API (domain-wide delegation — primary) ────────────────────
+
+async function sendViaGmail(to: string, subject: string, html: string): Promise<boolean> {
+  try {
+    const gmail = getGmailClient()
+    if (!gmail) return false
+
+    const fromEmail = process.env.GOOGLE_IMPERSONATE_EMAIL || 'brian@abkunlimited.com'
+    const raw = Buffer.from(
+      `From: ABK Unlimited <${fromEmail}>\r\n` +
+      `To: ${to}\r\n` +
+      `Subject: ${subject}\r\n` +
+      `MIME-Version: 1.0\r\n` +
+      `Content-Type: text/html; charset=UTF-8\r\n\r\n` +
+      html
+    ).toString('base64url')
+
+    const res = await gmail.users.messages.send({
+      userId: 'me',
+      requestBody: { raw },
+    })
+
+    if (res.status === 200) {
+      console.log(`[email-sequence] Gmail sent: "${subject}" to ${to}`)
+      return true
+    }
+    return false
+  } catch (err) {
+    console.error('[email-sequence] Gmail failed:', err)
+    return false
+  }
+}
+
+// ─── SendGrid (backup delivery) ──────────────────────────────────────
 
 async function sendViaSendGrid(to: string, subject: string, html: string): Promise<boolean> {
   const apiKey = process.env.SENDGRID_API_KEY
@@ -126,23 +160,23 @@ async function sendViaSendGrid(to: string, subject: string, html: string): Promi
 
 /**
  * Send email via best available channel.
- * Priority: CRM (logs to contact timeline) > SendGrid > log-only fallback
+ * Priority: Gmail (domain-wide delegation) > CRM > SendGrid > log-only fallback
  */
 async function sendEmail(to: string, subject: string, html: string, crmContactId?: string): Promise<boolean> {
-  // Try CRM first (shows in contact conversation timeline)
+  // Try Gmail first (service account with domain-wide delegation)
+  const gmailSent = await sendViaGmail(to, subject, html)
+  if (gmailSent) return true
+
+  // Try CRM (shows in contact conversation timeline)
   const crmSent = await sendViaCRM(crmContactId || '', subject, html)
+  if (crmSent) return true
 
-  // Also send via SendGrid for reliable delivery + tracking
+  // Try SendGrid
   const sgSent = await sendViaSendGrid(to, subject, html)
+  if (sgSent) return true
 
-  const sent = crmSent || sgSent
-  if (sent) {
-    console.log(`[email-sequence] Sent "${subject}" to ${to} (CRM: ${crmSent}, SG: ${sgSent})`)
-  } else {
-    console.log(`[email-sequence] No email provider configured — would send "${subject}" to ${to}`)
-  }
-
-  return true // Don't block sequence even if delivery fails
+  console.log(`[email-sequence] No email provider available — "${subject}" to ${to} NOT sent`)
+  return false
 }
 
 // ─── Start a new sequence ────────────────────────────────────────────
