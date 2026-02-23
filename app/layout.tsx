@@ -5,6 +5,7 @@ import { Analytics } from "@vercel/analytics/next"
 import Script from "next/script"
 import { Suspense } from "react"
 import { AttributionTracker } from "@/components/site/AttributionTracker"
+import { CRMChatWidget } from "@/components/site/CRMChatWidget"
 import "./globals.css"
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
@@ -175,6 +176,11 @@ export default function RootLayout({
             strategy="afterInteractive"
           />
         )}
+
+        {/* CRM Chat Widget */}
+        <Suspense fallback={null}>
+          <CRMChatWidget />
+        </Suspense>
       </body>
     </html>
   )
