@@ -4,6 +4,33 @@ import { createCustomer } from '@/lib/crm-sync'
 import { recordAnalyticsEvent } from '@/lib/analytics-loop'
 import { startSequence } from '@/lib/email-sequence'
 
+// Direct CRM webhook — always fires regardless of API key status
+const CRM_WEBHOOK_URL =
+  'https://services.leadconnectorhq.com/hooks/497AdD39erWgmOu8JTCw/webhook-trigger/7eefc3ac-ca9c-4448-87da-b3d518f0ac15'
+
+async function fireCRMWebhook(data: { firstName: string; lastName?: string; email: string; phone?: string; subject?: string; message: string; source: string }) {
+  try {
+    await fetch(CRM_WEBHOOK_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        firstName: data.firstName,
+        lastName: data.lastName || '',
+        name: [data.firstName, data.lastName].filter(Boolean).join(' '),
+        email: data.email,
+        phone: data.phone || '',
+        source: data.source,
+        service: data.subject || 'General Inquiry',
+        message: data.message,
+        submittedAt: new Date().toISOString(),
+        website: 'abkunlimited.com',
+      }),
+    })
+  } catch (error) {
+    console.error('CRM webhook delivery failed:', error)
+  }
+}
+
 // Validation schema for contact form — now includes attribution fields
 const contactSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters'),
@@ -58,6 +85,17 @@ export async function POST(request: NextRequest) {
     const servicesInterested = data.subject && serviceMap[data.subject]
       ? [serviceMap[data.subject]]
       : []
+
+    // Fire direct CRM webhook in parallel (guaranteed delivery even if API key is expired)
+    fireCRMWebhook({
+      firstName,
+      lastName,
+      email: data.email,
+      phone: data.phone,
+      subject: data.subject,
+      message: data.message,
+      source: 'Website - Contact Form',
+    })
 
     // Create customer → syncs to both CRM + Google Sheets with full attribution
     const result = await createCustomer({
