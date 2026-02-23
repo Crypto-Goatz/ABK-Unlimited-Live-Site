@@ -16,6 +16,7 @@ import {
   Users,
   Webhook,
   Code2,
+  Rocket,
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 
@@ -33,6 +34,7 @@ const NAV_ITEMS = [
   { href: "/admin/crm", label: "CRM", icon: Users },
   { href: "/admin/analytics", label: "Analytics", icon: BarChart3 },
   { href: "/admin/sxo", label: "SXO", icon: Search },
+  { href: "/admin/seo", label: "SEO Engine", icon: Rocket },
   { href: "/admin/webhooks", label: "Webhooks", icon: Webhook },
   { href: "/admin/api-builder", label: "API Builder", icon: Code2 },
   { href: "/admin/apps", label: "Apps", icon: Blocks },

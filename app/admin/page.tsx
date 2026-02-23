@@ -15,6 +15,7 @@ import {
   Code2,
   ArrowUpRight,
   Zap,
+  Rocket,
 } from "lucide-react";
 
 export default function AdminDashboardPage() {
@@ -39,6 +40,7 @@ export default function AdminDashboardPage() {
     { href: "/admin/crm", label: "CRM Dashboard", icon: Users, description: "Manage contacts, pipelines, social" },
     { href: "/admin/analytics", label: "Analytics", icon: BarChart3, description: "View site performance" },
     { href: "/admin/sxo", label: "SXO Panel", icon: Activity, description: "Behavioral data and search experience" },
+    { href: "/admin/seo", label: "SEO Engine", icon: Rocket, description: "APEX-QA AI content + CRO9 feedback loop" },
     { href: "/admin/webhooks", label: "Webhooks", icon: Webhook, description: "Incoming webhook endpoints" },
     { href: "/admin/api-builder", label: "API Builder", icon: Code2, description: "Custom API endpoints" },
     { href: "/admin/apps", label: "Custom Apps", icon: Blocks, description: "Build and manage dynamic tools" },
