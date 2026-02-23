@@ -2,10 +2,10 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Inter, Geist_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
-import Script from "next/script"
 import { Suspense } from "react"
-import { AttributionTracker } from "@/components/site/AttributionTracker"
 import { CRMChatWidget } from "@/components/site/CRMChatWidget"
+import { ConsentGatedScripts } from "@/components/site/ConsentGatedScripts"
+import { CookieConsent } from "@/components/site/CookieConsent"
 import "./globals.css"
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
@@ -125,62 +125,20 @@ export default function RootLayout({
         {children}
         <Analytics />
 
-        {/* Attribution Tracker — captures gclid, fbclid, UTMs, GA client ID */}
-        <Suspense fallback={null}>
-          <AttributionTracker />
-        </Suspense>
+        {/* Non-essential tracking — gated behind cookie consent */}
+        <ConsentGatedScripts
+          ga4Id={ga4Id || undefined}
+          cro9Key={cro9Key || undefined}
+          crmTrackingId={crmTrackingId || undefined}
+        />
 
-        {/* Google Analytics 4 */}
-        {ga4Id && (
-          <>
-            <Script
-              src={`https://www.googletagmanager.com/gtag/js?id=${ga4Id}`}
-              strategy="afterInteractive"
-            />
-            <Script id="ga4-config" strategy="afterInteractive">
-              {`
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', '${ga4Id}', {
-                  send_page_view: true,
-                  cookie_flags: 'SameSite=None;Secure',
-                });
-              `}
-            </Script>
-          </>
-        )}
-
-        {/* CRO9 Analytics + SXO Behavioral Tracker */}
-        {cro9Key && (
-          <Script
-            src="https://cdn.cro9.app/tracker.min.js"
-            data-api-key={cro9Key}
-            data-consent-mode="gdpr"
-            data-track-clicks="true"
-            data-track-scroll="true"
-            data-track-forms="true"
-            data-track-rage-clicks="true"
-            data-track-dead-clicks="true"
-            data-track-exit-intent="true"
-            data-sxo-mode="full"
-            strategy="afterInteractive"
-          />
-        )}
-
-        {/* CRM Tracking Script — lead tracking + chat widget support */}
-        {crmTrackingId && (
-          <Script
-            src="https://links.rocketclients.com/js/external-tracking.js"
-            data-tracking-id={crmTrackingId}
-            strategy="afterInteractive"
-          />
-        )}
-
-        {/* CRM Chat Widget */}
+        {/* CRM Chat Widget — essential (user-initiated) */}
         <Suspense fallback={null}>
           <CRMChatWidget />
         </Suspense>
+
+        {/* GDPR cookie consent banner */}
+        <CookieConsent />
       </body>
     </html>
   )

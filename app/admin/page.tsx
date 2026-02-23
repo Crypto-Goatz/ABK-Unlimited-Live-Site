@@ -16,6 +16,9 @@ import {
   ArrowUpRight,
   Zap,
   Rocket,
+  ExternalLink,
+  Shield,
+  Cookie,
 } from "lucide-react";
 
 export default function AdminDashboardPage() {
@@ -49,84 +52,222 @@ export default function AdminDashboardPage() {
 
   const connectedCount = integrations.filter((i) => status[i.key]).length;
 
+  // Sidebar automation statuses
+  const automationStatus = [
+    { label: "CRM Webhook", active: true, description: "Always connected" },
+    { label: "Email Sequences", active: status.crm, description: status.crm ? "Active" : "Not configured" },
+    { label: "CRO9 Tracking", active: status.cro9, description: status.cro9 ? "Collecting data" : "Not configured" },
+    { label: "GA4 Analytics", active: status.ga4, description: status.ga4 ? "Tracking active" : "Not configured" },
+    { label: "Google Sheets CMS", active: status.googleSheets, description: status.googleSheets ? "Connected" : "Not configured" },
+    { label: "CRM Chat Widget", active: status.crmTracking, description: status.crmTracking ? "Live" : "Not configured" },
+    { label: "Cookie Consent", active: true, description: "GDPR gate active" },
+  ];
+
+  const sidebarNav = [
+    {
+      group: "CRM",
+      links: [
+        { href: "/admin/crm", label: "Customers" },
+        { href: "/admin/crm", label: "Contacts" },
+        { href: "/admin/crm", label: "Pipelines" },
+      ],
+    },
+    {
+      group: "Content",
+      links: [
+        { href: "/admin/content", label: "Manager" },
+        { href: "/admin/media", label: "Media" },
+        { href: "/admin/ai", label: "AI Writer" },
+      ],
+    },
+    {
+      group: "Analytics",
+      links: [
+        { href: "/admin/sxo", label: "SXO Panel" },
+        { href: "/admin/seo", label: "SEO Engine" },
+        { href: "/admin/analytics", label: "Analytics" },
+      ],
+    },
+    {
+      group: "System",
+      links: [
+        { href: "/admin/webhooks", label: "Webhooks" },
+        { href: "/admin/api-builder", label: "API Builder" },
+        { href: "/admin/apps", label: "Apps" },
+        { href: "/admin/settings", label: "Settings" },
+      ],
+    },
+  ];
+
+  const externalLinks = [
+    {
+      label: "CRM Dashboard",
+      href: "https://app.rocketclients.com/v2/location/497AdD39erWgmOu8JTCw",
+    },
+    {
+      label: "Google Sheet",
+      href: "https://docs.google.com/spreadsheets/d/10_Xv6J_V8uWIAmDY5HnBrCseXlfrfUW7BuJiDkcTtfc",
+    },
+    {
+      label: "CRO9 Dashboard",
+      href: "https://app.cro9.app",
+    },
+  ];
+
   return (
-    <div className="space-y-8">
-      {/* Welcome banner */}
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#0a1a14] via-[#0f2e1f] to-[#14664f] p-8 text-white">
-        <div className="absolute top-0 right-0 w-64 h-64 bg-[#1a8a6a]/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4" />
-        <div className="absolute bottom-0 left-0 w-48 h-48 bg-[#14664f]/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/4" />
-        <div className="relative">
-          <div className="flex items-center gap-2 mb-3">
-            <Zap className="w-5 h-5 text-[#4ade80]" />
-            <span className="text-xs font-semibold tracking-widest uppercase text-[#4ade80]">ABK Unlimited Admin</span>
+    <div className="grid grid-cols-1 xl:grid-cols-[1fr_320px] gap-6">
+      {/* Main content — left column */}
+      <div className="space-y-8 min-w-0">
+        {/* Welcome banner */}
+        <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#0a1a14] via-[#0f2e1f] to-[#14664f] p-8 text-white">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-[#1a8a6a]/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4" />
+          <div className="absolute bottom-0 left-0 w-48 h-48 bg-[#14664f]/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/4" />
+          <div className="relative">
+            <div className="flex items-center gap-2 mb-3">
+              <Zap className="w-5 h-5 text-[#4ade80]" />
+              <span className="text-xs font-semibold tracking-widest uppercase text-[#4ade80]">ABK Unlimited Admin</span>
+            </div>
+            <h1 className="text-2xl font-bold mb-2">Welcome to Your Command Center</h1>
+            <p className="text-white/60 max-w-lg">
+              Manage your website content, media, analytics, CRM, and integrations — all from one place.
+            </p>
           </div>
-          <h1 className="text-2xl font-bold mb-2">Welcome to Your Command Center</h1>
-          <p className="text-white/60 max-w-lg">
-            Manage your website content, media, analytics, CRM, and integrations — all from one place.
-          </p>
+        </div>
+
+        {/* Integration status */}
+        <div>
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-base font-semibold text-gray-800">Integration Status</h2>
+            <span className="text-xs font-medium text-[#14664f] bg-[#14664f]/10 px-2.5 py-1 rounded-full">
+              {connectedCount}/{integrations.length} active
+            </span>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+            {integrations.map((integration) => {
+              const connected = status[integration.key];
+              return (
+                <div
+                  key={integration.key}
+                  className="flex items-center gap-3 p-3.5 bg-white rounded-xl border border-gray-200/80 hover:border-gray-300/80 transition-colors"
+                >
+                  {connected ? (
+                    <div className="w-8 h-8 rounded-lg bg-[#14664f]/10 flex items-center justify-center shrink-0">
+                      <CheckCircle2 className="h-4 w-4 text-[#14664f]" />
+                    </div>
+                  ) : (
+                    <div className="w-8 h-8 rounded-lg bg-red-50 flex items-center justify-center shrink-0">
+                      <XCircle className="h-4 w-4 text-red-400" />
+                    </div>
+                  )}
+                  <div className="min-w-0">
+                    <p className="font-medium text-sm text-gray-800">{integration.name}</p>
+                    <p className="text-[11px] text-gray-400 truncate">{integration.description}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Quick links */}
+        <div>
+          <h2 className="text-base font-semibold text-gray-800 mb-4">Quick Links</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+            {quickLinks.map((link) => {
+              const Icon = link.icon;
+              return (
+                <Link key={link.href} href={link.href}>
+                  <div className="group flex items-center gap-3.5 p-4 bg-white rounded-xl border border-gray-200/80 hover:border-[#14664f]/30 hover:shadow-md hover:shadow-[#14664f]/5 transition-all cursor-pointer h-full">
+                    <div className="w-10 h-10 rounded-xl bg-[#14664f]/8 group-hover:bg-[#14664f]/15 flex items-center justify-center shrink-0 transition-colors">
+                      <Icon className="h-5 w-5 text-[#14664f]" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-1.5">
+                        <p className="font-medium text-sm text-gray-800">{link.label}</p>
+                        <ArrowUpRight className="w-3 h-3 text-gray-300 group-hover:text-[#14664f] transition-colors" />
+                      </div>
+                      <p className="text-xs text-gray-400">{link.description}</p>
+                    </div>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
         </div>
       </div>
 
-      {/* Integration status */}
-      <div>
-        <div className="flex items-center justify-between mb-4">
-          <h2 className="text-base font-semibold text-gray-800">Integration Status</h2>
-          <span className="text-xs font-medium text-[#14664f] bg-[#14664f]/10 px-2.5 py-1 rounded-full">
-            {connectedCount}/{integrations.length} active
-          </span>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
-          {integrations.map((integration) => {
-            const connected = status[integration.key];
-            return (
-              <div
-                key={integration.key}
-                className="flex items-center gap-3 p-3.5 bg-white rounded-xl border border-gray-200/80 hover:border-gray-300/80 transition-colors"
-              >
-                {connected ? (
-                  <div className="w-8 h-8 rounded-lg bg-[#14664f]/10 flex items-center justify-center shrink-0">
-                    <CheckCircle2 className="h-4 w-4 text-[#14664f]" />
-                  </div>
-                ) : (
-                  <div className="w-8 h-8 rounded-lg bg-red-50 flex items-center justify-center shrink-0">
-                    <XCircle className="h-4 w-4 text-red-400" />
-                  </div>
-                )}
-                <div className="min-w-0">
-                  <p className="font-medium text-sm text-gray-800">{integration.name}</p>
-                  <p className="text-[11px] text-gray-400 truncate">{integration.description}</p>
+      {/* Right sidebar */}
+      <aside className="space-y-5 xl:sticky xl:top-24 xl:self-start">
+        {/* Automation Status */}
+        <div className="bg-white rounded-2xl border border-gray-200/80 p-5">
+          <div className="flex items-center gap-2 mb-4">
+            <Shield className="w-4 h-4 text-[#14664f]" />
+            <h3 className="text-xs font-semibold tracking-widest uppercase text-gray-400">Automation Status</h3>
+          </div>
+          <div className="space-y-3">
+            {automationStatus.map((item) => (
+              <div key={item.label} className="flex items-center gap-3">
+                <span className="relative flex h-2.5 w-2.5 shrink-0">
+                  {item.active && (
+                    <span className="absolute inline-flex h-full w-full rounded-full bg-[#4ade80] opacity-40 animate-status-pulse" />
+                  )}
+                  <span
+                    className={`relative inline-flex rounded-full h-2.5 w-2.5 ${
+                      item.active ? "bg-[#4ade80]" : "bg-gray-300"
+                    }`}
+                  />
+                </span>
+                <div className="min-w-0 flex-1">
+                  <p className="text-sm font-medium text-gray-700 leading-none">{item.label}</p>
+                  <p className="text-[10px] text-gray-400 mt-0.5">{item.description}</p>
                 </div>
               </div>
-            );
-          })}
+            ))}
+          </div>
         </div>
-      </div>
 
-      {/* Quick links */}
-      <div>
-        <h2 className="text-base font-semibold text-gray-800 mb-4">Quick Links</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-          {quickLinks.map((link) => {
-            const Icon = link.icon;
-            return (
-              <Link key={link.href} href={link.href}>
-                <div className="group flex items-center gap-3.5 p-4 bg-white rounded-xl border border-gray-200/80 hover:border-[#14664f]/30 hover:shadow-md hover:shadow-[#14664f]/5 transition-all cursor-pointer h-full">
-                  <div className="w-10 h-10 rounded-xl bg-[#14664f]/8 group-hover:bg-[#14664f]/15 flex items-center justify-center shrink-0 transition-colors">
-                    <Icon className="h-5 w-5 text-[#14664f]" />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-1.5">
-                      <p className="font-medium text-sm text-gray-800">{link.label}</p>
-                      <ArrowUpRight className="w-3 h-3 text-gray-300 group-hover:text-[#14664f] transition-colors" />
-                    </div>
-                    <p className="text-xs text-gray-400">{link.description}</p>
-                  </div>
+        {/* Quick Navigation */}
+        <div className="bg-white rounded-2xl border border-gray-200/80 p-5">
+          <h3 className="text-xs font-semibold tracking-widest uppercase text-gray-400 mb-4">Quick Navigation</h3>
+          <div className="space-y-4">
+            {sidebarNav.map((section) => (
+              <div key={section.group}>
+                <p className="text-[10px] font-bold uppercase tracking-wider text-[#14664f]/60 mb-1.5">{section.group}</p>
+                <div className="flex flex-wrap gap-1.5">
+                  {section.links.map((link) => (
+                    <Link
+                      key={link.label}
+                      href={link.href}
+                      className="text-xs text-gray-600 hover:text-[#14664f] hover:bg-[#14664f]/5 px-2.5 py-1 rounded-md transition-colors"
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
                 </div>
-              </Link>
-            );
-          })}
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
+
+        {/* External Links */}
+        <div className="bg-white rounded-2xl border border-gray-200/80 p-5">
+          <h3 className="text-xs font-semibold tracking-widest uppercase text-gray-400 mb-4">External Links</h3>
+          <div className="space-y-2">
+            {externalLinks.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-between gap-2 text-sm text-gray-600 hover:text-[#14664f] group py-1.5 transition-colors"
+              >
+                <span>{link.label}</span>
+                <ExternalLink className="w-3.5 h-3.5 text-gray-300 group-hover:text-[#14664f] transition-colors shrink-0" />
+              </a>
+            ))}
+          </div>
+        </div>
+      </aside>
     </div>
   );
 }
