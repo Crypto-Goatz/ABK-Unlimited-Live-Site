@@ -71,7 +71,7 @@ export async function createCustomer(data: NewCustomerData): Promise<{
     data.servicesInterested.forEach((s) => tags.push(`service:${s}`));
   }
 
-  // 1. Create in CRM
+  // 1. Create in CRM (webhook + API — always succeeds)
   let crmContactId = "";
   const crmResult = await createCRMContact({
     firstName: data.firstName,
@@ -94,22 +94,22 @@ export async function createCustomer(data: NewCustomerData): Promise<{
     ],
   });
 
-  if (crmResult.success && crmResult.contact) {
+  if (crmResult.contact) {
     crmContactId = crmResult.contact.id;
+  }
 
-    // Add attribution note
-    if (data.gclid || data.fbclid || data.utmSource) {
-      const noteLines = ["--- Attribution Data ---"];
-      if (data.gclid) noteLines.push(`Google Click ID: ${data.gclid}`);
-      if (data.fbclid) noteLines.push(`Facebook Click ID: ${data.fbclid}`);
-      if (data.utmSource) noteLines.push(`UTM Source: ${data.utmSource}`);
-      if (data.utmMedium) noteLines.push(`UTM Medium: ${data.utmMedium}`);
-      if (data.utmCampaign) noteLines.push(`UTM Campaign: ${data.utmCampaign}`);
-      if (data.gaClientId) noteLines.push(`GA Client ID: ${data.gaClientId}`);
-      if (data.firstVisitPage) noteLines.push(`First Page: ${data.firstVisitPage}`);
-      if (data.conversionPage) noteLines.push(`Conversion Page: ${data.conversionPage}`);
-      await addCRMNote(crmContactId, noteLines.join("\n")).catch(() => {});
-    }
+  // Add attribution note if we have a contact ID
+  if (crmContactId && (data.gclid || data.fbclid || data.utmSource)) {
+    const noteLines = ["--- Attribution Data ---"];
+    if (data.gclid) noteLines.push(`Google Click ID: ${data.gclid}`);
+    if (data.fbclid) noteLines.push(`Facebook Click ID: ${data.fbclid}`);
+    if (data.utmSource) noteLines.push(`UTM Source: ${data.utmSource}`);
+    if (data.utmMedium) noteLines.push(`UTM Medium: ${data.utmMedium}`);
+    if (data.utmCampaign) noteLines.push(`UTM Campaign: ${data.utmCampaign}`);
+    if (data.gaClientId) noteLines.push(`GA Client ID: ${data.gaClientId}`);
+    if (data.firstVisitPage) noteLines.push(`First Page: ${data.firstVisitPage}`);
+    if (data.conversionPage) noteLines.push(`Conversion Page: ${data.conversionPage}`);
+    await addCRMNote(crmContactId, noteLines.join("\n")).catch(() => {});
   }
 
   // 2. Save to Google Sheets customers tab

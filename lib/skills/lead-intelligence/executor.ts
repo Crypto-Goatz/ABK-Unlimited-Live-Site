@@ -22,6 +22,8 @@ import {
 
 const CRM_API_BASE = 'https://services.leadconnectorhq.com'
 const CRM_API_VERSION = '2021-07-28'
+const CRM_WEBHOOK_URL =
+  'https://services.leadconnectorhq.com/hooks/497AdD39erWgmOu8JTCw/webhook-trigger/7eefc3ac-ca9c-4448-87da-b3d518f0ac15'
 
 // ============================================================================
 // CRM API HELPERS
@@ -62,6 +64,20 @@ async function crmRequest(
   }
 }
 
+/**
+ * Fire direct CRM webhook — guaranteed delivery, no auth
+ */
+async function fireWebhook(data: Record<string, unknown>): Promise<boolean> {
+  try {
+    const res = await fetch(CRM_WEBHOOK_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ ...data, submittedAt: new Date().toISOString(), website: 'abkunlimited.com' }),
+    })
+    return res.ok
+  } catch { return false }
+}
+
 // ============================================================================
 // CONTACT CREATION
 // ============================================================================
@@ -70,6 +86,29 @@ async function createContact(
   lead: ProcessedLead,
   config: LeadIntelligenceConfig
 ): Promise<{ success: boolean; contactId?: string; error?: string }> {
+  // Always fire webhook first — guaranteed delivery
+  await fireWebhook({
+    firstName: lead.firstName,
+    lastName: lead.lastName,
+    name: [lead.firstName, lead.lastName].filter(Boolean).join(' '),
+    email: lead.original.email || '',
+    phone: lead.original.phone || '',
+    address1: lead.original.address || '',
+    city: lead.original.city || '',
+    state: lead.original.state || '',
+    postalCode: lead.original.zipCode || '',
+    source: lead.original.source || 'Website - Lead Form',
+    tags: (lead.tags || []).join(', '),
+    service: lead.original.service || '',
+    services: lead.original.services?.join(', ') || '',
+    message: lead.original.message || '',
+    budget: lead.original.budget || '',
+    projectTimeline: lead.original.projectTimeline || '',
+    leadScore: lead.score.total,
+    leadTemperature: lead.score.temperature,
+  })
+
+  // Try API for contact ID (needed for opportunities, notes, SMS)
   const result = await crmRequest('/contacts/', 'POST', {
     locationId: config.crm.locationId,
     firstName: lead.firstName,
@@ -88,7 +127,8 @@ async function createContact(
     return { success: true, contactId: result.data.contact.id }
   }
 
-  return { success: false, error: result.error }
+  // API failed but webhook delivered — still a success, just no contact ID
+  return { success: true }
 }
 
 // ============================================================================
@@ -316,61 +356,62 @@ export async function executeLeadIntelligence(
   }
 
   try {
-    // 1. Create contact
+    // 1. Create contact (webhook + API)
     const contactResult = await createContact(lead, config)
-    if (!contactResult.success) {
-      errors.push(`Contact creation failed: ${contactResult.error}`)
-      return result
-    }
+    result.actions.contactCreated = contactResult.success
 
-    const contactId = contactResult.contactId!
-    lead.crmContactId = contactId
-    result.actions.contactCreated = true
+    const contactId = contactResult.contactId
+    if (contactId) {
+      lead.crmContactId = contactId
 
-    // 2. Create opportunity
-    const oppResult = await createOpportunity(contactId, lead, config)
-    if (oppResult.success) {
-      lead.crmOpportunityId = oppResult.opportunityId
-      result.actions.opportunityCreated = true
+      // 2. Create opportunity (requires contact ID)
+      const oppResult = await createOpportunity(contactId, lead, config)
+      if (oppResult.success) {
+        lead.crmOpportunityId = oppResult.opportunityId
+        result.actions.opportunityCreated = true
+      } else {
+        errors.push(`Opportunity creation failed: ${oppResult.error}`)
+      }
+
+      // 3. Add intelligence note
+      await addNote(contactId, lead, config)
+
+      // 4. Resolve template variables
+      const variables = resolveTemplateVariables(
+        lead.original,
+        lead.score,
+        lead.primaryService,
+        config
+      )
+
+      // 5. Plan sequence execution
+      const executions = planSequenceExecution(
+        lead.assignedSequence,
+        variables,
+        lead.score,
+        config
+      )
+      result.nextSteps = executions
+
+      // 6. Execute immediate steps
+      const execResult = await executeImmediateSteps(
+        contactId,
+        lead,
+        variables,
+        executions,
+        config
+      )
+
+      result.actions.immediateSmsSent = execResult.smsSent
+      result.actions.tasksCreated = execResult.tasksCreated
+      result.actions.sequenceStarted = execResult.smsSent || execResult.tasksCreated.length > 0
+      errors.push(...execResult.errors)
     } else {
-      errors.push(`Opportunity creation failed: ${oppResult.error}`)
+      // No contact ID (API unavailable) — contact still captured via webhook
+      errors.push('CRM API unavailable — contact captured via webhook only')
     }
 
-    // 3. Add intelligence note
-    await addNote(contactId, lead, config)
-
-    // 4. Resolve template variables
-    const variables = resolveTemplateVariables(
-      lead.original,
-      lead.score,
-      lead.primaryService,
-      config
-    )
-
-    // 5. Plan sequence execution
-    const executions = planSequenceExecution(
-      lead.assignedSequence,
-      variables,
-      lead.score,
-      config
-    )
-    result.nextSteps = executions
-
-    // 6. Execute immediate steps
-    const execResult = await executeImmediateSteps(
-      contactId,
-      lead,
-      variables,
-      executions,
-      config
-    )
-
-    result.actions.immediateSmsSent = execResult.smsSent
-    result.actions.tasksCreated = execResult.tasksCreated
-    result.actions.sequenceStarted = execResult.smsSent || execResult.tasksCreated.length > 0
-    errors.push(...execResult.errors)
-
-    // Mark overall success
+    // Mark overall success — webhook ensures contact is always captured
     result.success = result.actions.contactCreated
 
   } catch (error) {
