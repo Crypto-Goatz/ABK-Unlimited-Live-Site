@@ -9,7 +9,7 @@ import { Header } from "@/components/site/Header"
 import { Footer } from "@/components/site/Footer"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Palette, Heart, ExternalLink, X, Mail, Sparkles } from "lucide-react"
+import { Palette, Heart, X, Mail, Sparkles } from "lucide-react"
 
 const categories = ["All", "Kitchens", "Bathrooms", "Basements", "Decks", "Hardscaping", "Outdoor", "Additions", "Flooring"]
 
@@ -165,35 +165,44 @@ function SaveInspirationModal({
   onClose: () => void
   itemTitle: string
 }) {
+  const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
+    setError(null)
     try {
-      await fetch("/api/leads", {
+      const response = await fetch("/api/leads", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          name: email.split("@")[0],
+          name,
           email,
           source: "Design Gallery",
           service: "Design Inspiration",
           message: `Saved inspiration: ${itemTitle}`,
         }),
       })
+      if (!response.ok) {
+        throw new Error("Failed to save")
+      }
+      setIsSuccess(true)
+      setTimeout(() => {
+        onClose()
+        setIsSuccess(false)
+        setName("")
+        setEmail("")
+        setError(null)
+      }, 2000)
     } catch {
-      // Still show success to the user
+      setError("Something went wrong. Please try again.")
+    } finally {
+      setIsSubmitting(false)
     }
-    setIsSubmitting(false)
-    setIsSuccess(true)
-    setTimeout(() => {
-      onClose()
-      setIsSuccess(false)
-      setEmail("")
-    }, 2000)
   }
 
   if (!isOpen) return null
@@ -220,7 +229,7 @@ function SaveInspirationModal({
           </div>
           <h3 className="text-2xl font-bold text-white">Save Your Inspiration</h3>
           <p className="text-white/80 mt-2 text-sm">
-            Enter your email to save "{itemTitle}" and build your dream home collection
+            Save &quot;{itemTitle}&quot; and build your dream home collection
           </p>
         </div>
 
@@ -236,14 +245,33 @@ function SaveInspirationModal({
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
+              {error && (
+                <div className="p-3 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm">
+                  {error}
+                </div>
+              )}
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
+                <label htmlFor="gallery-name" className="block text-sm font-medium text-foreground mb-2">
+                  Your Name
+                </label>
+                <Input
+                  id="gallery-name"
+                  type="text"
+                  placeholder="First and Last Name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  required
+                  className="h-12"
+                />
+              </div>
+              <div>
+                <label htmlFor="gallery-email" className="block text-sm font-medium text-foreground mb-2">
                   Email Address
                 </label>
                 <div className="relative">
                   <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                   <Input
-                    id="email"
+                    id="gallery-email"
                     type="email"
                     placeholder="your@email.com"
                     value={email}
@@ -273,7 +301,7 @@ function SaveInspirationModal({
               </Button>
 
               <p className="text-xs text-center text-muted-foreground">
-                We'll send you a link to access your saved designs. No spam, ever.
+                We&apos;ll send you a link to access your saved designs. No spam, ever.
               </p>
             </form>
           )}
@@ -371,9 +399,6 @@ export default function DesignGalleryPage() {
                         >
                           <Heart className="h-4 w-4 text-white" />
                         </button>
-                        <button className="w-9 h-9 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center hover:bg-white/30 transition-colors">
-                          <ExternalLink className="h-4 w-4 text-white" />
-                        </button>
                       </div>
                     </div>
                   </div>
@@ -393,9 +418,11 @@ export default function DesignGalleryPage() {
               ))}
             </div>
             <div className="text-center mt-12">
-              <Button variant="outline" size="lg">
-                Load More Designs
-              </Button>
+              <Link href="/portfolio">
+                <Button variant="outline" size="lg">
+                  View Full Portfolio
+                </Button>
+              </Link>
             </div>
           </div>
         </section>

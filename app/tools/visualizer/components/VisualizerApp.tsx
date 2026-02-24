@@ -284,6 +284,7 @@ export default function VisualizerApp() {
   // Lead Gen State
   const [isLeadGenModalOpen, setIsLeadGenModalOpen] = useState(false)
   const [isSubmittingLead, setIsSubmittingLead] = useState(false)
+  const [toast, setToast] = useState<{ message: string; type: 'success' | 'error' } | null>(null)
 
   // UI/Debug State
   const [debugImageUrl, setDebugImageUrl] = useState<string | null>(null)
@@ -699,13 +700,13 @@ export default function VisualizerApp() {
 
       if (response.ok) {
         setIsLeadGenModalOpen(false)
-        alert("Your design has been saved! Our team will review it and be in touch soon.")
+        setToast({ message: "Your design has been saved! Our team will review it and be in touch soon.", type: 'success' })
       } else {
         throw new Error('Failed to save')
       }
     } catch (e) {
       console.error(e)
-      alert("There was an issue saving your design. Please try again.")
+      setToast({ message: "There was an issue saving your design. Please try again.", type: 'error' })
     } finally {
       setIsSubmittingLead(false)
     }
@@ -734,13 +735,13 @@ export default function VisualizerApp() {
 
       if (response.ok) {
         setIsLeadGenModalOpen(false)
-        alert("Thanks! Your design has been sent to our experts. We'll be in touch soon!")
+        setToast({ message: "Thanks! Your design has been sent to our experts. We'll be in touch soon!", type: 'success' })
       } else {
         throw new Error('Failed to submit')
       }
     } catch (e) {
       console.error(e)
-      alert("There was an issue sending your data. Please try again.")
+      setToast({ message: "There was an issue sending your data. Please try again.", type: 'error' })
     } finally {
       setIsSubmittingLead(false)
     }
@@ -752,6 +753,13 @@ export default function VisualizerApp() {
       if (originalSceneImageUrl) URL.revokeObjectURL(originalSceneImageUrl)
     }
   }, [sceneImageUrl, originalSceneImageUrl])
+
+  useEffect(() => {
+    if (toast) {
+      const timer = setTimeout(() => setToast(null), 5000)
+      return () => clearTimeout(timer)
+    }
+  }, [toast])
 
   useEffect(() => {
     let interval: ReturnType<typeof setInterval> | undefined
@@ -1041,6 +1049,19 @@ export default function VisualizerApp() {
         onSubmit={handleLeadGenSubmit}
         isSubmitting={isSubmittingLead}
       />
+      {toast && (
+        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 animate-slide-up">
+          <div className={`px-6 py-4 rounded-xl shadow-2xl border backdrop-blur-sm flex items-center gap-3 max-w-md ${
+            toast.type === 'success'
+              ? 'bg-green-50 border-green-200 text-green-800'
+              : 'bg-red-50 border-red-200 text-red-800'
+          }`}>
+            <span className={`w-2 h-2 rounded-full shrink-0 ${toast.type === 'success' ? 'bg-green-500' : 'bg-red-500'}`} />
+            <p className="text-sm font-medium">{toast.message}</p>
+            <button onClick={() => setToast(null)} className="ml-2 opacity-60 hover:opacity-100 text-lg leading-none">&times;</button>
+          </div>
+        </div>
+      )}
     </>
   )
 }

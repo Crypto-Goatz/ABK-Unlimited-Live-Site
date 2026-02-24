@@ -56,6 +56,24 @@ const projectTypes = [
     weeks: { min: 1, max: 3 },
     phases: ["Planning", "Prep", "Installation", "Finishing"],
   },
+  {
+    id: "hardscaping",
+    name: "Hardscaping",
+    weeks: { min: 2, max: 6 },
+    phases: ["Design", "Excavation", "Grading", "Base Prep", "Stone Installation", "Finishing"],
+  },
+  {
+    id: "paving",
+    name: "Paving & Pavers",
+    weeks: { min: 1, max: 4 },
+    phases: ["Design", "Excavation", "Grading", "Base Compaction", "Paver Installation", "Sealing"],
+  },
+  {
+    id: "outdoor",
+    name: "Outdoor Living",
+    weeks: { min: 3, max: 8 },
+    phases: ["Design", "Permits", "Excavation", "Hardscaping", "Fire Pit / Kitchen", "Lighting", "Finishing"],
+  },
 ]
 
 export default function TimelineEstimatorPage() {

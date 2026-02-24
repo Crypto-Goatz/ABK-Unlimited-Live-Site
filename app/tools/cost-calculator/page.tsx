@@ -15,6 +15,9 @@ const projectTypes = [
   { id: "deck", name: "Deck Building", basePrice: 35, highPrice: 100 },
   { id: "addition", name: "Home Addition", basePrice: 200, highPrice: 400 },
   { id: "flooring", name: "Flooring Installation", basePrice: 8, highPrice: 25 },
+  { id: "hardscaping", name: "Hardscaping", basePrice: 25, highPrice: 75 },
+  { id: "paving", name: "Paving & Pavers", basePrice: 15, highPrice: 50 },
+  { id: "outdoor", name: "Outdoor Living", basePrice: 30, highPrice: 80 },
 ]
 
 const finishLevels = [

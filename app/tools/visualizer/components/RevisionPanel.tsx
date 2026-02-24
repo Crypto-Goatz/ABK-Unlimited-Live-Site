@@ -61,7 +61,12 @@ export default function RevisionPanel({
         console.log('Share failed or canceled', err)
       }
     } else {
-      alert('Sharing is not supported on this browser/device.')
+      // Fallback: copy image URL to clipboard
+      try {
+        await navigator.clipboard.writeText(imageUrl)
+      } catch {
+        // Clipboard not available
+      }
     }
   }
 
@@ -74,13 +79,13 @@ export default function RevisionPanel({
         <div className="flex justify-between items-center mb-2">
           <span className="font-semibold text-foreground">Revisions Left</span>
           <span className={`font-bold text-lg ${revisionsRemaining > 0 ? 'text-primary' : 'text-destructive'}`}>
-            {revisionsRemaining} / 2
+            {revisionsRemaining} / 3
           </span>
         </div>
         <div className="w-full bg-muted rounded-full h-2.5 mb-3">
           <div
             className="bg-primary h-2.5 rounded-full transition-all duration-500"
-            style={{ width: `${(revisionsRemaining / 2) * 100}%` }}
+            style={{ width: `${Math.min((revisionsRemaining / 3) * 100, 100)}%` }}
           />
         </div>
         {canUndo && (
