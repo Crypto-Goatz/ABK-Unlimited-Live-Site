@@ -183,7 +183,7 @@ export async function POST(request: NextRequest) {
 
         parts.push({ text: promptText })
 
-        const response = await callGeminiGenerateContent('gemini-2.5-flash-image-preview', parts)
+        const response = await callGeminiGenerateContent('gemini-2.5-flash-image', parts)
 
         const imagePart = response.candidates?.[0]?.content?.parts?.find(
           (part: { inlineData?: { mimeType: string; data: string } }) => part.inlineData
@@ -212,7 +212,7 @@ export async function POST(request: NextRequest) {
 **Requirement:** Remove the red dot in the final output. The result must be photorealistic and seamlessly integrated with the rest of the image.
 `
 
-        const response = await callGeminiGenerateContent('gemini-2.5-flash-image-preview', [
+        const response = await callGeminiGenerateContent('gemini-2.5-flash-image', [
           { inlineData: { mimeType, data: imageBase64 } },
           { text: promptText }
         ])
@@ -245,7 +245,7 @@ Based on the provided image:
 Your goal is to produce a clean, unobstructed view of the entire house structure against a simple background. The output must be ONLY the modified photorealistic image.
 `
 
-        const response = await callGeminiGenerateContent('gemini-2.5-flash-image-preview', [
+        const response = await callGeminiGenerateContent('gemini-2.5-flash-image', [
           { inlineData: { mimeType, data: imageBase64 } },
           { text: prompt }
         ])
@@ -278,7 +278,7 @@ You are an expert architectural visualizer. Your task is to generate a photoreal
 -   The output must be ONLY the new, photorealistic image of the renovated house.
 `
 
-        const response = await callGeminiGenerateContent('gemini-2.5-flash-image-preview', [
+        const response = await callGeminiGenerateContent('gemini-2.5-flash-image', [
           { inlineData: { mimeType, data: imageBase64 } },
           { text: prompt }
         ])
@@ -314,7 +314,7 @@ You are a master architectural photographer and digital artist. You are given tw
 The output must be ONLY the final, beautified, photorealistic image.
 `
 
-        const response = await callGeminiGenerateContent('gemini-2.5-flash-image-preview', [
+        const response = await callGeminiGenerateContent('gemini-2.5-flash-image', [
           { inlineData: { mimeType: renovatedMimeType, data: renovatedBase64 } },
           { inlineData: { mimeType: originalMimeType, data: originalBase64 } },
           { text: prompt }
