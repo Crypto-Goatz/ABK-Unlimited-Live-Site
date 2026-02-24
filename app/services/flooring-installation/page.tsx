@@ -10,6 +10,7 @@ import {
   Star,
   Clock,
   Award,
+  ArrowRight,
 } from "lucide-react"
 import type { Metadata } from "next"
 
@@ -66,17 +67,21 @@ export default function FlooringInstallationPage() {
     <>
       <Header />
       <main className="min-h-screen">
-        {/* Hero Section */}
-        <section className="relative pt-32 pb-20 bg-secondary">
+        {/* Hero — Parallax-style with flooring image */}
+        <section className="relative pt-32 pb-20 overflow-hidden">
           <div className="absolute inset-0">
             <Image
               src="/hardwood-flooring-installation.png"
               alt="Hardwood flooring installation"
               fill
-              className="object-cover opacity-20"
+              className="object-cover scale-110"
+              style={{ transform: "translateZ(0)" }}
               priority
             />
+            <div className="absolute inset-0 bg-gradient-to-b from-secondary/90 via-secondary/80 to-secondary/95" />
           </div>
+          {/* Subtle animated grain overlay */}
+          <div className="absolute inset-0 opacity-[0.03] bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iNDAwIj48ZmlsdGVyIGlkPSJhIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iLjc1IiBzdGl0Y2hUaWxlcz0ic3RpdGNoIi8+PC9maWx0ZXI+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSI0MDAiIGZpbHRlcj0idXJsKCNhKSIvPjwvc3ZnPg==')]" />
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <Link
               href="/services"
@@ -207,9 +212,14 @@ export default function FlooringInstallationPage() {
           </div>
         </section>
 
-        {/* Gallery Section */}
-        <section className="py-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Gallery Section — Flooring-only images with parallax-style overlapping layout */}
+        <section className="py-20 relative overflow-hidden">
+          {/* Subtle wood-grain background pattern */}
+          <div className="absolute inset-0 opacity-[0.02]" style={{
+            backgroundImage: `repeating-linear-gradient(90deg, transparent, transparent 2px, #000 2px, #000 3px)`,
+            backgroundSize: "40px 40px",
+          }} />
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
                 Flooring Projects
@@ -219,44 +229,89 @@ export default function FlooringInstallationPage() {
                 installations.
               </p>
             </div>
+            {/* Staggered parallax-inspired grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div className="relative h-64 sm:h-80 rounded-2xl overflow-hidden group">
+              <div className="relative h-72 sm:h-96 rounded-2xl overflow-hidden group shadow-lg">
                 <Image
                   src="/hardwood-floor-installation-in-living-room.jpg"
                   alt="Hardwood floor installation in living room"
                   fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute bottom-4 left-4 right-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                  <span className="text-white font-semibold text-sm">Hardwood Installation — Living Room</span>
+                </div>
               </div>
-              <div className="relative h-64 sm:h-80 rounded-2xl overflow-hidden group">
+              <div className="relative h-72 sm:h-96 rounded-2xl overflow-hidden group shadow-lg sm:mt-12">
                 <Image
                   src="/flooring-installation-craftsman.jpg"
-                  alt="Flooring installation craftsman at work"
+                  alt="Professional craftsman installing flooring"
                   fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute bottom-4 left-4 right-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                  <span className="text-white font-semibold text-sm">Expert Craftsman at Work</span>
+                </div>
               </div>
-              <div className="relative h-64 sm:h-80 rounded-2xl overflow-hidden group">
+              <div className="relative h-72 sm:h-96 rounded-2xl overflow-hidden group shadow-lg sm:-mt-12">
                 <Image
                   src="/hardwood-flooring-installation.png"
                   alt="Professional hardwood flooring installation"
                   fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute bottom-4 left-4 right-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                  <span className="text-white font-semibold text-sm">Wide-Plank Hardwood Installation</span>
+                </div>
               </div>
-              <div className="relative h-64 sm:h-80 rounded-2xl overflow-hidden group">
+              <div className="relative h-72 sm:h-96 rounded-2xl overflow-hidden group shadow-lg">
                 <Image
-                  src="/modern-white-kitchen-remodel-quartz-countertops.jpg"
-                  alt="Modern kitchen with beautiful flooring"
+                  src="/hardwood-floor-installation-in-living-room.jpg"
+                  alt="Completed hardwood flooring in open living space"
                   fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="object-cover object-bottom group-hover:scale-105 transition-transform duration-700"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute bottom-4 left-4 right-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                  <span className="text-white font-semibold text-sm">Finished Flooring — Open Floor Plan</span>
+                </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* CTA Section */}
+        {/* Mid CTA — Parallax background */}
+        <section className="relative py-20 overflow-hidden">
+          <div className="absolute inset-0">
+            <Image
+              src="/flooring-installation-craftsman.jpg"
+              alt="Flooring installation in progress"
+              fill
+              className="object-cover scale-110"
+              style={{ transform: "translateZ(0)" }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-secondary/95 to-secondary/80" />
+          </div>
+          <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+              Walk on Something Beautiful
+            </h2>
+            <p className="text-lg text-white/70 mb-8 max-w-2xl mx-auto">
+              Your floors set the tone for every room. Let our team help you choose the perfect material, color, and finish for your lifestyle.
+            </p>
+            <Link href="/free-estimate">
+              <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg text-lg px-8">
+                Schedule Free In-Home Measurement
+                <ArrowRight className="h-5 w-5 ml-2" />
+              </Button>
+            </Link>
+          </div>
+        </section>
+
+        {/* Final CTA Section */}
         <section className="py-20 bg-primary">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">

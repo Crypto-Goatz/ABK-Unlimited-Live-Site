@@ -11,7 +11,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Palette, Heart, ExternalLink, X, Mail, Sparkles } from "lucide-react"
 
-const categories = ["All", "Kitchens", "Bathrooms", "Basements", "Decks", "Additions", "Flooring"]
+const categories = ["All", "Kitchens", "Bathrooms", "Basements", "Decks", "Hardscaping", "Outdoor", "Additions", "Flooring"]
 
 const galleryItems = [
   {
@@ -97,6 +97,62 @@ const galleryItems = [
     category: "Decks",
     image: "/custom-wooden-deck-outdoor.jpg",
     style: "Traditional",
+  },
+  {
+    id: 13,
+    title: "Natural Stone Patio",
+    category: "Hardscaping",
+    image: "/hardscape-patio-outdoor-living.jpg",
+    style: "Natural",
+  },
+  {
+    id: 14,
+    title: "Flagstone Garden Walkway",
+    category: "Hardscaping",
+    image: "/flagstone-walkway-stone-path.jpg",
+    style: "Rustic",
+  },
+  {
+    id: 15,
+    title: "Stone Retaining Wall",
+    category: "Hardscaping",
+    image: "/stone-retaining-wall-plants.jpg",
+    style: "Structural",
+  },
+  {
+    id: 16,
+    title: "Herringbone Paver Driveway",
+    category: "Hardscaping",
+    image: "/herringbone-paver-pattern-detail.jpg",
+    style: "Classic",
+  },
+  {
+    id: 17,
+    title: "Fire Pit Patio Evening",
+    category: "Outdoor",
+    image: "/paver-patio-fire-pit-evening.jpg",
+    style: "Modern",
+  },
+  {
+    id: 18,
+    title: "Night Patio with String Lights",
+    category: "Outdoor",
+    image: "/night-lit-patio-string-lights.jpg",
+    style: "Ambient",
+  },
+  {
+    id: 19,
+    title: "Pool Deck & Hardscape",
+    category: "Outdoor",
+    image: "/aerial-hardscape-patio-pool.jpg",
+    style: "Luxury",
+  },
+  {
+    id: 20,
+    title: "Stone Steps & Landscape",
+    category: "Hardscaping",
+    image: "/stone-steps-garden-landscape.jpg",
+    style: "Natural",
   },
 ]
 

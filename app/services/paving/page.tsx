@@ -10,6 +10,9 @@ import {
   Star,
   Award,
   ArrowRight,
+  Timer,
+  ShieldCheck,
+  Droplets,
 } from "lucide-react"
 import type { Metadata } from "next"
 
@@ -42,26 +45,37 @@ const paverStyles = [
     name: "Herringbone Pattern",
     description: "The gold standard for driveways. Interlocking 45 or 90-degree patterns create exceptional structural integrity and a timeless, sophisticated look.",
     best: "Driveways & high-traffic areas",
-    image: "herringbone",
+    image: "/herringbone-paver-pattern-detail.jpg",
   },
   {
     name: "Running Bond",
     description: "Classic offset brick pattern that creates a clean, linear aesthetic. Versatile enough for walkways, patios, and driveways with a traditional feel.",
     best: "Walkways & patios",
-    image: "running-bond",
+    image: "/brick-patio-herringbone-pattern.jpg",
   },
   {
     name: "Basketweave",
     description: "Alternating pairs of pavers create a woven texture that adds visual interest and old-world charm. Perfect for garden paths and patio accents.",
     best: "Garden paths & accents",
-    image: "basketweave",
+    image: "/paver-pattern-bricks-closeup.jpg",
   },
   {
     name: "Random Ashlar",
     description: "Multiple paver sizes laid in a seemingly random but carefully planned pattern. Creates a natural, organic look that mimics cut stone.",
     best: "Patios & large surfaces",
-    image: "ashlar",
+    image: "/stone-texture-detail-closeup.jpg",
   },
+]
+
+const galleryImages = [
+  { src: "/paver-driveway-herringbone-pattern.jpg", alt: "Herringbone paver driveway installation", label: "Paver Driveway" },
+  { src: "/herringbone-paver-pattern-detail.jpg", alt: "Close-up herringbone paver pattern detail", label: "Pattern Detail" },
+  { src: "/brick-patio-herringbone-pattern.jpg", alt: "Brick patio with herringbone pattern", label: "Brick Patio" },
+  { src: "/paver-patio-fire-pit-evening.jpg", alt: "Paver patio with fire pit at evening", label: "Fire Pit Patio" },
+  { src: "/aerial-hardscape-patio-pool.jpg", alt: "Aerial view of paver patio with pool", label: "Pool Deck" },
+  { src: "/pool-deck-aerial-view.jpg", alt: "Pool deck with pavers aerial view", label: "Pool Surround" },
+  { src: "/paver-pattern-bricks-closeup.jpg", alt: "Paver brick pattern close-up texture", label: "Brick Texture" },
+  { src: "/aerial-view-house-pool-patio.jpg", alt: "Aerial view of home with paver patio and pool", label: "Full Project" },
 ]
 
 const materialPricing = [
@@ -187,6 +201,26 @@ export default function PavingPage() {
           </div>
         </section>
 
+        {/* Value Props Bar */}
+        <section className="py-6 bg-primary">
+          <div className="max-w-7xl mx-auto px-6 lg:px-8">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
+              <div className="flex items-center justify-center gap-3 text-primary-foreground">
+                <Timer className="h-5 w-5 shrink-0" />
+                <span className="font-semibold text-sm">25-50 Year Lifespan</span>
+              </div>
+              <div className="flex items-center justify-center gap-3 text-primary-foreground">
+                <ShieldCheck className="h-5 w-5 shrink-0" />
+                <span className="font-semibold text-sm">Individual Paver Warranty</span>
+              </div>
+              <div className="flex items-center justify-center gap-3 text-primary-foreground">
+                <Droplets className="h-5 w-5 shrink-0" />
+                <span className="font-semibold text-sm">Permeable Options Available</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Features */}
         <section className="py-20">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -215,7 +249,69 @@ export default function PavingPage() {
           </div>
         </section>
 
-        {/* Pattern Styles */}
+        {/* Gallery */}
+        <section className="py-20 bg-muted/30">
+          <div className="max-w-7xl mx-auto px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <span className="inline-block px-4 py-1.5 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">
+                Our Work
+              </span>
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+                Paving Gallery
+              </h2>
+              <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+                From intricate patterns to grand driveways — precision in every paver.
+              </p>
+            </div>
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+              {galleryImages.map((img, i) => (
+                <div
+                  key={img.src}
+                  className={`group relative overflow-hidden rounded-2xl ${
+                    i === 3 || i === 4 ? "lg:col-span-2 lg:row-span-2" : ""
+                  }`}
+                >
+                  <div className={`relative ${i === 3 || i === 4 ? "aspect-square" : "aspect-[4/3]"}`}>
+                    <Image
+                      src={img.src}
+                      alt={img.alt}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                      <span className="text-white font-semibold text-sm">{img.label}</span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Mid CTA — Pattern Chooser */}
+        <section className="relative py-16 overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0a1a14] to-[#14664f]" />
+          <div className="absolute inset-0 bg-[url('/herringbone-paver-pattern-detail.jpg')] opacity-15 bg-cover bg-center mix-blend-overlay" />
+          <div className="relative max-w-7xl mx-auto px-6 lg:px-8 flex flex-col md:flex-row items-center gap-8">
+            <div className="flex-1">
+              <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">
+                Not sure which pattern is right?
+              </h2>
+              <p className="text-white/70 text-lg">
+                Our design team will bring physical paver samples to your property so you can see colors and textures in your actual lighting and landscape.
+              </p>
+            </div>
+            <Link href="/free-estimate" className="shrink-0">
+              <Button size="lg" className="bg-white text-[#0a1a14] hover:bg-white/90 font-semibold shadow-xl px-8">
+                Book a Free Sample Visit
+                <ArrowRight className="h-5 w-5 ml-2" />
+              </Button>
+            </Link>
+          </div>
+        </section>
+
+        {/* Pattern Styles with Images */}
         <section className="py-20 bg-muted/50">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="text-center mb-16">
@@ -230,17 +326,27 @@ export default function PavingPage() {
               {paverStyles.map((style) => (
                 <div
                   key={style.name}
-                  className="group bg-card rounded-2xl border border-border p-8 hover:border-primary/30 hover:shadow-xl transition-all"
+                  className="group bg-card rounded-2xl border border-border overflow-hidden hover:border-primary/30 hover:shadow-xl transition-all"
                 >
-                  <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
-                    {style.name}
-                  </h3>
-                  <p className="text-muted-foreground leading-relaxed mb-4">
-                    {style.description}
-                  </p>
-                  <div className="inline-flex items-center gap-2 bg-primary/10 text-primary text-sm font-medium px-3 py-1 rounded-full">
-                    <CheckCircle className="h-3.5 w-3.5" />
-                    Best for: {style.best}
+                  <div className="relative h-48 overflow-hidden">
+                    <Image
+                      src={style.image}
+                      alt={style.name}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="p-8">
+                    <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
+                      {style.name}
+                    </h3>
+                    <p className="text-muted-foreground leading-relaxed mb-4">
+                      {style.description}
+                    </p>
+                    <div className="inline-flex items-center gap-2 bg-primary/10 text-primary text-sm font-medium px-3 py-1 rounded-full">
+                      <CheckCircle className="h-3.5 w-3.5" />
+                      Best for: {style.best}
+                    </div>
                   </div>
                 </div>
               ))}
@@ -330,23 +436,31 @@ export default function PavingPage() {
           </div>
         </section>
 
-        {/* CTA */}
-        <section className="py-20 bg-secondary">
-          <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-              Upgrade Your Driveway or Patio
+        {/* Final CTA */}
+        <section className="relative py-24 overflow-hidden">
+          <div className="absolute inset-0">
+            <Image
+              src="/paver-patio-fire-pit-evening.jpg"
+              alt="Beautiful paver patio with fire pit in the evening"
+              fill
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0a1a14]/95 via-[#0a1a14]/80 to-[#0a1a14]/50" />
+          </div>
+          <div className="relative max-w-4xl mx-auto px-6 lg:px-8 text-center">
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+              Your Driveway Makes the<br />First Impression
             </h2>
-            <p className="text-xl text-white/80 mb-8 max-w-2xl mx-auto">
-              Get a free on-site consultation with detailed estimate. We&apos;ll
-              help you choose the perfect materials and pattern for your project.
+            <p className="text-xl text-white/80 mb-10 max-w-2xl mx-auto">
+              Cracked concrete and worn asphalt lower your home&apos;s value. Pavers add instant curb appeal that lasts a lifetime.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/free-estimate">
                 <Button
                   size="lg"
-                  className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg"
+                  className="bg-[#4ade80] text-[#0a1a14] hover:bg-[#86efac] shadow-lg font-semibold text-base px-8"
                 >
-                  Get Free Estimate
+                  Get Your Free Estimate
                   <ArrowRight className="h-5 w-5 ml-2" />
                 </Button>
               </Link>

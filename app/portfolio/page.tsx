@@ -25,6 +25,8 @@ const categories = [
   "Bathroom",
   "Basement",
   "Deck",
+  "Hardscaping",
+  "Outdoor",
   "Additions",
   "Flooring",
 ]
@@ -89,6 +91,30 @@ const projectGrid = [
     location: "Peters Township, PA",
   },
   {
+    title: "Natural Stone Patio & Retaining Wall",
+    category: "Hardscaping",
+    image: "/stone-retaining-wall-plants.jpg",
+    location: "Mt. Lebanon, PA",
+  },
+  {
+    title: "Herringbone Paver Driveway",
+    category: "Hardscaping",
+    image: "/herringbone-paver-pattern-detail.jpg",
+    location: "Upper St. Clair, PA",
+  },
+  {
+    title: "Fire Pit Patio with Pavers",
+    category: "Outdoor",
+    image: "/paver-patio-fire-pit-evening.jpg",
+    location: "Bethel Park, PA",
+  },
+  {
+    title: "Flagstone Garden Walkway",
+    category: "Hardscaping",
+    image: "/flagstone-walkway-stone-path.jpg",
+    location: "Sewickley, PA",
+  },
+  {
     title: "Sunroom Addition",
     category: "Additions",
     image: "/sunroom-addition-with-large-windows-natural-light.jpg",
@@ -101,10 +127,22 @@ const projectGrid = [
     location: "Mt. Lebanon, PA",
   },
   {
+    title: "Pool Deck & Outdoor Living",
+    category: "Outdoor",
+    image: "/aerial-hardscape-patio-pool.jpg",
+    location: "Moon Township, PA",
+  },
+  {
     title: "Open Concept Kitchen & Living",
     category: "Kitchen",
     image: "/open-concept-kitchen-living-room-renovation.jpg",
     location: "Pittsburgh, PA",
+  },
+  {
+    title: "Evening Patio with String Lights",
+    category: "Outdoor",
+    image: "/night-lit-patio-string-lights.jpg",
+    location: "Peters Township, PA",
   },
 ]
 

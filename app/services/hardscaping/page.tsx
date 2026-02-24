@@ -11,6 +11,9 @@ import {
   Award,
   Layers,
   ArrowRight,
+  Sparkles,
+  Ruler,
+  Eye,
 } from "lucide-react"
 import type { Metadata } from "next"
 
@@ -69,26 +72,37 @@ const materialOptions = [
   },
 ]
 
+const galleryImages = [
+  { src: "/hardscape-patio-outdoor-living.jpg", alt: "Natural stone patio with outdoor living space", label: "Stone Patio" },
+  { src: "/stone-retaining-wall-plants.jpg", alt: "Stone retaining wall with integrated plantings", label: "Retaining Wall" },
+  { src: "/flagstone-walkway-stone-path.jpg", alt: "Flagstone walkway through garden landscape", label: "Walkway" },
+  { src: "/stone-steps-garden-landscape.jpg", alt: "Custom stone steps with landscape lighting", label: "Stone Steps" },
+  { src: "/stone-path-wall-garden.jpg", alt: "Stone path alongside garden retaining wall", label: "Garden Path" },
+  { src: "/outdoor-seating-zen-garden.jpg", alt: "Outdoor seating area with zen garden hardscape", label: "Seating Area" },
+  { src: "/rustic-stone-wall-mixed.jpg", alt: "Rustic mixed stone wall construction detail", label: "Stonework Detail" },
+  { src: "/stone-steps-forest-landscape.jpg", alt: "Stone steps ascending through a lush landscape", label: "Landscape Steps" },
+]
+
 const projectTypes = [
   {
     name: "Patio & Entertaining Spaces",
     description: "Multi-level stone patios with built-in seating, outdoor kitchens, and pergola foundations.",
-    icon: "patio",
+    image: "/aerial-hardscape-patio-pool.jpg",
   },
   {
     name: "Retaining Walls",
     description: "Structural and decorative walls that manage slopes, create usable yard space, and prevent erosion.",
-    icon: "wall",
+    image: "/stone-wall-with-grass.jpg",
   },
   {
     name: "Walkways & Entrances",
     description: "Welcoming front walkways, garden paths, and stepping stone installations that elevate curb appeal.",
-    icon: "path",
+    image: "/flagstone-walkway-stone-path.jpg",
   },
   {
     name: "Outdoor Kitchens",
     description: "Complete outdoor cooking and entertaining areas with stone counters, built-in grills, and bar seating.",
-    icon: "kitchen",
+    image: "/outdoor-seating-patio-doorway.jpg",
   },
 ]
 
@@ -183,6 +197,27 @@ export default function HardscapingPage() {
           </div>
         </section>
 
+        {/* Inline CTA — Design Consultation */}
+        <section className="relative py-6 bg-gradient-to-r from-[#0a1a14] to-[#14664f] overflow-hidden">
+          <div className="absolute inset-0 bg-[url('/stone-texture-detail-closeup.jpg')] opacity-10 bg-cover bg-center" />
+          <div className="relative max-w-7xl mx-auto px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center shrink-0">
+                <Sparkles className="h-5 w-5 text-[#4ade80]" />
+              </div>
+              <p className="text-white font-medium">
+                Free 3D design rendering with every hardscaping project over $15,000
+              </p>
+            </div>
+            <Link href="/free-estimate">
+              <Button size="sm" className="bg-white text-[#0a1a14] hover:bg-white/90 font-semibold shrink-0">
+                Claim Your Free Design
+                <ArrowRight className="h-4 w-4 ml-1" />
+              </Button>
+            </Link>
+          </div>
+        </section>
+
         {/* Features Grid */}
         <section className="py-20">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -211,7 +246,88 @@ export default function HardscapingPage() {
           </div>
         </section>
 
-        {/* Project Types */}
+        {/* Gallery — Masonry Grid */}
+        <section className="py-20 bg-muted/30">
+          <div className="max-w-7xl mx-auto px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <span className="inline-block px-4 py-1.5 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">
+                Our Work
+              </span>
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+                Hardscaping Gallery
+              </h2>
+              <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+                Every stone placed with purpose. Browse our recent hardscaping projects across Greater Pittsburgh.
+              </p>
+            </div>
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+              {galleryImages.map((img, i) => (
+                <div
+                  key={img.src}
+                  className={`group relative overflow-hidden rounded-2xl ${
+                    i === 0 || i === 5 ? "lg:col-span-2 lg:row-span-2" : ""
+                  }`}
+                >
+                  <div className={`relative ${i === 0 || i === 5 ? "aspect-square" : "aspect-[4/3]"}`}>
+                    <Image
+                      src={img.src}
+                      alt={img.alt}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                      <span className="text-white font-semibold text-sm">{img.label}</span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Mid-page CTA — Before/After */}
+        <section className="relative py-20 overflow-hidden">
+          <div className="absolute inset-0">
+            <Image
+              src="/stone-steps-forest-landscape.jpg"
+              alt="Completed hardscaping project"
+              fill
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-secondary/95 to-secondary/70" />
+          </div>
+          <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
+            <div className="max-w-xl">
+              <div className="flex items-center gap-2 mb-4">
+                <Eye className="h-5 w-5 text-[#4ade80]" />
+                <span className="text-sm font-semibold uppercase tracking-widest text-[#4ade80]">See the Difference</span>
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                Your Yard Has Untapped Potential
+              </h2>
+              <p className="text-white/70 text-lg mb-8">
+                Most Pittsburgh yards sit unused 8 months a year. Our hardscaping extends your livable space outdoors — rain, shine, or snow.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link href="/free-estimate">
+                  <Button size="lg" className="bg-[#4ade80] text-[#0a1a14] hover:bg-[#86efac] font-semibold shadow-lg">
+                    <Ruler className="h-5 w-5 mr-2" />
+                    Get a Free Site Visit
+                  </Button>
+                </Link>
+                <Link href="/portfolio">
+                  <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10">
+                    View Full Portfolio
+                    <ArrowRight className="h-5 w-5 ml-2" />
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Project Types with Images */}
         <section className="py-20 bg-muted/50">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="text-center mb-16">
@@ -226,13 +342,21 @@ export default function HardscapingPage() {
               {projectTypes.map((project) => (
                 <div
                   key={project.name}
-                  className="group bg-card rounded-2xl border border-border p-8 hover:border-primary/30 hover:shadow-xl transition-all"
+                  className="group bg-card rounded-2xl border border-border overflow-hidden hover:border-primary/30 hover:shadow-xl transition-all"
                 >
-                  <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
-                    <Layers className="h-7 w-7 text-primary" />
+                  <div className="relative h-48 overflow-hidden">
+                    <Image
+                      src={project.image}
+                      alt={project.name}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                   </div>
-                  <h3 className="text-xl font-bold text-foreground mb-3">{project.name}</h3>
-                  <p className="text-muted-foreground leading-relaxed">{project.description}</p>
+                  <div className="p-8">
+                    <h3 className="text-xl font-bold text-foreground mb-3">{project.name}</h3>
+                    <p className="text-muted-foreground leading-relaxed">{project.description}</p>
+                  </div>
                 </div>
               ))}
             </div>
@@ -321,24 +445,31 @@ export default function HardscapingPage() {
           </div>
         </section>
 
-        {/* CTA */}
-        <section className="py-20 bg-secondary">
-          <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-              Ready to Transform Your Outdoor Space?
+        {/* Final CTA */}
+        <section className="relative py-24 overflow-hidden">
+          <div className="absolute inset-0">
+            <Image
+              src="/night-lit-patio-string-lights.jpg"
+              alt="Beautifully lit outdoor patio at night"
+              fill
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0a1a14]/95 via-[#0a1a14]/80 to-[#0a1a14]/60" />
+          </div>
+          <div className="relative max-w-4xl mx-auto px-6 lg:px-8 text-center">
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+              Imagine Your Backyard,<br />Completely Transformed
             </h2>
-            <p className="text-xl text-white/80 mb-8 max-w-2xl mx-auto">
-              Get a free consultation and detailed estimate for your custom
-              hardscaping project. We&apos;ll visit your property and design
-              something amazing.
+            <p className="text-xl text-white/80 mb-10 max-w-2xl mx-auto">
+              From bare yard to breathtaking outdoor living space. Get a free on-site consultation with a 3D design preview of your future hardscape.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/free-estimate">
                 <Button
                   size="lg"
-                  className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg"
+                  className="bg-[#4ade80] text-[#0a1a14] hover:bg-[#86efac] shadow-lg font-semibold text-base px-8"
                 >
-                  Get Free Estimate
+                  Start Your Transformation
                   <ArrowRight className="h-5 w-5 ml-2" />
                 </Button>
               </Link>

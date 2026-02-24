@@ -24,14 +24,14 @@ const projects = [
     image: "/modern-composite-deck-outdoor-living-space.jpg",
   },
   {
-    title: "Bethel Park Sunroom Addition",
-    category: "Home Additions",
-    image: "/sunroom-addition-with-large-windows-natural-light.jpg",
+    title: "Mt. Lebanon Stone Patio & Walkway",
+    category: "Hardscaping",
+    image: "/flagstone-walkway-stone-path.jpg",
   },
   {
-    title: "Robinson Township Open Floor Plan",
-    category: "Kitchen Remodeling",
-    image: "/open-concept-kitchen-living-room-renovation.jpg",
+    title: "Bethel Park Paver Fire Pit Patio",
+    category: "Outdoor Living",
+    image: "/paver-patio-fire-pit-evening.jpg",
   },
 ]
 
