@@ -32,10 +32,10 @@ const categories = [
 ]
 
 const stats = [
-  { value: "Hundreds", label: "Projects Completed" },
+  { value: "500+", label: "Projects Completed" },
+  { value: "5.0", label: "Google Rating", hasStars: true },
   { value: "18+", label: "Years Experience" },
   { value: "98%", label: "Client Satisfaction" },
-  { value: "5.0", label: "Google Rating", hasStars: true },
 ]
 
 const featuredProjects = [

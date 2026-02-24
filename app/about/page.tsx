@@ -95,10 +95,10 @@ const credentials = [
 ]
 
 const stats = [
-  { value: "A+", label: "BBB Rating" },
-  { value: "5.0", label: "Houzz Rating", icon: true },
-  { value: "50+", label: "Communities Served" },
-  { value: "5", label: "Years Strong" },
+  { value: "500+", label: "Projects Completed" },
+  { value: "5.0", label: "Google Rating", icon: true },
+  { value: "18+", label: "Years Experience" },
+  { value: "98%", label: "Client Satisfaction" },
 ]
 
 const services = [

@@ -54,9 +54,9 @@ const trustSignals = [
 
 const stats = [
   { value: "500+", label: "Projects Completed" },
-  { value: "15+", label: "Years in Business" },
-  { value: "98%", label: "Referral Rate" },
-  { value: "100%", label: "Satisfaction Guarantee" },
+  { value: "5.0", label: "Google Rating" },
+  { value: "18+", label: "Years Experience" },
+  { value: "98%", label: "Client Satisfaction" },
 ]
 
 const reviewPlatforms = [
@@ -65,14 +65,14 @@ const reviewPlatforms = [
     url: "https://www.google.com/search?q=ABK+Unlimited+Pittsburgh+reviews",
     description: "Read our Google reviews and leave your own",
     rating: "5.0",
-    reviewCount: "100+",
+    reviewCount: "200+",
   },
   {
     name: "Houzz",
     url: "https://www.houzz.com/professionals/general-contractors/abk-unlimited-pfvwus-pf~222150373",
     description: "See our Houzz profile, projects, and reviews",
     rating: "5.0",
-    reviewCount: "50+",
+    reviewCount: "200+",
   },
 ]
 

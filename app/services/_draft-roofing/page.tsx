@@ -211,7 +211,7 @@ export default function RoofingPage() {
               },
               aggregateRating: {
                 "@type": "AggregateRating",
-                ratingValue: "4.9",
+                ratingValue: "5.0",
                 reviewCount: "200",
                 bestRating: "5",
               },
@@ -275,7 +275,7 @@ export default function RoofingPage() {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
               <div className="flex flex-col items-center gap-2">
                 <Star className="h-6 w-6" />
-                <span className="text-2xl font-bold">4.9/5 Stars</span>
+                <span className="text-2xl font-bold">5.0/5 Stars</span>
                 <span className="text-primary-foreground/80 text-sm">
                   200+ Reviews
                 </span>
