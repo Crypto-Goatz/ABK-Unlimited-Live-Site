@@ -7,14 +7,14 @@ import { Button } from "@/components/ui/button"
 import { ArrowRight, Clock, User, Mail } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "Blog | ABK Unlimited Pittsburgh Home Remodeling Tips & Guides",
+  title: "Blog | Pittsburgh Roofing Company Pittsburgh Home Remodeling Tips & Guides",
   description:
-    "Expert home remodeling tips, trends, and guides from ABK Unlimited. Learn about kitchen renovations, bathroom design, basement finishing, and more.",
+    "Expert home remodeling tips, trends, and guides from Pittsburgh Roofing Company. Learn about kitchen renovations, bathroom design, basement finishing, and more.",
   openGraph: {
-    title: "Home Remodeling Blog | ABK Unlimited",
+    title: "Home Remodeling Blog | Pittsburgh Roofing Company",
     description:
       "Expert tips and guides for your next home renovation project. Kitchen trends, bathroom ROI, basement ideas, and more from Pittsburgh's trusted contractor.",
-    url: "https://abkunlimited.com/blog",
+    url: "https://pittsburghroofingcompany.com/blog",
     type: "website",
   },
 }
@@ -48,7 +48,7 @@ const featuredPosts: BlogPost[] = [
       "From smart appliances to natural stone finishes, discover the top kitchen design trends that Pittsburgh homeowners are embracing this year. Learn what's in, what's out, and how to make your kitchen remodel both beautiful and functional.",
     image: "/modern-white-kitchen-renovation-with-island-and-pe.jpg",
     category: "Kitchen",
-    author: "ABK Unlimited Team",
+    author: "Pittsburgh Roofing Company Team",
     date: "January 15, 2025",
     readTime: "8 min read",
   },
@@ -59,7 +59,7 @@ const featuredPosts: BlogPost[] = [
       "Not all bathroom upgrades are created equal. Learn which renovations deliver the highest return on investment and which are purely for enjoyment.",
     image: "/luxury-master-bathroom-with-walk-in-shower-and-fre.jpg",
     category: "Bathroom",
-    author: "ABK Unlimited Team",
+    author: "Pittsburgh Roofing Company Team",
     date: "January 8, 2025",
     readTime: "6 min read",
   },
@@ -70,7 +70,7 @@ const featuredPosts: BlogPost[] = [
       "Everything you need to know about transforming your Pittsburgh basement into usable living space, from moisture control to design ideas.",
     image: "/finished-basement-living-space.jpg",
     category: "Basement",
-    author: "ABK Unlimited Team",
+    author: "Pittsburgh Roofing Company Team",
     date: "December 20, 2024",
     readTime: "10 min read",
   },
@@ -84,7 +84,7 @@ const regularPosts: BlogPost[] = [
       "A comprehensive comparison of composite and wood decking materials, considering Pittsburgh's unique climate and what each option means for maintenance, longevity, and budget.",
     image: "/custom-composite-deck-outdoor-living.jpg",
     category: "Outdoor",
-    author: "ABK Unlimited Team",
+    author: "Pittsburgh Roofing Company Team",
     date: "December 12, 2024",
     readTime: "7 min read",
   },
@@ -95,7 +95,7 @@ const regularPosts: BlogPost[] = [
       "From zoning permits to design considerations, this guide walks you through every step of planning a successful home addition in the Greater Pittsburgh area.",
     image: "/home-addition-seamless-architecture.jpg",
     category: "Additions",
-    author: "ABK Unlimited Team",
+    author: "Pittsburgh Roofing Company Team",
     date: "November 28, 2024",
     readTime: "9 min read",
   },
@@ -106,7 +106,7 @@ const regularPosts: BlogPost[] = [
       "Hardwood, LVP, tile, or carpet? Learn which flooring material works best for each room in your home, plus tips for staying on budget without sacrificing quality.",
     image: "/hardwood-flooring-installation.png",
     category: "Flooring",
-    author: "ABK Unlimited Team",
+    author: "Pittsburgh Roofing Company Team",
     date: "November 15, 2024",
     readTime: "6 min read",
   },

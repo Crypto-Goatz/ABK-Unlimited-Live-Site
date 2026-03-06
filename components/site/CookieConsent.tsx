@@ -17,16 +17,16 @@ export function CookieConsent() {
   const [visible, setVisible] = useState(false)
 
   useEffect(() => {
-    if (!getCookie("abk_consent")) {
+    if (!getCookie("prc_consent")) {
       const t = setTimeout(() => setVisible(true), 800)
       return () => clearTimeout(t)
     }
   }, [])
 
   function accept(level: "all" | "essential") {
-    setCookie("abk_consent", level, 365)
+    setCookie("prc_consent", level, 365)
     setVisible(false)
-    window.dispatchEvent(new CustomEvent("abk-consent-update", { detail: level }))
+    window.dispatchEvent(new CustomEvent("prc-consent-update", { detail: level }))
   }
 
   if (!visible) return null

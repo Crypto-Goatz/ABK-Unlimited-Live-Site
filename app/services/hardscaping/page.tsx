@@ -18,14 +18,14 @@ import {
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Hardscaping Services Pittsburgh | ABK Unlimited Patios, Walls & Walkways",
+  title: "Hardscaping Services Pittsburgh | Pittsburgh Roofing Company Patios, Walls & Walkways",
   description:
     "Custom hardscaping in Pittsburgh. Stone patios, retaining walls, outdoor kitchens, walkways & terracing. Licensed contractor with 5-star reviews. Free estimates. Call (412) 944-1683.",
   openGraph: {
-    title: "Hardscaping Services | ABK Unlimited Pittsburgh",
+    title: "Hardscaping Services | Pittsburgh Roofing Company Pittsburgh",
     description:
       "Transform your outdoor space with custom stone patios, retaining walls, walkways, and outdoor kitchens built to last through Pittsburgh's four seasons.",
-    url: "https://abkunlimited.com/services/hardscaping",
+    url: "https://pittsburghroofingcompany.com/services/hardscaping",
     type: "website",
   },
 }

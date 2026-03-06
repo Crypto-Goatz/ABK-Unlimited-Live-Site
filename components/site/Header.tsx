@@ -116,8 +116,8 @@ export function Header() {
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
         <Link href="/" className="flex items-center">
           <Image
-            src="/abk-logo.png"
-            alt="ABK Unlimited"
+            src="/logo.svg"
+            alt="Pittsburgh Roofing Company"
             width={180}
             height={48}
             className={`h-10 w-auto transition-all duration-300 ${scrolled ? "" : "brightness-0 invert"}`}

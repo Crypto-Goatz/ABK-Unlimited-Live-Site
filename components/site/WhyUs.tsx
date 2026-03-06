@@ -38,10 +38,10 @@ export function WhyUs() {
           <div>
             <p className="text-sm font-semibold tracking-wider text-primary uppercase mb-4">Why Choose Us</p>
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground text-balance">
-              Why Pittsburgh Families Trust ABK Unlimited
+              Why Pittsburgh Families Trust Pittsburgh Roofing Company
             </h2>
             <p className="mt-4 sm:mt-6 text-base sm:text-lg text-muted-foreground leading-relaxed">
-              For years, homeowners across Greater Pittsburgh have trusted ABK Unlimited to transform their houses into
+              For years, homeowners across Greater Pittsburgh have trusted Pittsburgh Roofing Company to transform their houses into
               dream homes. Our commitment to exceptional craftsmanship, transparent communication, and genuine care for
               every project has earned us a 5-star reputation and the Best of Houzz 2025 award.
             </p>

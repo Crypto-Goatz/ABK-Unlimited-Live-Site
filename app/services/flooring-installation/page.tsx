@@ -15,7 +15,7 @@ import {
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Flooring Installation Pittsburgh | ABK Unlimited General Contractor",
+  title: "Flooring Installation Pittsburgh | Pittsburgh Roofing Company General Contractor",
   description:
     "Professional flooring installation in Pittsburgh. Hardwood, tile, luxury vinyl plank, carpet & more. Expert refinishing and subfloor repair. Free estimates. Call (412) 944-1683.",
 }

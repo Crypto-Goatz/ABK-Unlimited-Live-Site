@@ -22,15 +22,15 @@ export function ConsentGatedScripts({
   const [checked, setChecked] = useState(false)
 
   useEffect(() => {
-    setConsent(getCookie("abk_consent"))
+    setConsent(getCookie("prc_consent"))
     setChecked(true)
 
     function onUpdate(e: Event) {
       const detail = (e as CustomEvent).detail as string
       setConsent(detail)
     }
-    window.addEventListener("abk-consent-update", onUpdate)
-    return () => window.removeEventListener("abk-consent-update", onUpdate)
+    window.addEventListener("prc-consent-update", onUpdate)
+    return () => window.removeEventListener("prc-consent-update", onUpdate)
   }, [])
 
   if (!checked || consent !== "all") return null

@@ -7,14 +7,14 @@ import { Button } from "@/components/ui/button"
 import { ArrowRight, Phone, CheckCircle } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "Our Services | ABK Unlimited Pittsburgh General Contractor",
+  title: "Our Services | Pittsburgh Roofing Company Pittsburgh General Contractor",
   description:
     "Full-service residential and commercial contractor. Kitchen remodeling, bathroom renovations, basement finishing, deck building, home additions, flooring, hardscaping, paving, outdoor firepits, and custom homes.",
   openGraph: {
-    title: "Our Services | ABK Unlimited",
+    title: "Our Services | Pittsburgh Roofing Company",
     description:
       "Complete home remodeling services from Pittsburgh's most trusted contractor. Kitchen, bathroom, basement, deck, additions, flooring, and more.",
-    url: "https://abkunlimited.com/services",
+    url: "https://pittsburghroofingcompany.com/services",
     type: "website",
   },
 }

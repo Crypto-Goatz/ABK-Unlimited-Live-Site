@@ -4,9 +4,9 @@ import { Footer } from "@/components/site/Footer"
 import VisualizerApp from "./components/VisualizerApp"
 
 export const metadata: Metadata = {
-  title: "AI Home Visualizer | ABK Unlimited Pittsburgh Home Remodeling",
+  title: "AI Home Visualizer | Pittsburgh Roofing Company Pittsburgh Home Remodeling",
   description:
-    "Visualize your home renovation with AI. Upload a photo of your room or home exterior and see instant design transformations. Free tool from ABK Unlimited, Pittsburgh's trusted contractor.",
+    "Visualize your home renovation with AI. Upload a photo of your room or home exterior and see instant design transformations. Free tool from Pittsburgh Roofing Company, Pittsburgh's trusted contractor.",
 }
 
 export default function VisualizerPage() {
@@ -41,7 +41,7 @@ export default function VisualizerPage() {
           <div className="max-w-3xl mx-auto px-6 lg:px-8 text-center">
             <h2 className="text-3xl font-bold text-foreground mb-4">Ready to Make Your Vision a Reality?</h2>
             <p className="text-muted-foreground mb-8">
-              Once you&apos;ve visualized your dream renovation, let ABK Unlimited bring it to life.
+              Once you&apos;ve visualized your dream renovation, let Pittsburgh Roofing Company bring it to life.
               Our expert team has been transforming Pittsburgh homes for over 15 years.
             </p>
             <a

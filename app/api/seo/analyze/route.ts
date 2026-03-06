@@ -21,7 +21,7 @@ export async function POST(req: NextRequest) {
     const {
       period = "7d",
       autoGenerate = false,
-      companyName = "ABK Unlimited",
+      companyName = "Pittsburgh Roofing Company",
       crmContactId,
     } = body;
 

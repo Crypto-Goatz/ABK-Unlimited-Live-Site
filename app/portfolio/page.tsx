@@ -7,14 +7,14 @@ import { Button } from "@/components/ui/button"
 import { ArrowRight, Phone, Star } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "Portfolio | ABK Unlimited Pittsburgh Home Remodeling Projects",
+  title: "Portfolio | Pittsburgh Roofing Company Pittsburgh Home Remodeling Projects",
   description:
-    "Browse completed projects by ABK Unlimited. Kitchen remodels, bathroom renovations, basement finishing, deck building, and more across Greater Pittsburgh.",
+    "Browse completed projects by Pittsburgh Roofing Company. Kitchen remodels, bathroom renovations, basement finishing, deck building, and more across Greater Pittsburgh.",
   openGraph: {
-    title: "Our Portfolio | ABK Unlimited",
+    title: "Our Portfolio | Pittsburgh Roofing Company",
     description:
       "See the quality of our work. Browse completed kitchen, bathroom, basement, deck, and home addition projects across Pittsburgh.",
-    url: "https://abkunlimited.com/portfolio",
+    url: "https://pittsburghroofingcompany.com/portfolio",
     type: "website",
   },
 }
@@ -164,7 +164,7 @@ export default function PortfolioPage() {
               </h1>
               <p className="text-xl text-white/80 leading-relaxed">
                 Browse our completed projects and see the quality craftsmanship
-                that has made ABK Unlimited Pittsburgh&apos;s most trusted
+                that has made Pittsburgh Roofing Company Pittsburgh&apos;s most trusted
                 contractor.
               </p>
             </div>
@@ -347,7 +347,7 @@ export default function PortfolioPage() {
             </h2>
             <p className="text-xl text-white/80 mb-8 max-w-2xl mx-auto">
               Ready to transform your home? Get a free estimate and see why
-              homeowners across Pittsburgh trust ABK Unlimited.
+              homeowners across Pittsburgh trust Pittsburgh Roofing Company.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/free-estimate">

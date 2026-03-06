@@ -18,7 +18,7 @@ import {
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Home Additions Pittsburgh | ABK Unlimited General Contractor",
+  title: "Home Additions Pittsburgh | Pittsburgh Roofing Company General Contractor",
   description:
     "Expand your home with custom additions in Pittsburgh. Room additions, second stories, sunrooms, in-law suites & more. Licensed contractor. Free estimates. Call (412) 944-1683.",
 }

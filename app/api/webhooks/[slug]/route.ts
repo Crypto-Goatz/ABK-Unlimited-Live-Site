@@ -160,7 +160,7 @@ export async function POST(
                 "Content-Type": "application/json",
               },
               body: JSON.stringify({
-                tags: ["email sequence - active", "website contact", "abk website"],
+                tags: ["email sequence - active", "website contact", "prc website"],
               }),
             }).catch(() => {});
           }

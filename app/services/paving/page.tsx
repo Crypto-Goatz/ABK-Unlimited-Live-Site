@@ -17,14 +17,14 @@ import {
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Paving Services Pittsburgh | ABK Unlimited Driveways, Patios & Walkways",
+  title: "Paving Services Pittsburgh | Pittsburgh Roofing Company Driveways, Patios & Walkways",
   description:
     "Professional paver installation in Pittsburgh. Interlocking driveways, stamped concrete patios, permeable pavers & pool decks. Licensed contractor. Free estimates. Call (412) 944-1683.",
   openGraph: {
-    title: "Paving Services | ABK Unlimited Pittsburgh",
+    title: "Paving Services | Pittsburgh Roofing Company Pittsburgh",
     description:
       "Upgrade your driveway, patio, and walkways with professional paving. Interlocking pavers, stamped concrete, and natural stone installed with precision.",
-    url: "https://abkunlimited.com/services/paving",
+    url: "https://pittsburghroofingcompany.com/services/paving",
     type: "website",
   },
 }

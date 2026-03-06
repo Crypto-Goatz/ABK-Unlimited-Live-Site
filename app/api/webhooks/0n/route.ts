@@ -25,12 +25,12 @@ import { executeWorkflow, deployDependencies } from '@/lib/0n-runner'
 
 import { getEmailTemplate, SEQUENCE_SCHEDULE } from '@/lib/email-templates'
 
-// ABK Email Sequence — inline workflow that uses the existing email template engine
-const ABK_EMAIL_SEQUENCE = {
+// PRC Email Sequence — inline workflow that uses the existing email template engine
+const PRC_EMAIL_SEQUENCE = {
   $0n: {
     type: 'workflow' as const,
     version: '1.0.0',
-    name: 'ABK — Thank You Email Sequence',
+    name: 'Pittsburgh Roofing — Thank You Email Sequence',
   },
   inputs: {
     firstName: { type: 'string', required: true },
@@ -61,7 +61,7 @@ const ABK_EMAIL_SEQUENCE = {
       params: {
         contactId: '{{inputs.crmContactId}}',
         subject: '{{inputs.firstName}}, thank you for reaching out!',
-        emailFrom: 'info@abkunlimited.com',
+        emailFrom: 'info@pittsburghroofingcompany.com',
       },
       output: 'crm_email_result',
       conditions: [{ if: '{{inputs.crmContactId}}' }],
@@ -73,8 +73,8 @@ const ABK_EMAIL_SEQUENCE = {
       action: 'mail.send',
       params: {
         to: '{{inputs.email}}',
-        from: 'info@abkunlimited.com',
-        fromName: 'ABK Unlimited',
+        from: 'info@pittsburghroofingcompany.com',
+        fromName: 'Pittsburgh Roofing Company',
         subject: '{{inputs.firstName}}, thank you for reaching out!',
         trackClicks: true,
         trackOpens: true,
@@ -109,27 +109,27 @@ const ABK_EMAIL_SEQUENCE = {
       'email sequence - completed',
       'website contact',
       'free estimate request',
-      'abk website',
+      'prc website',
     ],
     crm_custom_values: {
-      abk_email_1_subject: 'Thanks for reaching out!',
-      abk_email_2_subject: "See what we've built for Pittsburgh homeowners",
-      abk_email_3_subject: "Here's what our clients say about ABK",
-      abk_email_4_subject: "Let's make your project a reality",
-      abk_email_sequence_status: 'active',
-      abk_sequence_version: 'v1.0.0 - 4 Step Thank You',
+      prc_email_1_subject: 'Thanks for reaching out!',
+      prc_email_2_subject: "See what we've built for Pittsburgh homeowners",
+      prc_email_3_subject: "Here's what our clients say about Pittsburgh Roofing Company",
+      prc_email_4_subject: "Let's make your project a reality",
+      prc_email_sequence_status: 'active',
+      prc_sequence_version: 'v1.0.0 - 4 Step Thank You',
     },
   },
 }
 
 // ─── Event → Workflow Routing ────────────────────────────────────────
 
-const EVENT_ROUTES: Record<string, typeof ABK_EMAIL_SEQUENCE> = {
-  'contact.created': ABK_EMAIL_SEQUENCE,
-  'form.submitted': ABK_EMAIL_SEQUENCE,
+const EVENT_ROUTES: Record<string, typeof PRC_EMAIL_SEQUENCE> = {
+  'contact.created': PRC_EMAIL_SEQUENCE,
+  'form.submitted': PRC_EMAIL_SEQUENCE,
   // Add more routes as workflows are created:
-  // 'opportunity.created': ABK_OPPORTUNITY_WORKFLOW,
-  // 'contact.tag_added': ABK_TAG_ROUTER,
+  // 'opportunity.created': PRC_OPPORTUNITY_WORKFLOW,
+  // 'contact.tag_added': PRC_TAG_ROUTER,
 }
 
 // ─── Extract contact data from CRM webhook payload ──────────────────

@@ -39,7 +39,7 @@ export default function RevisionPanel({
   const handleDownload = () => {
     const link = document.createElement('a')
     link.href = imageUrl
-    link.download = `abk-design-${Date.now()}.jpeg`
+    link.download = `prc-design-${Date.now()}.jpeg`
     document.body.appendChild(link)
     link.click()
     document.body.removeChild(link)
@@ -53,8 +53,8 @@ export default function RevisionPanel({
         const file = new File([blob], 'design.jpg', { type: 'image/jpeg' })
 
         await navigator.share({
-          title: 'My ABK Design',
-          text: 'Check out this room design I created with ABK Unlimited!',
+          title: 'My Design',
+          text: 'Check out this room design I created with Pittsburgh Roofing Company!',
           files: [file]
         })
       } catch (err) {

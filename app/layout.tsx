@@ -12,10 +12,10 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
 const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono" })
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://abkunlimited.com"),
+  metadataBase: new URL("https://pittsburghroofingcompany.com"),
   title: {
-    default: "ABK Unlimited | Pittsburgh's Trusted General Contractor | Kitchen & Bath Remodeling",
-    template: "%s | ABK Unlimited Pittsburgh",
+    default: "Pittsburgh Roofing Company | Pittsburgh's Trusted General Contractor | Kitchen & Bath Remodeling",
+    template: "%s | Pittsburgh Roofing Company Pittsburgh",
   },
   description:
     "Award-winning Pittsburgh general contractor specializing in kitchen remodeling, bathroom renovations, basement finishing & deck building. Licensed & insured. Free estimates. Call (412) 944-1683.",
@@ -34,20 +34,20 @@ export const metadata: Metadata = {
     google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || undefined,
   },
   alternates: {
-    canonical: "https://abkunlimited.com",
+    canonical: "https://pittsburghroofingcompany.com",
   },
   openGraph: {
-    title: "ABK Unlimited | Pittsburgh's Trusted General Contractor",
+    title: "Pittsburgh Roofing Company | Pittsburgh's Trusted General Contractor",
     description:
       "Award-winning contractor serving Greater Pittsburgh. Kitchen remodeling, bathroom renovations, basement finishing, deck building, and more.",
-    url: "https://abkunlimited.com",
+    url: "https://pittsburghroofingcompany.com",
     type: "website",
-    siteName: "ABK Unlimited",
+    siteName: "Pittsburgh Roofing Company",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "ABK Unlimited | Pittsburgh's Trusted General Contractor",
+    title: "Pittsburgh Roofing Company | Pittsburgh's Trusted General Contractor",
     description:
       "Award-winning contractor serving Greater Pittsburgh. Kitchen remodeling, bathroom renovations, basement finishing, deck building, and more.",
   },
@@ -71,13 +71,13 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "HomeAndConstructionBusiness",
-              name: "ABK Unlimited",
+              name: "Pittsburgh Roofing Company",
               description:
                 "Full-service residential and commercial general contractor serving Greater Pittsburgh. Kitchen remodeling, bathroom renovations, basement finishing, deck building, and custom home construction.",
-              url: "https://abkunlimited.com",
-              logo: "https://abkunlimited.com/abk-logo.png",
+              url: "https://pittsburghroofingcompany.com",
+              logo: "https://pittsburghroofingcompany.com/logo.svg",
               telephone: "+1-412-944-1683",
-              email: "abk.unlimited@gmail.com",
+              email: "info@pittsburghroofingcompany.com",
               address: {
                 "@type": "PostalAddress",
                 streetAddress: "138 Balver Ave",

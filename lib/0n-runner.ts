@@ -116,7 +116,7 @@ async function callCRM(
         contactId: p.contactId,
         subject: p.subject,
         html: p.html,
-        emailFrom: p.emailFrom || 'info@abkunlimited.com',
+        emailFrom: p.emailFrom || 'info@pittsburghroofingcompany.com',
       }),
     },
     'contacts.search': {
@@ -187,7 +187,7 @@ async function callSendGrid(
       },
       body: JSON.stringify({
         personalizations: [{ to: [{ email: params.to }] }],
-        from: { email: params.from || 'info@abkunlimited.com', name: params.fromName || 'ABK Unlimited' },
+        from: { email: params.from || 'info@pittsburghroofingcompany.com', name: params.fromName || 'Pittsburgh Roofing Company' },
         subject: params.subject,
         content: [{ type: 'text/html', value: params.html }],
         tracking_settings: {

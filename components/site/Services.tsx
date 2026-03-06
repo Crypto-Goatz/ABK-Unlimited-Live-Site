@@ -191,7 +191,7 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
       <div className="relative aspect-[4/3] overflow-hidden">
         <Image
           src={service.image}
-          alt={`${service.title} project in Pittsburgh by ABK Unlimited`}
+          alt={`${service.title} project in Pittsburgh by Pittsburgh Roofing Company`}
           fill
           className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
         />

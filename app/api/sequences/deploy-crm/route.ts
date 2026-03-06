@@ -15,7 +15,7 @@ import { thankYouEmail, portfolioEmail, socialProofEmail, consultationOfferEmail
 
 const CRM_API_BASE = 'https://services.leadconnectorhq.com'
 const CRM_VERSION = '2021-07-28'
-const ABK_LOCATION_ID = process.env.CRM_LOCATION_ID || '497AdD39erWgmOu8JTCw'
+const PRC_LOCATION_ID = process.env.CRM_LOCATION_ID || '497AdD39erWgmOu8JTCw'
 
 function crmHeaders() {
   return {
@@ -28,7 +28,7 @@ function crmHeaders() {
 // ─── Create tag in CRM ──────────────────────────────────────────────
 async function createTag(name: string): Promise<{ tag: string; status: string }> {
   try {
-    const res = await fetch(`${CRM_API_BASE}/locations/${ABK_LOCATION_ID}/tags`, {
+    const res = await fetch(`${CRM_API_BASE}/locations/${PRC_LOCATION_ID}/tags`, {
       method: 'POST',
       headers: crmHeaders(),
       body: JSON.stringify({ name }),
@@ -42,7 +42,7 @@ async function createTag(name: string): Promise<{ tag: string; status: string }>
 // ─── Create custom value in CRM ─────────────────────────────────────
 async function createCustomValue(name: string, value: string): Promise<{ name: string; status: string }> {
   try {
-    const res = await fetch(`${CRM_API_BASE}/locations/${ABK_LOCATION_ID}/customValues`, {
+    const res = await fetch(`${CRM_API_BASE}/locations/${PRC_LOCATION_ID}/customValues`, {
       method: 'POST',
       headers: crmHeaders(),
       body: JSON.stringify({ name, value }),
@@ -64,7 +64,7 @@ async function sendCRMEmail(contactId: string, subject: string, html: string): P
         contactId,
         subject,
         html,
-        emailFrom: process.env.CRM_FROM_EMAIL || 'info@abkunlimited.com',
+        emailFrom: process.env.CRM_FROM_EMAIL || 'info@pittsburghroofingcompany.com',
       }),
     })
     return res.ok
@@ -100,7 +100,7 @@ export async function POST(request: NextRequest) {
     'Email Sequence - Completed',
     'Website Contact',
     'Free Estimate Request',
-    'ABK Website',
+    'PRC Website',
   ]
 
   for (const tag of tags) {
@@ -110,10 +110,10 @@ export async function POST(request: NextRequest) {
   // ── Step 2: Store email templates as CRM custom values ─────────
   const sequenceId = 'crm_preview'
   const templates = [
-    { key: 'abk_email_1_thank_you', ...thankYouEmail({ firstName: '{{contact.first_name}}', service: '{{contact.custom_field.service_interested}}', source: 'contact', sequenceId }) },
-    { key: 'abk_email_2_portfolio', ...portfolioEmail({ firstName: '{{contact.first_name}}', service: '{{contact.custom_field.service_interested}}', sequenceId }) },
-    { key: 'abk_email_3_social_proof', ...socialProofEmail({ firstName: '{{contact.first_name}}', service: '{{contact.custom_field.service_interested}}', sequenceId }) },
-    { key: 'abk_email_4_consultation', ...consultationOfferEmail({ firstName: '{{contact.first_name}}', service: '{{contact.custom_field.service_interested}}', sequenceId }) },
+    { key: 'prc_email_1_thank_you', ...thankYouEmail({ firstName: '{{contact.first_name}}', service: '{{contact.custom_field.service_interested}}', source: 'contact', sequenceId }) },
+    { key: 'prc_email_2_portfolio', ...portfolioEmail({ firstName: '{{contact.first_name}}', service: '{{contact.custom_field.service_interested}}', sequenceId }) },
+    { key: 'prc_email_3_social_proof', ...socialProofEmail({ firstName: '{{contact.first_name}}', service: '{{contact.custom_field.service_interested}}', sequenceId }) },
+    { key: 'prc_email_4_consultation', ...consultationOfferEmail({ firstName: '{{contact.first_name}}', service: '{{contact.custom_field.service_interested}}', sequenceId }) },
   ]
 
   for (const tmpl of templates) {
@@ -141,7 +141,7 @@ export async function POST(request: NextRequest) {
 
   // ── Step 4: Generate workflow JSON for CRM builder ─────────────
   results.workflow = {
-    name: 'ABK - Thank You Email Sequence',
+    name: 'Pittsburgh Roofing - Thank You Email Sequence',
     description: '4-email automated drip campaign for new leads. Triggered on contact creation from website.',
     trigger: {
       type: 'contact_created',
@@ -157,9 +157,9 @@ export async function POST(request: NextRequest) {
         delay: { value: 0, unit: 'minutes' },
         config: {
           subject: '{{contact.first_name}}, thank you for reaching out!',
-          templateKey: 'abk_email_1_thank_you',
-          fromName: 'ABK Unlimited',
-          fromEmail: 'info@abkunlimited.com',
+          templateKey: 'prc_email_1_thank_you',
+          fromName: 'Pittsburgh Roofing Company',
+          fromEmail: 'info@pittsburghroofingcompany.com',
         },
       },
       {
@@ -184,9 +184,9 @@ export async function POST(request: NextRequest) {
         name: 'Email 2: Portfolio Showcase (Day 1)',
         config: {
           subject: '{{contact.first_name}}, see what we\'ve built for Pittsburgh homeowners',
-          templateKey: 'abk_email_2_portfolio',
-          fromName: 'ABK Unlimited',
-          fromEmail: 'info@abkunlimited.com',
+          templateKey: 'prc_email_2_portfolio',
+          fromName: 'Pittsburgh Roofing Company',
+          fromEmail: 'info@pittsburghroofingcompany.com',
         },
       },
       {
@@ -206,10 +206,10 @@ export async function POST(request: NextRequest) {
         type: 'send_email',
         name: 'Email 3: Social Proof (Day 3)',
         config: {
-          subject: '{{contact.first_name}}, here\'s what our clients say about working with ABK',
-          templateKey: 'abk_email_3_social_proof',
-          fromName: 'ABK Unlimited',
-          fromEmail: 'info@abkunlimited.com',
+          subject: '{{contact.first_name}}, here\'s what our clients say about working with Pittsburgh Roofing Company',
+          templateKey: 'prc_email_3_social_proof',
+          fromName: 'Pittsburgh Roofing Company',
+          fromEmail: 'info@pittsburghroofingcompany.com',
         },
       },
       {
@@ -230,9 +230,9 @@ export async function POST(request: NextRequest) {
         name: 'Email 4: Consultation Offer (Day 7)',
         config: {
           subject: '{{contact.first_name}}, let\'s make your project a reality',
-          templateKey: 'abk_email_4_consultation',
-          fromName: 'ABK Unlimited',
-          fromEmail: 'info@abkunlimited.com',
+          templateKey: 'prc_email_4_consultation',
+          fromName: 'Pittsburgh Roofing Company',
+          fromEmail: 'info@pittsburghroofingcompany.com',
         },
       },
       {

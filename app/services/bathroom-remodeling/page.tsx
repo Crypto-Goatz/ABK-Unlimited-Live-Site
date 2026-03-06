@@ -15,7 +15,7 @@ import {
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Bathroom Remodeling Pittsburgh | ABK Unlimited General Contractor",
+  title: "Bathroom Remodeling Pittsburgh | Pittsburgh Roofing Company General Contractor",
   description:
     "Luxury bathroom remodeling in Pittsburgh. Walk-in showers, soaking tubs, custom vanities, heated floors & more. Licensed & insured. Free estimates. Call (412) 944-1683.",
 }

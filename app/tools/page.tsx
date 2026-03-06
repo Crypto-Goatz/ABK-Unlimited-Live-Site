@@ -5,14 +5,14 @@ import { Footer } from "@/components/site/Footer"
 import { Calculator, Clock, Palette, ArrowRight, Wand2 } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "Free Tools | ABK Unlimited Pittsburgh Home Remodeling",
+  title: "Free Tools | Pittsburgh Roofing Company Pittsburgh Home Remodeling",
   description:
-    "Free home remodeling tools from ABK Unlimited. AI home visualizer, project cost calculator, timeline estimator, and design inspiration gallery for Pittsburgh homeowners.",
+    "Free home remodeling tools from Pittsburgh Roofing Company. AI home visualizer, project cost calculator, timeline estimator, and design inspiration gallery for Pittsburgh homeowners.",
   openGraph: {
-    title: "Free Planning Tools | ABK Unlimited",
+    title: "Free Planning Tools | Pittsburgh Roofing Company",
     description:
       "Plan your home remodel with our free tools. AI visualizer, cost calculator, timeline estimator, and design gallery.",
-    url: "https://abkunlimited.com/tools",
+    url: "https://pittsburghroofingcompany.com/tools",
     type: "website",
   },
 }

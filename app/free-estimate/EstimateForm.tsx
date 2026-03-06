@@ -43,10 +43,10 @@ export function EstimateForm() {
     // Get attribution data from session tracker
     let attribution: Record<string, string> = {}
     try {
-      const stored = sessionStorage.getItem("abk_attribution")
+      const stored = sessionStorage.getItem("prc_attribution")
       if (stored) attribution = JSON.parse(stored)
       attribution.conversion_page = window.location.pathname
-      sessionStorage.setItem("abk_attribution", JSON.stringify(attribution))
+      sessionStorage.setItem("prc_attribution", JSON.stringify(attribution))
     } catch {}
 
     const data = {
@@ -107,7 +107,7 @@ Description: ${formData.get("description")}
         </div>
         <h2 className="text-2xl font-bold text-foreground mb-2">Request Received!</h2>
         <p className="text-muted-foreground mb-4">
-          Thank you for requesting a free estimate from ABK Unlimited!
+          Thank you for requesting a free estimate from Pittsburgh Roofing Company!
         </p>
         <p className="text-muted-foreground mb-6">
           Our team will review your project details and get back to you within 24 hours with next steps.

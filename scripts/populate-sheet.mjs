@@ -1,6 +1,6 @@
 /**
- * Populate Google Sheet with ABK content + verify CRM API
- * Reads LOCAL_DATA from abk-content.ts and writes each tab to the Sheet.
+ * Populate Google Sheet with Pittsburgh Roofing Company content + verify CRM API
+ * Reads LOCAL_DATA from site-content.ts and writes each tab to the Sheet.
  * Also tests CRM contact creation with a test contact.
  */
 import https from 'https';
@@ -10,12 +10,12 @@ import crypto from 'crypto';
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
 // --- Config ---
-const SA = JSON.parse(fs.readFileSync('/Users/rocketopp/abk-service-account.json', 'utf8'));
-const BRIAN = 'brian@abkunlimited.com';
+const SA = JSON.parse(fs.readFileSync('/Users/rocketopp/prc-service-account.json', 'utf8'));
+const BRIAN = 'brian@pittsburghroofingcompany.com';
 const SHEET_ID = '10_Xv6J_V8uWIAmDY5HnBrCseXlfrfUW7BuJiDkcTtfc';
 
 // CRM config
-const CRM_API_KEY_FILE = '/Users/rocketopp/Github/abk-unlimited-v2/.env.local';
+const CRM_API_KEY_FILE = '/Users/rocketopp/Github/pittsburgh-roofing/.env.local';
 
 // --- Google Auth ---
 function getToken(scope) {
@@ -81,7 +81,7 @@ function crmApi(method, path, body, apiKey) {
   });
 }
 
-// --- Content Data (from abk-content.ts) ---
+// --- Content Data (from site-content.ts) ---
 const SHEETS_SCHEMA = {
   site_config: ["key", "value"],
   services: ["id", "title", "slug", "description", "image_id", "icon", "order"],
@@ -99,16 +99,16 @@ const SHEETS_SCHEMA = {
   custom_endpoints: ["id", "slug", "name", "method", "status", "input_schema", "actions", "response_template", "auth_required", "created_at"],
 };
 
-// Content from abk-content.ts (abridged — key tabs only)
+// Content from site-content.ts (abridged — key tabs only)
 const CONTENT = {
   site_config: [
-    ["business_name", "ABK Unlimited"],
+    ["business_name", "Pittsburgh Roofing Company"],
     ["tagline", "Pittsburgh's Trusted General Contractor"],
     ["phone", "(412) 944-1683"],
     ["phone_raw", "+14129441683"],
-    ["email", "abk.unlimited@gmail.com"],
+    ["email", "info@pittsburghroofingcompany.com"],
     ["address", "138 Balver Ave, Pittsburgh, PA 15205"],
-    ["website", "https://abkunlimited.com"],
+    ["website", "https://pittsburghroofingcompany.com"],
     ["founded_year", "2020"],
     ["license_number", "PA163301"],
     ["primary_color", "#14664f"],
@@ -138,15 +138,15 @@ const CONTENT = {
     ["svc-commercial", "Commercial Construction", "commercial-construction", "Professional commercial construction.", "", "Building", "11"],
   ],
   testimonials: [
-    ["test-1", "Jennifer M.", "Homeowner, Mt. Lebanon", "ABK Unlimited transformed our outdated 1950s kitchen into a modern showpiece. The team was professional, on schedule, and the attention to detail was incredible.", "5", ""],
-    ["test-2", "David & Sarah K.", "Homeowners, Moon Township", "After getting burned by another contractor, we were hesitant to start our basement project. ABK was completely different — transparent pricing, regular updates.", "5", ""],
-    ["test-3", "Michael R.", "Homeowner, Sewickley", "Our deck was falling apart and we needed it replaced before summer. ABK designed a beautiful multi-level Trex deck. Done on time and on budget.", "5", ""],
-    ["test-4", "Michael & Sarah Thompson", "Homeowners, Mt. Lebanon, PA", "ABK Unlimited transformed our dated kitchen into a stunning modern space. Professional, clean, and finished on time.", "5", ""],
-    ["test-5", "Jennifer Martinez", "Homeowner, Sewickley, PA", "We hired ABK for a complete home renovation and couldn't be happier. They handled everything from design to final walkthrough.", "5", ""],
-    ["test-6", "Robert & Linda Chen", "Homeowners, Cranberry Township, PA", "ABK turned our unfinished basement into an amazing entertainment space with a wet bar and home theater.", "5", ""],
-    ["test-7", "David Patterson", "Homeowner, Moon Township, PA", "Our new composite deck is beautiful! ABK handled all permits and built a custom design that perfectly complements our home.", "5", ""],
-    ["test-8", "Amanda & James Wilson", "Homeowners, Upper St. Clair, PA", "We renovated two bathrooms with ABK and the results exceeded our expectations. The tile work is flawless.", "5", ""],
-    ["test-9", "Patricia O'Brien", "Homeowner, Bethel Park, PA", "ABK built a beautiful 500 sq ft addition that seamlessly matches our existing home. Worth every penny.", "5", ""],
+    ["test-1", "Jennifer M.", "Homeowner, Mt. Lebanon", "Pittsburgh Roofing Company transformed our outdated 1950s kitchen into a modern showpiece. The team was professional, on schedule, and the attention to detail was incredible.", "5", ""],
+    ["test-2", "David & Sarah K.", "Homeowners, Moon Township", "After getting burned by another contractor, we were hesitant to start our basement project. Pittsburgh Roofing Company was completely different — transparent pricing, regular updates.", "5", ""],
+    ["test-3", "Michael R.", "Homeowner, Sewickley", "Our deck was falling apart and we needed it replaced before summer. Pittsburgh Roofing Company designed a beautiful multi-level Trex deck. Done on time and on budget.", "5", ""],
+    ["test-4", "Michael & Sarah Thompson", "Homeowners, Mt. Lebanon, PA", "Pittsburgh Roofing Company transformed our dated kitchen into a stunning modern space. Professional, clean, and finished on time.", "5", ""],
+    ["test-5", "Jennifer Martinez", "Homeowner, Sewickley, PA", "We hired Pittsburgh Roofing Company for a complete home renovation and couldn't be happier. They handled everything from design to final walkthrough.", "5", ""],
+    ["test-6", "Robert & Linda Chen", "Homeowners, Cranberry Township, PA", "Pittsburgh Roofing Company turned our unfinished basement into an amazing entertainment space with a wet bar and home theater.", "5", ""],
+    ["test-7", "David Patterson", "Homeowner, Moon Township, PA", "Our new composite deck is beautiful! Pittsburgh Roofing Company handled all permits and built a custom design that perfectly complements our home.", "5", ""],
+    ["test-8", "Amanda & James Wilson", "Homeowners, Upper St. Clair, PA", "We renovated two bathrooms with Pittsburgh Roofing Company and the results exceeded our expectations. The tile work is flawless.", "5", ""],
+    ["test-9", "Patricia O'Brien", "Homeowner, Bethel Park, PA", "Pittsburgh Roofing Company built a beautiful 500 sq ft addition that seamlessly matches our existing home. Worth every penny.", "5", ""],
   ],
   team: [
     ["team-1", "Project Management", "Planning & Coordination", "Dedicated project managers oversee every job from start to finish.", ""],
@@ -165,7 +165,7 @@ const CONTENT = {
     ["faq-9", "Is $100,000 enough to renovate a house?", "A $100,000 budget provides substantial renovation possibilities.", "Remodeling"],
     ["faq-10", "What is a reasonable budget for remodeling?", "Most experts recommend spending 5-15% of your home's value on renovations.", "Remodeling"],
     ["faq-11", "How long does a whole-home remodel take?", "A complete whole-home remodel typically takes 3-6 months.", "Remodeling"],
-    ["faq-12", "Do I need permits for remodeling in Pittsburgh?", "Most significant remodeling projects require permits. ABK handles all permitting.", "Remodeling"],
+    ["faq-12", "Do I need permits for remodeling in Pittsburgh?", "Most significant remodeling projects require permits. Pittsburgh Roofing Company handles all permitting.", "Remodeling"],
   ],
   blog: [
     ["blog-1", "Top Kitchen Remodel Trends for 2025", "kitchen-remodel-trends-2025", "The kitchen continues to be the heart of the home, and 2025 brings exciting new trends...", "Exciting new trends in Pittsburgh kitchen remodeling.", "", "2025-01-05", "published"],

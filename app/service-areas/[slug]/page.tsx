@@ -43,12 +43,12 @@ const areaData: Record<string, AreaData> = {
     slug: "mt-lebanon",
     description: "South Hills premium community known for top-rated schools and beautiful neighborhoods.",
     longDescription:
-      "Mt. Lebanon is one of Pittsburgh's most sought-after communities, known for its walkable downtown, excellent school district, and charming residential streets. Homeowners here value quality and attention to detail, which is exactly what ABK Unlimited delivers. From updating historic kitchens to building modern additions that blend seamlessly with existing architecture, we understand the unique character of Mt. Lebanon homes.",
+      "Mt. Lebanon is one of Pittsburgh's most sought-after communities, known for its walkable downtown, excellent school district, and charming residential streets. Homeowners here value quality and attention to detail, which is exactly what Pittsburgh Roofing Company delivers. From updating historic kitchens to building modern additions that blend seamlessly with existing architecture, we understand the unique character of Mt. Lebanon homes.",
     population: "33,137",
     medianHomeValue: "$310,000",
     popularServices: ["Kitchen Remodeling", "Bathroom Remodeling", "Basement Finishing", "Home Additions"],
     testimonial: {
-      quote: "ABK completely transformed our 1940s kitchen into a modern masterpiece while keeping the charm of our Mt. Lebanon colonial. Incredible work.",
+      quote: "Pittsburgh Roofing Company completely transformed our 1940s kitchen into a modern masterpiece while keeping the charm of our Mt. Lebanon colonial. Incredible work.",
       author: "Sarah M.",
       project: "Kitchen Remodel",
     },
@@ -63,7 +63,7 @@ const areaData: Record<string, AreaData> = {
     medianHomeValue: "$210,000",
     popularServices: ["Basement Finishing", "Deck Building", "Bathroom Remodeling", "Flooring Installation"],
     testimonial: {
-      quote: "Our basement went from a dark storage area to a beautiful family room with a wet bar. The kids love it, and so do we. ABK was professional from day one.",
+      quote: "Our basement went from a dark storage area to a beautiful family room with a wet bar. The kids love it, and so do we. Pittsburgh Roofing Company was professional from day one.",
       author: "Tom & Julie R.",
       project: "Basement Finishing",
     },
@@ -73,12 +73,12 @@ const areaData: Record<string, AreaData> = {
     slug: "upper-st-clair",
     description: "Upscale residential community with high-end homes and award-winning schools.",
     longDescription:
-      "Upper St. Clair homeowners expect the best, and ABK Unlimited consistently delivers. This upscale community features spacious homes that benefit from luxury kitchen renovations, spa-inspired bathroom remodels, and custom outdoor living spaces. We use premium materials and meticulous craftsmanship to match the high standards of Upper St. Clair properties.",
+      "Upper St. Clair homeowners expect the best, and Pittsburgh Roofing Company consistently delivers. This upscale community features spacious homes that benefit from luxury kitchen renovations, spa-inspired bathroom remodels, and custom outdoor living spaces. We use premium materials and meticulous craftsmanship to match the high standards of Upper St. Clair properties.",
     population: "19,229",
     medianHomeValue: "$420,000",
     popularServices: ["Kitchen Remodeling", "Bathroom Remodeling", "Home Additions", "Custom Homes"],
     testimonial: {
-      quote: "We interviewed five contractors and chose ABK Unlimited. Best decision we made. Our master bathroom is now a true spa retreat.",
+      quote: "We interviewed five contractors and chose Pittsburgh Roofing Company. Best decision we made. Our master bathroom is now a true spa retreat.",
       author: "Dr. Karen L.",
       project: "Master Bathroom Remodel",
     },
@@ -88,12 +88,12 @@ const areaData: Record<string, AreaData> = {
     slug: "sewickley",
     description: "Historic riverfront village with character-filled homes and a vibrant downtown.",
     longDescription:
-      "Sewickley's historic charm demands a contractor who respects architectural heritage while delivering modern functionality. ABK Unlimited has extensive experience working with older homes, ensuring updates enhance rather than compromise the character that makes Sewickley properties so special. From period-appropriate kitchens to seamless additions, we blend old and new beautifully.",
+      "Sewickley's historic charm demands a contractor who respects architectural heritage while delivering modern functionality. Pittsburgh Roofing Company has extensive experience working with older homes, ensuring updates enhance rather than compromise the character that makes Sewickley properties so special. From period-appropriate kitchens to seamless additions, we blend old and new beautifully.",
     population: "3,827",
     medianHomeValue: "$385,000",
     popularServices: ["Kitchen Remodeling", "Home Additions", "Hardscaping", "Bathroom Remodeling"],
     testimonial: {
-      quote: "Updating a century-old home is tricky, but ABK nailed it. Our new addition looks like it was always part of the house. Remarkable attention to detail.",
+      quote: "Updating a century-old home is tricky, but Pittsburgh Roofing Company nailed it. Our new addition looks like it was always part of the house. Remarkable attention to detail.",
       author: "James & Linda W.",
       project: "Home Addition",
     },
@@ -103,12 +103,12 @@ const areaData: Record<string, AreaData> = {
     slug: "moon-township",
     description: "Growing western suburb near Pittsburgh International Airport.",
     longDescription:
-      "Moon Township is a rapidly growing community with a diverse mix of housing. Located near the airport, it attracts families and professionals who want quality homes without city prices. ABK Unlimited helps Moon Township homeowners add value to their properties with smart remodeling choices, from kitchen updates that boost resale value to outdoor decks that expand livable space.",
+      "Moon Township is a rapidly growing community with a diverse mix of housing. Located near the airport, it attracts families and professionals who want quality homes without city prices. Pittsburgh Roofing Company helps Moon Township homeowners add value to their properties with smart remodeling choices, from kitchen updates that boost resale value to outdoor decks that expand livable space.",
     population: "24,185",
     medianHomeValue: "$240,000",
     popularServices: ["Deck Building", "Kitchen Remodeling", "Basement Finishing", "Paving"],
     testimonial: {
-      quote: "ABK built us an amazing composite deck with built-in lighting. It's become our favorite room in the house -- even though it's outside! Highly recommend.",
+      quote: "Pittsburgh Roofing Company built us an amazing composite deck with built-in lighting. It's become our favorite room in the house -- even though it's outside! Highly recommend.",
       author: "Mike C.",
       project: "Custom Deck Build",
     },
@@ -118,12 +118,12 @@ const areaData: Record<string, AreaData> = {
     slug: "robinson",
     description: "Commercial and residential hub with convenient access throughout the west suburbs.",
     longDescription:
-      "Robinson Township sits at a crossroads of convenience, offering easy access to highways and amenities. The area features a growing mix of residential neighborhoods alongside commercial development. ABK Unlimited handles both residential remodels and light commercial construction in Robinson, bringing the same quality and professionalism to every project.",
+      "Robinson Township sits at a crossroads of convenience, offering easy access to highways and amenities. The area features a growing mix of residential neighborhoods alongside commercial development. Pittsburgh Roofing Company handles both residential remodels and light commercial construction in Robinson, bringing the same quality and professionalism to every project.",
     population: "14,416",
     medianHomeValue: "$225,000",
     popularServices: ["Kitchen Remodeling", "Bathroom Remodeling", "Flooring Installation", "Outdoor Firepits"],
     testimonial: {
-      quote: "Quick, clean, and professional. ABK installed new flooring throughout our entire first floor in just four days. Looks absolutely beautiful.",
+      quote: "Quick, clean, and professional. Pittsburgh Roofing Company installed new flooring throughout our entire first floor in just four days. Looks absolutely beautiful.",
       author: "Donna K.",
       project: "Flooring Installation",
     },
@@ -133,12 +133,12 @@ const areaData: Record<string, AreaData> = {
     slug: "cranberry-township",
     description: "Northern growth corridor with newer developments and upscale communities.",
     longDescription:
-      "Cranberry Township is one of the fastest-growing communities in the Pittsburgh region, with modern developments and upscale neighborhoods. Even newer homes benefit from ABK Unlimited's services, whether it's a custom kitchen upgrade, a finished basement for growing families, or a luxury outdoor living space. We also build custom homes in Cranberry's newest developments.",
+      "Cranberry Township is one of the fastest-growing communities in the Pittsburgh region, with modern developments and upscale neighborhoods. Even newer homes benefit from Pittsburgh Roofing Company's services, whether it's a custom kitchen upgrade, a finished basement for growing families, or a luxury outdoor living space. We also build custom homes in Cranberry's newest developments.",
     population: "32,006",
     medianHomeValue: "$360,000",
     popularServices: ["Custom Homes", "Kitchen Remodeling", "Deck Building", "Home Additions"],
     testimonial: {
-      quote: "ABK built our custom home in Cranberry from the ground up. The attention to detail and communication throughout the entire process was outstanding.",
+      quote: "Pittsburgh Roofing Company built our custom home in Cranberry from the ground up. The attention to detail and communication throughout the entire process was outstanding.",
       author: "The Patterson Family",
       project: "Custom Home Build",
     },
@@ -148,12 +148,12 @@ const areaData: Record<string, AreaData> = {
     slug: "wexford",
     description: "North Hills community with established neighborhoods and strong property values.",
     longDescription:
-      "Wexford, located in Pine and Marshall Townships, is a thriving North Hills community with well-maintained homes and strong property values. ABK Unlimited helps Wexford homeowners protect and increase their investment with high-quality remodeling work. From custom hardscaping that transforms your outdoor space to bathroom remodels that add luxury, we deliver results that last.",
+      "Wexford, located in Pine and Marshall Townships, is a thriving North Hills community with well-maintained homes and strong property values. Pittsburgh Roofing Company helps Wexford homeowners protect and increase their investment with high-quality remodeling work. From custom hardscaping that transforms your outdoor space to bathroom remodels that add luxury, we deliver results that last.",
     population: "10,753",
     medianHomeValue: "$340,000",
     popularServices: ["Bathroom Remodeling", "Hardscaping", "Basement Finishing", "Kitchen Remodeling"],
     testimonial: {
-      quote: "After getting multiple quotes, ABK was the most thorough and reasonably priced. Our new patio and firepit area looks fantastic and they cleaned up perfectly when done.",
+      quote: "After getting multiple quotes, Pittsburgh Roofing Company was the most thorough and reasonably priced. Our new patio and firepit area looks fantastic and they cleaned up perfectly when done.",
       author: "Greg S.",
       project: "Hardscaping & Firepit",
     },
@@ -196,12 +196,12 @@ export async function generateMetadata({
   if (!area) return {}
 
   return {
-    title: `${area.name} Home Remodeling | ABK Unlimited Pittsburgh`,
-    description: `Professional home remodeling in ${area.name}, PA. Kitchen, bathroom, basement, deck, and more. Licensed & insured. Free estimates from ABK Unlimited.`,
+    title: `${area.name} Home Remodeling | Pittsburgh Roofing Company Pittsburgh`,
+    description: `Professional home remodeling in ${area.name}, PA. Kitchen, bathroom, basement, deck, and more. Licensed & insured. Free estimates from Pittsburgh Roofing Company.`,
     openGraph: {
-      title: `${area.name} Home Remodeling | ABK Unlimited`,
+      title: `${area.name} Home Remodeling | Pittsburgh Roofing Company`,
       description: `Trusted contractor serving ${area.name} homeowners. ${area.description}`,
-      url: `https://abkunlimited.com/service-areas/${slug}`,
+      url: `https://pittsburghroofingcompany.com/service-areas/${slug}`,
     },
   }
 }

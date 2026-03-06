@@ -15,7 +15,7 @@ import type { CustomerRow } from "@/config/sheets-schema";
 
 const CRM_API_BASE = "https://services.leadconnectorhq.com";
 const CRM_VERSION = "2021-07-28";
-const ABK_LOCATION_ID = process.env.CRM_LOCATION_ID || "497AdD39erWgmOu8JTCw";
+const PRC_LOCATION_ID = process.env.CRM_LOCATION_ID || "497AdD39erWgmOu8JTCw";
 
 interface SyncResult {
   success: boolean;
@@ -255,7 +255,7 @@ export async function syncFromCRM(): Promise<SyncResult> {
 
     while (hasMore) {
       const params = new URLSearchParams({
-        locationId: ABK_LOCATION_ID,
+        locationId: PRC_LOCATION_ID,
         limit: "100",
         page: String(page),
       });
@@ -354,7 +354,7 @@ export async function handleCRMWebhook(payload: {
   locationId: string;
   [key: string]: unknown;
 }): Promise<void> {
-  if (payload.locationId !== ABK_LOCATION_ID) return;
+  if (payload.locationId !== PRC_LOCATION_ID) return;
 
   const apiKey = process.env.CRM_API_KEY;
   if (!apiKey) return;

@@ -17,7 +17,7 @@ export function AttributionTracker() {
 
   useEffect(() => {
     // Only capture on first visit (don't overwrite existing attribution)
-    const existing = sessionStorage.getItem("abk_attribution");
+    const existing = sessionStorage.getItem("prc_attribution");
     if (existing) return;
 
     const attribution: Record<string, string> = {};
@@ -68,7 +68,7 @@ export function AttributionTracker() {
     // Generate session ID
     attribution.session_id = `s_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
 
-    sessionStorage.setItem("abk_attribution", JSON.stringify(attribution));
+    sessionStorage.setItem("prc_attribution", JSON.stringify(attribution));
   }, [pathname, searchParams]);
 
   return null;
@@ -80,7 +80,7 @@ export function AttributionTracker() {
 export function getAttribution(): Record<string, string> {
   if (typeof window === "undefined") return {};
   try {
-    const stored = sessionStorage.getItem("abk_attribution");
+    const stored = sessionStorage.getItem("prc_attribution");
     return stored ? JSON.parse(stored) : {};
   } catch {
     return {};
@@ -93,10 +93,10 @@ export function getAttribution(): Record<string, string> {
 export function setConversionPage(page: string): void {
   if (typeof window === "undefined") return;
   try {
-    const stored = sessionStorage.getItem("abk_attribution");
+    const stored = sessionStorage.getItem("prc_attribution");
     const data = stored ? JSON.parse(stored) : {};
     data.conversion_page = page;
-    sessionStorage.setItem("abk_attribution", JSON.stringify(data));
+    sessionStorage.setItem("prc_attribution", JSON.stringify(data));
   } catch {
     // ignore
   }

@@ -1,5 +1,5 @@
 /**
- * ABK Unlimited — Email Sequence Engine
+ * Pittsburgh Roofing Company — Email Sequence Engine
  *
  * Manages automated drip campaigns after form submissions.
  * Tracks state in Google Sheets `email_sequences` tab.
@@ -71,7 +71,7 @@ async function sendViaCRM(contactId: string, subject: string, html: string): Pro
         contactId,
         subject,
         html,
-        emailFrom: process.env.CRM_FROM_EMAIL || 'info@abkunlimited.com',
+        emailFrom: process.env.CRM_FROM_EMAIL || 'info@pittsburghroofingcompany.com',
       }),
     })
 
@@ -91,9 +91,9 @@ async function sendViaGmail(to: string, subject: string, html: string): Promise<
     const gmail = getGmailClient()
     if (!gmail) return false
 
-    const fromEmail = process.env.GOOGLE_IMPERSONATE_EMAIL || 'brian@abkunlimited.com'
+    const fromEmail = process.env.GOOGLE_IMPERSONATE_EMAIL || 'brian@pittsburghroofingcompany.com'
     const raw = Buffer.from(
-      `From: ABK Unlimited <${fromEmail}>\r\n` +
+      `From: Pittsburgh Roofing Company <${fromEmail}>\r\n` +
       `To: ${to}\r\n` +
       `Subject: ${subject}\r\n` +
       `MIME-Version: 1.0\r\n` +
@@ -121,8 +121,8 @@ async function sendViaGmail(to: string, subject: string, html: string): Promise<
 
 async function sendViaSendGrid(to: string, subject: string, html: string): Promise<boolean> {
   const apiKey = process.env.SENDGRID_API_KEY
-  const fromEmail = process.env.SENDGRID_FROM_EMAIL || 'info@abkunlimited.com'
-  const fromName = process.env.SENDGRID_FROM_NAME || 'ABK Unlimited'
+  const fromEmail = process.env.SENDGRID_FROM_EMAIL || 'info@pittsburghroofingcompany.com'
+  const fromName = process.env.SENDGRID_FROM_NAME || 'Pittsburgh Roofing Company'
 
   if (!apiKey) return false
 

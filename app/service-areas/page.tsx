@@ -14,14 +14,14 @@ import {
 } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "Service Areas | ABK Unlimited Pittsburgh General Contractor",
+  title: "Service Areas | Pittsburgh Roofing Company Pittsburgh General Contractor",
   description:
-    "ABK Unlimited serves Greater Pittsburgh including Mt. Lebanon, Bethel Park, Upper St. Clair, Sewickley, Moon Township, Robinson, Cranberry Township, and Wexford. Free estimates.",
+    "Pittsburgh Roofing Company serves Greater Pittsburgh including Mt. Lebanon, Bethel Park, Upper St. Clair, Sewickley, Moon Township, Robinson, Cranberry Township, and Wexford. Free estimates.",
   openGraph: {
-    title: "Service Areas | ABK Unlimited Pittsburgh",
+    title: "Service Areas | Pittsburgh Roofing Company Pittsburgh",
     description:
       "Serving Pittsburgh's finest communities with award-winning home remodeling. Find your area.",
-    url: "https://abkunlimited.com/service-areas",
+    url: "https://pittsburghroofingcompany.com/service-areas",
   },
 }
 
@@ -101,7 +101,7 @@ export default function ServiceAreasPage() {
                 Areas We Serve
               </h1>
               <p className="text-xl text-secondary-foreground/80 mb-4">
-                ABK Unlimited proudly serves homeowners across Greater Pittsburgh. From the South Hills
+                Pittsburgh Roofing Company proudly serves homeowners across Greater Pittsburgh. From the South Hills
                 to the North Hills, we bring award-winning craftsmanship to your neighborhood.
               </p>
               <div className="flex items-center justify-center gap-6 text-secondary-foreground/70 text-sm mt-8">

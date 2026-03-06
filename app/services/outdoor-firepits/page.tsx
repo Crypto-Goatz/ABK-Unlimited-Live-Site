@@ -15,14 +15,14 @@ import {
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Outdoor Firepits Pittsburgh | ABK Unlimited Custom Fire Features",
+  title: "Outdoor Firepits Pittsburgh | Pittsburgh Roofing Company Custom Fire Features",
   description:
     "Custom outdoor firepits & fireplaces in Pittsburgh. Stone fire circles, gas fire features, built-in seating walls & complete patio packages. Licensed contractor. Free estimates. Call (412) 944-1683.",
   openGraph: {
-    title: "Outdoor Firepits & Fire Features | ABK Unlimited Pittsburgh",
+    title: "Outdoor Firepits & Fire Features | Pittsburgh Roofing Company Pittsburgh",
     description:
       "Create the ultimate gathering spot with a custom-built firepit. Stone, gas, and wood-burning options with built-in seating designed for Pittsburgh living.",
-    url: "https://abkunlimited.com/services/outdoor-firepits",
+    url: "https://pittsburghroofingcompany.com/services/outdoor-firepits",
     type: "website",
   },
 }

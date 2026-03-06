@@ -125,7 +125,7 @@ export default function AdminDashboardPage() {
           <div className="relative">
             <div className="flex items-center gap-2 mb-3">
               <Zap className="w-5 h-5 text-[#4ade80]" />
-              <span className="text-xs font-semibold tracking-widest uppercase text-[#4ade80]">ABK Unlimited Admin</span>
+              <span className="text-xs font-semibold tracking-widest uppercase text-[#4ade80]">Pittsburgh Roofing Company Admin</span>
             </div>
             <h1 className="text-2xl font-bold mb-2">Welcome to Your Command Center</h1>
             <p className="text-white/60 max-w-lg">

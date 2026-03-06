@@ -164,7 +164,7 @@ export function CustomerDatabase() {
               const url = URL.createObjectURL(blob);
               const a = document.createElement("a");
               a.href = url;
-              a.download = `abk-customers-${new Date().toISOString().split("T")[0]}.csv`;
+              a.download = `prc-customers-${new Date().toISOString().split("T")[0]}.csv`;
               a.click();
             }}
             className="flex items-center gap-1.5 px-3 py-2 text-sm font-medium border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"

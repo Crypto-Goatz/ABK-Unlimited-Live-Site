@@ -18,7 +18,7 @@ import {
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Basement Finishing Pittsburgh | ABK Unlimited General Contractor",
+  title: "Basement Finishing Pittsburgh | Pittsburgh Roofing Company General Contractor",
   description:
     "Transform your unfinished basement into beautiful living space. Entertainment rooms, home offices, wet bars & guest suites. Licensed Pittsburgh contractor. Free estimates. Call (412) 944-1683.",
 }
@@ -205,7 +205,7 @@ export default function BasementFinishingPage() {
                 Basement Transformations
               </h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                See what&apos;s possible when you finish your basement with ABK
+                See what&apos;s possible when you finish your basement with Pittsburgh Roofing Company
                 Unlimited.
               </p>
             </div>

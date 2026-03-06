@@ -36,10 +36,10 @@ export default function SEOEnginePage() {
   const [items, setItems] = useState<StrategyItem[]>([
     {
       id: 1,
-      targetUrl: "https://abkunlimited.com",
+      targetUrl: "https://pittsburghroofingcompany.com",
       keywords: "Pittsburgh contractor, hardscaping, paving, outdoor firepits",
       questions:
-        "What services does ABK Unlimited offer?\nHow much does hardscaping cost in Pittsburgh?",
+        "What services does Pittsburgh Roofing Company offer?\nHow much does hardscaping cost in Pittsburgh?",
     },
   ]);
 
@@ -104,7 +104,7 @@ export default function SEOEnginePage() {
           targetUrl: item.targetUrl,
           keywords,
           questions,
-          companyName: "ABK Unlimited",
+          companyName: "Pittsburgh Roofing Company",
         }),
       });
 
@@ -132,7 +132,7 @@ export default function SEOEnginePage() {
         body: JSON.stringify({
           period: analyzePeriod,
           autoGenerate,
-          companyName: "ABK Unlimited",
+          companyName: "Pittsburgh Roofing Company",
         }),
       });
       const data = await res.json();
@@ -293,7 +293,7 @@ export default function SEOEnginePage() {
                       onChange={(e) =>
                         updateItem(item.id, "targetUrl", e.target.value)
                       }
-                      placeholder="https://abkunlimited.com/services/hardscaping"
+                      placeholder="https://pittsburghroofingcompany.com/services/hardscaping"
                       className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-[#14664f]/20 focus:border-[#14664f]"
                     />
                   </div>

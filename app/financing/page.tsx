@@ -20,14 +20,14 @@ import {
 } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "Financing Options | ABK Unlimited Pittsburgh",
+  title: "Financing Options | Pittsburgh Roofing Company Pittsburgh",
   description:
     "Flexible financing options for your Pittsburgh home remodeling project. 0% APR available, low monthly payments from $199/mo, and terms from 3-15 years. No money down. Apply today.",
   openGraph: {
-    title: "Financing Options | ABK Unlimited Pittsburgh",
+    title: "Financing Options | Pittsburgh Roofing Company Pittsburgh",
     description:
       "Make your dream remodel affordable with our flexible financing. 0% APR for 12 months, payments from $199/mo.",
-    url: "https://abkunlimited.com/financing",
+    url: "https://pittsburghroofingcompany.com/financing",
   },
 }
 
@@ -252,7 +252,7 @@ export default function FinancingPage() {
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-3xl font-bold text-foreground sm:text-4xl mb-4">
-                Why Finance With ABK?
+                Why Finance With Us?
               </h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                 We make financing simple, transparent, and hassle-free.

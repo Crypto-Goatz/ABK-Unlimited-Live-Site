@@ -16,14 +16,14 @@ import {
 } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "Reviews & Testimonials | ABK Unlimited Pittsburgh Contractor",
+  title: "Reviews & Testimonials | Pittsburgh Roofing Company Pittsburgh Contractor",
   description:
-    "Read verified reviews from ABK Unlimited clients. 5.0 stars on Google, 5.0 on Houzz, A+ BBB rating. See why Pittsburgh homeowners trust us with their remodeling projects.",
+    "Read verified reviews from Pittsburgh Roofing Company clients. 5.0 stars on Google, 5.0 on Houzz, A+ BBB rating. See why Pittsburgh homeowners trust us with their remodeling projects.",
   openGraph: {
-    title: "Reviews & Testimonials | ABK Unlimited",
+    title: "Reviews & Testimonials | Pittsburgh Roofing Company",
     description:
       "5-star rated Pittsburgh contractor. Read verified reviews from real homeowners. 200+ reviews across Google, Houzz, and BBB.",
-    url: "https://abkunlimited.com/testimonials",
+    url: "https://pittsburghroofingcompany.com/testimonials",
     type: "website",
   },
 }
@@ -62,7 +62,7 @@ const stats = [
 const reviewPlatforms = [
   {
     name: "Google Reviews",
-    url: "https://www.google.com/search?q=ABK+Unlimited+Pittsburgh+reviews",
+    url: "https://www.google.com/search?q=Pittsburgh+Roofing+Company+reviews",
     description: "Read our Google reviews and leave your own",
     rating: "5.0",
     reviewCount: "200+",
@@ -94,7 +94,7 @@ export default function TestimonialsPage() {
               </h1>
               <p className="text-xl text-white/80 leading-relaxed mb-8">
                 Don&apos;t just take our word for it. Read verified reviews from
-                real Pittsburgh homeowners who trusted ABK Unlimited with their
+                real Pittsburgh homeowners who trusted Pittsburgh Roofing Company with their
                 projects.
               </p>
 
@@ -161,7 +161,7 @@ export default function TestimonialsPage() {
                 frameBorder={0}
                 scrolling="no"
                 style={{ minWidth: "100%", width: "100%" }}
-                title="ABK Unlimited Customer Reviews"
+                title="Pittsburgh Roofing Company Customer Reviews"
               />
             </div>
             <Script
@@ -249,7 +249,7 @@ export default function TestimonialsPage() {
               Ready to Join Our Happy Clients?
             </h2>
             <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Experience the ABK Unlimited difference. Get a free, no-obligation
+              Experience the Pittsburgh Roofing Company difference. Get a free, no-obligation
               estimate for your project today.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

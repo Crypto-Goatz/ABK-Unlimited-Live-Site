@@ -1,5 +1,5 @@
 /**
- * Lead Intelligence Skill - ABK Unlimited Configuration
+ * Lead Intelligence Skill - Pittsburgh Roofing Company Configuration
  *
  * This configuration file defines the business-specific settings for the
  * Lead Intelligence Skill. To use this skill for another business:
@@ -16,17 +16,17 @@ export const config: LeadIntelligenceConfig = {
   // ============================================================================
   // SKILL METADATA
   // ============================================================================
-  skillId: 'lead-intelligence-abk',
+  skillId: 'lead-intelligence-prc',
   skillVersion: '1.0.0',
 
   // ============================================================================
   // BUSINESS CONFIGURATION
   // ============================================================================
   business: {
-    name: 'ABK Unlimited',
+    name: 'Pittsburgh Roofing Company',
     phone: '(412) 944-1683',
-    email: 'abk.unlimited@gmail.com',
-    website: 'https://abkunlimited.com',
+    email: 'info@pittsburghroofingcompany.com',
+    website: 'https://pittsburghroofingcompany.com',
     address: {
       street: '138 Balver Ave',
       city: 'Pittsburgh',

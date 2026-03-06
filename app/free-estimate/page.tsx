@@ -81,21 +81,21 @@ const testimonials = [
     name: "Sarah M.",
     location: "Mt. Lebanon",
     image: "/woman-homeowner-portrait.jpg",
-    quote: "ABK transformed our outdated kitchen into a showpiece. The attention to detail was incredible, and they finished ahead of schedule!",
+    quote: "Pittsburgh Roofing Company transformed our outdated kitchen into a showpiece. The attention to detail was incredible, and they finished ahead of schedule!",
     project: "Kitchen Remodel",
   },
   {
     name: "David & Sarah K.",
     location: "Moon Township",
     image: "/couple-homeowners-portrait.jpg",
-    quote: "After getting burned by another contractor, ABK was completely different — transparent pricing, regular updates, and the result exceeded our expectations.",
+    quote: "After getting burned by another contractor, Pittsburgh Roofing Company was completely different — transparent pricing, regular updates, and the result exceeded our expectations.",
     project: "Basement Finishing",
   },
   {
     name: "Greg S.",
     location: "Wexford",
     image: "/man-homeowner-portrait.jpg",
-    quote: "After getting multiple quotes, ABK was the most thorough and reasonably priced. Our patio and firepit look fantastic and they cleaned up perfectly.",
+    quote: "After getting multiple quotes, Pittsburgh Roofing Company was the most thorough and reasonably priced. Our patio and firepit look fantastic and they cleaned up perfectly.",
     project: "Hardscaping & Firepit",
   },
 ]
@@ -115,7 +115,7 @@ const faqs = [
   },
   {
     q: "Are you licensed and insured?",
-    a: "Absolutely. ABK Unlimited is fully licensed, insured, and bonded in the state of Pennsylvania. We carry comprehensive liability and workers' compensation insurance.",
+    a: "Absolutely. Pittsburgh Roofing Company is fully licensed, insured, and bonded in the state of Pennsylvania. We carry comprehensive liability and workers' compensation insurance.",
   },
   {
     q: "Can I get an estimate for multiple projects?",
@@ -148,7 +148,7 @@ export default function FreeEstimatePage() {
           <div className="absolute inset-0">
             <Image
               src="/before-and-after-kitchen-remodel-white-cabinets-qu.jpg"
-              alt="Kitchen transformation by ABK Unlimited"
+              alt="Kitchen transformation by Pittsburgh Roofing Company"
               fill
               className="object-cover"
               priority
@@ -237,7 +237,7 @@ export default function FreeEstimatePage() {
                     <div className="relative aspect-[4/3] rounded-xl overflow-hidden">
                       <Image
                         src="/modern-white-kitchen-remodel-quartz-countertops.jpg"
-                        alt="Kitchen after renovation by ABK"
+                        alt="Kitchen after renovation by Pittsburgh Roofing Company"
                         fill
                         className="object-cover"
                       />
@@ -374,7 +374,7 @@ export default function FreeEstimatePage() {
                     <span className="text-sm font-medium text-foreground">5.0</span>
                   </div>
                   <blockquote className="text-sm text-muted-foreground italic leading-relaxed mb-4">
-                    &quot;ABK transformed our outdated kitchen into a showpiece. The attention to detail was incredible, and they finished ahead of schedule!&quot;
+                    &quot;Pittsburgh Roofing Company transformed our outdated kitchen into a showpiece. The attention to detail was incredible, and they finished ahead of schedule!&quot;
                   </blockquote>
                   <div className="flex items-center gap-3">
                     <Image
@@ -461,7 +461,7 @@ export default function FreeEstimatePage() {
                 Trusted by Pittsburgh Homeowners
               </h2>
               <p className="text-muted-foreground text-lg">
-                See why hundreds of homeowners choose ABK Unlimited for their projects.
+                See why hundreds of homeowners choose Pittsburgh Roofing Company for their projects.
               </p>
             </div>
             <div className="grid md:grid-cols-3 gap-8">
@@ -507,7 +507,7 @@ export default function FreeEstimatePage() {
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-3">
-                See the ABK Difference
+                See the Difference
               </h2>
               <p className="text-muted-foreground text-lg">
                 Real transformations from Pittsburgh homeowners just like you.
@@ -609,7 +609,7 @@ export default function FreeEstimatePage() {
           <div className="absolute inset-0">
             <Image
               src="/professional-contractor-team-portrait-in-front-of-.jpg"
-              alt="ABK Unlimited team"
+              alt="Pittsburgh Roofing Company team"
               fill
               className="object-cover"
             />
@@ -620,7 +620,7 @@ export default function FreeEstimatePage() {
               Ready to Transform Your Home?
             </h2>
             <p className="text-xl text-white/80 mb-8 max-w-2xl mx-auto">
-              Join hundreds of Pittsburgh homeowners who trusted ABK Unlimited to bring their vision to life.
+              Join hundreds of Pittsburgh homeowners who trusted Pittsburgh Roofing Company to bring their vision to life.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button

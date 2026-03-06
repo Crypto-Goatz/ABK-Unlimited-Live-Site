@@ -61,8 +61,8 @@ function UnsubscribeContent() {
       <h1 className="text-2xl font-bold text-foreground mb-3">Something went wrong</h1>
       <p className="text-muted-foreground mb-6">
         Please contact us directly at{" "}
-        <a href="mailto:info@abkunlimited.com" className="text-primary font-medium">
-          info@abkunlimited.com
+        <a href="mailto:info@pittsburghroofingcompany.com" className="text-primary font-medium">
+          info@pittsburghroofingcompany.com
         </a>{" "}
         to be removed from our mailing list.
       </p>

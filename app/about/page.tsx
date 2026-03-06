@@ -19,14 +19,14 @@ import {
 } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "About ABK Unlimited | Pittsburgh General Contractor | Licensed & Insured",
+  title: "About Pittsburgh Roofing Company | Pittsburgh General Contractor | Licensed & Insured",
   description:
-    "ABK Unlimited is a family-owned general contracting company serving Greater Pittsburgh. PA Licensed (HIC #PA163301), BBB A+ Rated, and Best of Houzz 2025 winner. Kitchen, bathroom, basement, and whole-home remodeling.",
+    "Pittsburgh Roofing Company is a family-owned general contracting company serving Greater Pittsburgh. PA Licensed (HIC #PA163301), BBB A+ Rated, and Best of Houzz 2025 winner. Kitchen, bathroom, basement, and whole-home remodeling.",
   openGraph: {
-    title: "About ABK Unlimited | Pittsburgh General Contractor",
+    title: "About Pittsburgh Roofing Company | Pittsburgh General Contractor",
     description:
       "Family-owned Pittsburgh contractor. PA Licensed, BBB A+ Rated, Best of Houzz 2025. Kitchen remodeling, bathroom renovations, basement finishing, decks, and more.",
-    url: "https://abkunlimited.com/about",
+    url: "https://pittsburghroofingcompany.com/about",
     type: "website",
   },
 }
@@ -54,16 +54,16 @@ const coreValues = [
     icon: Clock,
     title: "Reliability",
     description:
-      "On-time, on-budget, every time. We show up when we say we will and finish when we promise. That's the ABK guarantee.",
+      "On-time, on-budget, every time. We show up when we say we will and finish when we promise. That's our guarantee.",
   },
 ]
 
 const milestones = [
   {
     year: "2020",
-    title: "ABK Unlimited Founded",
+    title: "Pittsburgh Roofing Company Founded",
     description:
-      "ABK Unlimited launches in Pittsburgh with a clear mission: deliver honest, high-quality home remodeling to Western PA families. Licensed and insured from day one.",
+      "Pittsburgh Roofing Company launches in Pittsburgh with a clear mission: deliver honest, high-quality home remodeling to Western PA families. Licensed and insured from day one.",
   },
   {
     year: "2021",
@@ -150,7 +150,7 @@ export default function AboutPage() {
                 </h2>
                 <div className="space-y-4 text-muted-foreground leading-relaxed">
                   <p>
-                    ABK Unlimited was founded in{" "}
+                    Pittsburgh Roofing Company was founded in{" "}
                     <strong className="text-foreground">2020</strong> right here
                     in Pittsburgh, PA. What started as a small, hands-on contracting
                     operation quickly grew through word-of-mouth referrals and a
@@ -168,7 +168,7 @@ export default function AboutPage() {
                     </strong>.
                   </p>
                   <p>
-                    Today, ABK Unlimited serves over 50 communities across
+                    Today, Pittsburgh Roofing Company serves over 50 communities across
                     Greater Pittsburgh with a full range of residential and
                     commercial remodeling services. From kitchens and bathrooms
                     to whole-home additions and commercial buildouts, we bring
@@ -181,7 +181,7 @@ export default function AboutPage() {
                 <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-2xl">
                   <Image
                     src="/professional-contractor-team-portrait-in-front-of-.jpg"
-                    alt="ABK Unlimited team on a job site in Pittsburgh"
+                    alt="Pittsburgh Roofing Company team on a job site in Pittsburgh"
                     fill
                     className="object-cover"
                   />

@@ -33,7 +33,7 @@ export function ServiceAreas() {
               Proudly Serving Greater Pittsburgh
             </h2>
             <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
-              ABK Unlimited is honored to serve homeowners throughout Allegheny County and surrounding areas. Our team
+              Pittsburgh Roofing Company is honored to serve homeowners throughout Allegheny County and surrounding areas. Our team
               travels across the region to deliver the same exceptional quality to every neighborhood.
             </p>
 
@@ -79,7 +79,7 @@ export function ServiceAreas() {
             <div className="aspect-square rounded-2xl overflow-hidden shadow-xl border border-border">
               <Image
                 src="/pittsburgh-pennsylvania-area-map-with-neighborhood.jpg"
-                alt="ABK Unlimited service area map covering Greater Pittsburgh PA"
+                alt="Pittsburgh Roofing Company service area map covering Greater Pittsburgh PA"
                 fill
                 className="object-cover"
               />

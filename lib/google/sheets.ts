@@ -1,6 +1,6 @@
 import { getSheetsClient } from "./auth";
 import { SHEETS_SCHEMA, type SheetName } from "@/config/sheets-schema";
-import { LOCAL_DATA } from "@/data/abk-content";
+import { LOCAL_DATA } from "@/data/site-content";
 
 const SPREADSHEET_ID = process.env.GOOGLE_SHEETS_ID;
 

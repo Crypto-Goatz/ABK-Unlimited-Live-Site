@@ -15,7 +15,7 @@ import {
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Deck Building Pittsburgh | ABK Unlimited General Contractor",
+  title: "Deck Building Pittsburgh | Pittsburgh Roofing Company General Contractor",
   description:
     "Custom deck building in Pittsburgh. Composite Trex & TimberTech, premium wood, multi-level designs, pergolas & railings. Licensed contractor. Free estimates. Call (412) 944-1683.",
 }

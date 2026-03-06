@@ -24,14 +24,14 @@ import {
 } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "Home Remodeling Services | ABK Unlimited Pittsburgh",
+  title: "Home Remodeling Services | Pittsburgh Roofing Company Pittsburgh",
   description:
     "Full-service home remodeling in Pittsburgh. Kitchen, bathroom, basement, flooring, decks, home additions, hardscaping, paving, and custom homes. Licensed & insured. Free estimates.",
   openGraph: {
-    title: "Home Remodeling Services | ABK Unlimited Pittsburgh",
+    title: "Home Remodeling Services | Pittsburgh Roofing Company Pittsburgh",
     description:
       "Complete indoor and outdoor remodeling from Pittsburgh's trusted general contractor. Quality craftsmanship guaranteed.",
-    url: "https://abkunlimited.com/remodelling",
+    url: "https://pittsburghroofingcompany.com/remodelling",
   },
 }
 
@@ -137,7 +137,7 @@ const faqs = [
   {
     question: "Do I need permits for my remodeling project?",
     answer:
-      "Most structural changes, electrical work, plumbing modifications, and additions require permits in Allegheny County. ABK Unlimited handles all permit applications and inspections as part of our service.",
+      "Most structural changes, electrical work, plumbing modifications, and additions require permits in Allegheny County. Pittsburgh Roofing Company handles all permit applications and inspections as part of our service.",
   },
   {
     question: "Can I live in my home during a remodel?",
@@ -173,12 +173,12 @@ export default function RemodellingPage() {
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "HomeAndConstructionBusiness",
-              name: "ABK Unlimited",
+              name: "Pittsburgh Roofing Company",
               description:
                 "Full-service home remodeling contractor in Pittsburgh, PA. Kitchen, bathroom, basement, decks, additions, hardscaping, paving, and custom homes.",
-              url: "https://abkunlimited.com/remodelling",
+              url: "https://pittsburghroofingcompany.com/remodelling",
               telephone: "+1-412-944-1683",
-              email: "info@abkunlimited.com",
+              email: "info@pittsburghroofingcompany.com",
               address: {
                 "@type": "PostalAddress",
                 streetAddress: "138 Balver Ave",
@@ -228,7 +228,7 @@ export default function RemodellingPage() {
           <div className="absolute inset-0 z-0">
             <Image
               src="/modern-kitchen-remodel.png"
-              alt="Pittsburgh home remodeling by ABK Unlimited"
+              alt="Pittsburgh home remodeling by Pittsburgh Roofing Company"
               fill
               className="object-cover opacity-20"
             />
@@ -242,7 +242,7 @@ export default function RemodellingPage() {
                 Pittsburgh Home Remodeling Experts
               </h1>
               <p className="text-xl text-secondary-foreground/80 mb-8">
-                From kitchen transformations to custom home builds, ABK Unlimited delivers
+                From kitchen transformations to custom home builds, Pittsburgh Roofing Company delivers
                 award-winning craftsmanship for every room and every budget.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -359,12 +359,12 @@ export default function RemodellingPage() {
           </div>
         </section>
 
-        {/* Why Choose ABK */}
+        {/* Why Choose Us */}
         <section className="py-20">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-3xl font-bold text-foreground sm:text-4xl mb-4">
-                Why Choose ABK Unlimited?
+                Why Choose Pittsburgh Roofing Company?
               </h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                 Pittsburgh homeowners trust us for quality, transparency, and results.
@@ -421,7 +421,7 @@ export default function RemodellingPage() {
               Start Your Remodel Today
             </h2>
             <p className="text-lg text-primary-foreground/80 mb-8 max-w-2xl mx-auto">
-              Whether it&apos;s a single room or a whole-home transformation, ABK Unlimited delivers
+              Whether it&apos;s a single room or a whole-home transformation, Pittsburgh Roofing Company delivers
               the quality and service Pittsburgh homeowners deserve.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

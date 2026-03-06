@@ -202,7 +202,7 @@ export default function LeadGate({ onSubmit, isSubmitting }: LeadGateProps) {
             </button>
 
             <p className="text-xs text-center text-muted-foreground mt-4">
-              By continuing, you agree to receive communications from ABK Unlimited.
+              By continuing, you agree to receive communications from Pittsburgh Roofing Company.
               Your information is secure and will never be shared.
             </p>
           </form>

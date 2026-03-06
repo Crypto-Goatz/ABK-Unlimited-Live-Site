@@ -37,8 +37,8 @@ export function Footer() {
           <div className="lg:col-span-2">
             <div className="mb-6">
               <Image
-                src="/abk-logo.png"
-                alt="ABK Unlimited"
+                src="/logo.svg"
+                alt="Pittsburgh Roofing Company"
                 width={200}
                 height={54}
                 className="h-12 w-auto"
@@ -61,13 +61,13 @@ export function Footer() {
                 <span className="font-medium">(412) 944-1683</span>
               </a>
               <a
-                href="mailto:abk.unlimited@gmail.com"
+                href="mailto:info@pittsburghroofingcompany.com"
                 className="flex items-center gap-3 text-secondary-foreground/80 hover:text-secondary-foreground transition-colors"
               >
                 <div className="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center">
                   <Mail className="h-4 w-4 text-primary" />
                 </div>
-                <span>abk.unlimited@gmail.com</span>
+                <span>info@pittsburghroofingcompany.com</span>
               </a>
               <div className="flex items-center gap-3 text-secondary-foreground/80">
                 <div className="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center">
@@ -126,7 +126,7 @@ export function Footer() {
         <div className="mt-16 pt-8 border-t border-secondary-foreground/10">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <p className="text-sm text-secondary-foreground/60">
-              &copy; {new Date().getFullYear()} ABK Unlimited. All rights reserved.
+              &copy; {new Date().getFullYear()} Pittsburgh Roofing Company. All rights reserved.
             </p>
             <div className="flex flex-wrap items-center gap-4 text-sm text-secondary-foreground/60">
               <span>PA HIC #PA163301</span>

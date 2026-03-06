@@ -38,10 +38,10 @@ const blogPosts: Record<string, BlogPostData> = {
       "From smart appliances to natural stone finishes, discover the top kitchen design trends that Pittsburgh homeowners are embracing this year.",
     image: "/modern-white-kitchen-renovation-with-island-and-pe.jpg",
     category: "Kitchen",
-    author: "ABK Unlimited Team",
-    authorImage: "/abk-logo.png",
+    author: "Pittsburgh Roofing Company Team",
+    authorImage: "/logo.svg",
     authorBio:
-      "The ABK Unlimited team is experienced in home remodeling across Greater Pittsburgh.",
+      "The Pittsburgh Roofing Company team is experienced in home remodeling across Greater Pittsburgh.",
     date: "January 15, 2025",
     readTime: "8 min read",
     content: `The kitchen remains the heart of the home, and 2025 is bringing exciting new trends that blend style with functionality. As Pittsburgh's trusted remodeling contractor, we're seeing these trends dominate our project requests this year.
@@ -68,7 +68,7 @@ Integrated panel-ready appliances are in high demand. Dishwashers, refrigerators
 
 ## Planning Your Kitchen Remodel
 
-If you're considering a kitchen remodel in 2025, the most important step is working with an experienced contractor who understands both design trends and the practical realities of construction. At ABK Unlimited, we guide you through material selection, layout optimization, and every detail from demo to final walkthrough.
+If you're considering a kitchen remodel in 2025, the most important step is working with an experienced contractor who understands both design trends and the practical realities of construction. At Pittsburgh Roofing Company, we guide you through material selection, layout optimization, and every detail from demo to final walkthrough.
 
 Ready to start planning? Contact us for a free estimate and let's bring your dream kitchen to life.`,
   },
@@ -79,10 +79,10 @@ Ready to start planning? Contact us for a free estimate and let's bring your dre
       "Not all bathroom upgrades are created equal. Learn which renovations deliver the highest return on investment and which are purely for enjoyment.",
     image: "/luxury-master-bathroom-with-walk-in-shower-and-fre.jpg",
     category: "Bathroom",
-    author: "ABK Unlimited Team",
-    authorImage: "/abk-logo.png",
+    author: "Pittsburgh Roofing Company Team",
+    authorImage: "/logo.svg",
     authorBio:
-      "The ABK Unlimited team is experienced in home remodeling across Greater Pittsburgh.",
+      "The Pittsburgh Roofing Company team is experienced in home remodeling across Greater Pittsburgh.",
     date: "January 8, 2025",
     readTime: "6 min read",
     content: `When it comes to home renovations, bathroom remodels consistently rank among the highest-ROI projects you can undertake. But not every upgrade delivers the same return. Here's our data-driven breakdown.
@@ -111,7 +111,7 @@ According to the latest Remodeling Magazine Cost vs. Value report, a midrange ba
 
 Focus your budget on the elements buyers see first: the vanity, the shower, and the flooring. These three upgrades deliver the most visual impact and the highest return. Then, if budget allows, add luxury touches that improve your daily life.
 
-Contact ABK Unlimited for a free bathroom remodel consultation. We'll help you prioritize upgrades that maximize both enjoyment and value.`,
+Contact Pittsburgh Roofing Company for a free bathroom remodel consultation. We'll help you prioritize upgrades that maximize both enjoyment and value.`,
   },
   "basement-finishing-guide": {
     slug: "basement-finishing-guide",
@@ -120,10 +120,10 @@ Contact ABK Unlimited for a free bathroom remodel consultation. We'll help you p
       "Everything you need to know about transforming your Pittsburgh basement into usable living space, from moisture control to design ideas.",
     image: "/finished-basement-living-space.jpg",
     category: "Basement",
-    author: "ABK Unlimited Team",
-    authorImage: "/abk-logo.png",
+    author: "Pittsburgh Roofing Company Team",
+    authorImage: "/logo.svg",
     authorBio:
-      "The ABK Unlimited team is experienced in home remodeling across Greater Pittsburgh.",
+      "The Pittsburgh Roofing Company team is experienced in home remodeling across Greater Pittsburgh.",
     date: "December 20, 2024",
     readTime: "10 min read",
     content: `Pittsburgh basements present unique challenges and incredible opportunities. With the right approach, your unfinished basement can become the most popular room in your home. Here's everything you need to know.
@@ -164,7 +164,7 @@ Avoid: traditional hardwood and carpet as primary flooring in below-grade spaces
 
 A typical Pittsburgh basement finishing project runs $30-$60 per square foot for a standard finish and $60-$100+ per square foot for a premium finish with bathroom, wet bar, and custom built-ins. For a 1,000 sq ft basement, budget $30,000-$100,000 depending on scope.
 
-Ready to transform your basement? Contact ABK Unlimited for a free assessment and estimate.`,
+Ready to transform your basement? Contact Pittsburgh Roofing Company for a free assessment and estimate.`,
   },
   "deck-materials-comparison": {
     slug: "deck-materials-comparison",
@@ -173,10 +173,10 @@ Ready to transform your basement? Contact ABK Unlimited for a free assessment an
       "A comprehensive comparison of composite and wood decking materials, considering Pittsburgh's unique climate challenges.",
     image: "/custom-composite-deck-outdoor-living.jpg",
     category: "Outdoor",
-    author: "ABK Unlimited Team",
-    authorImage: "/abk-logo.png",
+    author: "Pittsburgh Roofing Company Team",
+    authorImage: "/logo.svg",
     authorBio:
-      "The ABK Unlimited team is experienced in home remodeling across Greater Pittsburgh.",
+      "The Pittsburgh Roofing Company team is experienced in home remodeling across Greater Pittsburgh.",
     date: "December 12, 2024",
     readTime: "7 min read",
     content: `Choosing the right decking material is one of the most important decisions in your outdoor project. Pittsburgh's four-season climate with hot, humid summers and freezing, snowy winters puts unique demands on decking materials. Here's how composite and wood compare.
@@ -211,7 +211,7 @@ For most Pittsburgh homeowners, we recommend **premium composite decking**. Whil
 
 If you love the authentic feel of real wood and don't mind annual maintenance, **cedar** is an excellent middle-ground option.
 
-Contact ABK Unlimited for a free deck consultation and estimate. We'll help you choose the perfect material for your project and budget.`,
+Contact Pittsburgh Roofing Company for a free deck consultation and estimate. We'll help you choose the perfect material for your project and budget.`,
   },
   "home-addition-planning": {
     slug: "home-addition-planning",
@@ -221,10 +221,10 @@ Contact ABK Unlimited for a free deck consultation and estimate. We'll help you 
       "From zoning permits to design considerations, this guide walks you through every step of planning a successful home addition.",
     image: "/home-addition-seamless-architecture.jpg",
     category: "Additions",
-    author: "ABK Unlimited Team",
-    authorImage: "/abk-logo.png",
+    author: "Pittsburgh Roofing Company Team",
+    authorImage: "/logo.svg",
     authorBio:
-      "The ABK Unlimited team is experienced in home remodeling across Greater Pittsburgh.",
+      "The Pittsburgh Roofing Company team is experienced in home remodeling across Greater Pittsburgh.",
     date: "November 28, 2024",
     readTime: "9 min read",
     content: `A home addition is one of the most significant investments you can make in your property. When done right, it adds valuable living space and increases your home's value. Here's your comprehensive planning guide.
@@ -245,7 +245,7 @@ Pittsburgh and its surrounding municipalities have specific zoning requirements 
 
 **Historic Districts**: If your home is in a historic district, you may need approval from a historic review board. This is common in neighborhoods like Shadyside, Squirrel Hill, and the Mexican War Streets.
 
-ABK Unlimited handles all permit applications as part of our service.
+Pittsburgh Roofing Company handles all permit applications as part of our service.
 
 ## Step 3: Choose Your Addition Type
 
@@ -267,7 +267,7 @@ A well-planned addition typically takes 3-6 months from design to completion. Bu
 
 ## Step 6: Choose the Right Contractor
 
-Your addition contractor should be licensed, insured, experienced with additions specifically, and able to provide references from similar projects. At ABK Unlimited, we've completed hundreds of home additions across Greater Pittsburgh.
+Your addition contractor should be licensed, insured, experienced with additions specifically, and able to provide references from similar projects. At Pittsburgh Roofing Company, we've completed hundreds of home additions across Greater Pittsburgh.
 
 Ready to expand your home? Contact us for a free consultation and detailed estimate.`,
   },
@@ -278,10 +278,10 @@ Ready to expand your home? Contact us for a free consultation and detailed estim
       "Hardwood, LVP, tile, or carpet? Learn which flooring material works best for each room in your home.",
     image: "/hardwood-flooring-installation.png",
     category: "Flooring",
-    author: "ABK Unlimited Team",
-    authorImage: "/abk-logo.png",
+    author: "Pittsburgh Roofing Company Team",
+    authorImage: "/logo.svg",
     authorBio:
-      "The ABK Unlimited team is experienced in home remodeling across Greater Pittsburgh.",
+      "The Pittsburgh Roofing Company team is experienced in home remodeling across Greater Pittsburgh.",
     date: "November 15, 2024",
     readTime: "6 min read",
     content: `Choosing flooring is one of the most impactful decisions in any renovation. The right flooring material depends on the room's function, your lifestyle, and your budget. Here's our room-by-room guide.
@@ -336,7 +336,7 @@ A home office benefits from flooring that looks professional on video calls and 
 
 **Sample before committing**: Always view samples in your home's actual lighting conditions.
 
-Contact ABK Unlimited for expert flooring consultation. We'll help you choose the right material for every room and install it with precision craftsmanship.`,
+Contact Pittsburgh Roofing Company for expert flooring consultation. We'll help you choose the right material for every room and install it with precision craftsmanship.`,
   },
 }
 
@@ -353,18 +353,18 @@ export async function generateMetadata({
   const post = blogPosts[slug]
 
   if (!post) {
-    return { title: "Post Not Found | ABK Unlimited" }
+    return { title: "Post Not Found | Pittsburgh Roofing Company" }
   }
 
   return {
-    title: `${post.title} | ABK Unlimited Blog`,
+    title: `${post.title} | Pittsburgh Roofing Company Blog`,
     description: post.excerpt,
     openGraph: {
       title: post.title,
       description: post.excerpt,
       type: "article",
-      url: `https://abkunlimited.com/blog/${post.slug}`,
-      images: [{ url: `https://abkunlimited.com${post.image}` }],
+      url: `https://pittsburghroofingcompany.com/blog/${post.slug}`,
+      images: [{ url: `https://pittsburghroofingcompany.com${post.image}` }],
     },
   }
 }
@@ -410,7 +410,7 @@ export default async function BlogPostPage({
     notFound()
   }
 
-  const shareUrl = `https://abkunlimited.com/blog/${post.slug}`
+  const shareUrl = `https://pittsburghroofingcompany.com/blog/${post.slug}`
   const shareTitle = encodeURIComponent(post.title)
 
   return (
@@ -489,7 +489,7 @@ export default async function BlogPostPage({
                         {post.author}
                       </div>
                       <div className="text-sm text-muted-foreground">
-                        ABK Unlimited
+                        Pittsburgh Roofing Company
                       </div>
                     </div>
                   </div>

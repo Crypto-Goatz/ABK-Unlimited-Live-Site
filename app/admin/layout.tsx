@@ -44,7 +44,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         <header className="bg-white border-b border-gray-200/80 px-6 py-3 flex items-center justify-between shrink-0 sticky top-0 z-20">
           <div className="flex items-center gap-2">
             <div className="w-2 h-2 rounded-full bg-[#1a8a6a] animate-pulse" />
-            <span className="text-xs text-gray-400 font-medium tracking-wide uppercase">ABK Unlimited</span>
+            <span className="text-xs text-gray-400 font-medium tracking-wide uppercase">Pittsburgh Roofing Company</span>
           </div>
           <div className="flex items-center gap-3">
             <button className="relative p-2 text-gray-400 hover:text-gray-600 transition-colors rounded-lg hover:bg-gray-100">

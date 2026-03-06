@@ -19,7 +19,7 @@ import type { Metadata } from "next"
 
 export const metadata: Metadata = {
   title:
-    "Commercial Construction Pittsburgh | ABK Unlimited General Contractor",
+    "Commercial Construction Pittsburgh | Pittsburgh Roofing Company General Contractor",
   description:
     "Commercial construction services in Pittsburgh. Office buildouts, retail, restaurant, medical, warehouse & tenant improvements. Licensed & insured. Free estimates. Call (412) 944-1683.",
 }

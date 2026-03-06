@@ -11,7 +11,7 @@ const TEAM_ID = 'team_VtbfSzhDgB6OwglLfuPDFcd2';
 
 const CRM_API_KEY = process.env.CRM_API_KEY;
 const CRM_LOCATION_ID = '497AdD39erWgmOu8JTCw';
-const WEBHOOK_URL = 'https://abkunlimited.com/api/webhooks/crm';
+const WEBHOOK_URL = 'https://pittsburghroofingcompany.com/api/webhooks/crm';
 
 function vercelApi(method, path, body) {
   return new Promise((resolve) => {
@@ -118,7 +118,7 @@ async function run() {
   const deploys = await vercelApi('GET', `/v6/deployments?projectId=${PROJECT_ID}&limit=1&target=production`);
   const latest = deploys.data.deployments[0];
   const redeploy = await vercelApi('POST', `/v13/deployments`, {
-    name: 'abk-unlimited-v2',
+    name: 'pittsburgh-roofing',
     target: 'production',
     deploymentId: latest.uid,
     meta: { redeployReason: 'CRM chat widget + APEX-QA SEO engine + webhook' }

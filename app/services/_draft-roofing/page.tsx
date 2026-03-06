@@ -22,7 +22,7 @@ import {
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Roofing Services Pittsburgh | ABK Unlimited General Contractor",
+  title: "Roofing Services Pittsburgh | Pittsburgh Roofing Company General Contractor",
   description:
     "Expert roofing services in Pittsburgh. Asphalt shingles, metal roofing, flat/TPO, slate & tile. Storm damage repair, inspections & full replacements. Licensed & insured. Call (412) 944-1683.",
 }
@@ -135,7 +135,7 @@ const faqs = [
       "Most residential roof replacements in Pittsburgh are completed in 1-3 days, depending on the size of your home, the roofing material selected, and weather conditions. We work efficiently while never cutting corners on quality.",
   },
   {
-    question: "Does ABK Unlimited help with insurance claims?",
+    question: "Does Pittsburgh Roofing Company help with insurance claims?",
     answer:
       "Yes! We have extensive experience working with insurance companies on storm damage claims. We'll document the damage, meet with your adjuster, and ensure you receive fair compensation for necessary repairs or replacement.",
   },
@@ -173,12 +173,12 @@ export default function RoofingPage() {
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "RoofingContractor",
-              name: "ABK Unlimited",
+              name: "Pittsburgh Roofing Company",
               description:
                 "Expert roofing services in Pittsburgh including asphalt shingles, metal roofing, flat/TPO, slate & tile. Storm damage repair, inspections, and full replacements.",
-              url: "https://abkunlimited.com/services/roofing",
+              url: "https://pittsburghroofingcompany.com/services/roofing",
               telephone: "+1-412-944-1683",
-              email: "abk.unlimited@gmail.com",
+              email: "info@pittsburghroofingcompany.com",
               address: {
                 "@type": "PostalAddress",
                 streetAddress: "138 Balver Ave",
@@ -248,7 +248,7 @@ export default function RoofingPage() {
               </h1>
               <p className="text-xl text-secondary-foreground/80 mb-8 leading-relaxed">
                 Your roof is your home&apos;s first line of defense. From storm
-                damage repairs to complete roof replacements, ABK Unlimited
+                damage repairs to complete roof replacements, Pittsburgh Roofing Company
                 delivers expert roofing solutions that protect your family and
                 your investment for decades.
               </p>

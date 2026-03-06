@@ -94,7 +94,7 @@ async function logToCRM(
  * Q&A Bot — Generate keyword-rich Q&A pairs for Google Business Profile
  */
 export async function generateQA(req: SEORequest): Promise<QAResult> {
-  const company = req.companyName || "ABK Unlimited";
+  const company = req.companyName || "Pittsburgh Roofing Company";
   const question = req.questions?.[0] || req.keywords[0];
 
   const prompt = `Based on the following user question: "${question}", and considering the keyword cluster [${req.keywords.join(", ")}], generate a comprehensive, helpful, and keyword-rich Q&A pair suitable for a Google Business Profile. The answer should be positive and subtly promote the business. Format as JSON: {"question": "...", "answer": "..."}`;
@@ -146,7 +146,7 @@ export async function optimizeNearMiss(
 export async function generateTrendPost(
   req: SEORequest
 ): Promise<TrendPostResult> {
-  const company = req.companyName || "ABK Unlimited";
+  const company = req.companyName || "Pittsburgh Roofing Company";
   const trend = req.keywords[0];
 
   const prompt = `There is a sudden local search spike for "${trend}" in the Pittsburgh area. Write a compelling Google Business Post (under 1200 characters) for ${company} to capitalize on this trend. Must be urgent, informative, with a strong call-to-action. Include relevant emojis.`;
@@ -202,7 +202,7 @@ export async function analyzeWithCRO9(
     scrollDepth?: { page: string; avgDepth: number }[];
     bounceRate?: number;
   },
-  companyName: string = "ABK Unlimited"
+  companyName: string = "Pittsburgh Roofing Company"
 ): Promise<{
   recommendations: Array<{
     page: string;

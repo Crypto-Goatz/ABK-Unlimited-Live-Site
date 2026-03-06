@@ -34,7 +34,7 @@ export function Process() {
         <div className="text-center mb-16">
           <p className="text-sm font-semibold tracking-wider text-primary uppercase mb-4">Our Process</p>
           <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl text-balance">
-            The ABK Difference
+            The Pittsburgh Roofing Difference
           </h2>
           <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
             A proven 4-step process that ensures exceptional results every time.

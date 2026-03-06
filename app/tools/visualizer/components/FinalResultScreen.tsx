@@ -15,7 +15,7 @@ export default function FinalResultScreen({ imageUrl, enhancements, onStartOver,
   const handleDownload = () => {
     const link = document.createElement('a')
     link.href = imageUrl
-    link.download = `abk-design-${Date.now()}.jpg`
+    link.download = `prc-design-${Date.now()}.jpg`
     document.body.appendChild(link)
     link.click()
     document.body.removeChild(link)

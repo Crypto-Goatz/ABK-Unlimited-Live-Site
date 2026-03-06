@@ -20,9 +20,9 @@ import {
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Custom Home Building Pittsburgh | ABK Unlimited General Contractor",
+  title: "Custom Home Building Pittsburgh | Pittsburgh Roofing Company General Contractor",
   description:
-    "Build your dream home in Pittsburgh with ABK Unlimited. Design-build, energy-efficient construction, smart home integration & premium materials. Licensed contractor. Call (412) 944-1683.",
+    "Build your dream home in Pittsburgh with Pittsburgh Roofing Company. Design-build, energy-efficient construction, smart home integration & premium materials. Licensed contractor. Call (412) 944-1683.",
 }
 
 const features = [
@@ -65,7 +65,7 @@ const highlights = [
     icon: Shield,
     title: "Full Warranty",
     description:
-      "Every ABK custom home comes with a comprehensive structural warranty and our commitment to your complete satisfaction long after move-in day.",
+      "Every Pittsburgh Roofing Company custom home comes with a comprehensive structural warranty and our commitment to your complete satisfaction long after move-in day.",
   },
   {
     icon: HardHat,
@@ -186,7 +186,7 @@ export default function CustomHomesPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-                Why Build With ABK Unlimited?
+                Why Build With Pittsburgh Roofing Company?
               </h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                 Building a custom home is one of the biggest investments
@@ -221,7 +221,7 @@ export default function CustomHomesPage() {
                 Custom Home Portfolio
               </h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Every ABK custom home is a one-of-a-kind creation built to last
+                Every Pittsburgh Roofing Company custom home is a one-of-a-kind creation built to last
                 generations.
               </p>
             </div>

@@ -15,7 +15,7 @@ import {
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Kitchen Remodeling Pittsburgh | ABK Unlimited General Contractor",
+  title: "Kitchen Remodeling Pittsburgh | Pittsburgh Roofing Company General Contractor",
   description:
     "Transform your kitchen with Pittsburgh's trusted remodeling experts. Custom cabinets, granite countertops, kitchen islands & more. 500+ kitchens completed. Free estimates. Call (412) 944-1683.",
 }
@@ -291,7 +291,7 @@ export default function KitchenRemodelingPage() {
             </div>
             <div className="mt-12 text-center">
               <h3 className="text-2xl font-bold text-foreground mb-4">
-                Why Choose ABK Unlimited?
+                Why Choose Pittsburgh Roofing Company?
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
                 <div className="flex flex-col items-center gap-2">

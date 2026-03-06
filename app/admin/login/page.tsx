@@ -55,8 +55,8 @@ function LoginContent() {
       {/* Logo */}
       <div className="text-center mb-8">
         <Image
-          src="/abk-logo.png"
-          alt="ABK Unlimited"
+          src="/logo.svg"
+          alt="Pittsburgh Roofing Company"
           width={200}
           height={54}
           className="h-12 w-auto mx-auto brightness-0 invert"
@@ -70,7 +70,7 @@ function LoginContent() {
         <div className="mb-6">
           <h1 className="text-xl font-bold text-white">Welcome back</h1>
           <p className="text-sm text-white/50 mt-1">
-            Sign in to manage your ABK Unlimited website
+            Sign in to manage your Pittsburgh Roofing Company website
           </p>
         </div>
 

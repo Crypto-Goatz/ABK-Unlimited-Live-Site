@@ -1,5 +1,5 @@
 /**
- * ABK Unlimited — Beautiful Email Templates
+ * Pittsburgh Roofing Company — Beautiful Email Templates
  *
  * 4-email automated thank-you sequence:
  * 1. Instant: Personalized thank you
@@ -10,10 +10,10 @@
 
 // ─── Brand ───────────────────────────────────────────────────────────
 const BRAND = {
-  name: 'ABK Unlimited',
+  name: 'Pittsburgh Roofing Company',
   phone: '(412) 944-1683',
-  email: 'info@abkunlimited.com',
-  url: 'https://abkunlimited.com',
+  email: 'info@pittsburghroofingcompany.com',
+  url: 'https://pittsburghroofingcompany.com',
   address: 'Pittsburgh, PA 15205',
   green: '#14664f',
   greenLight: '#1a8a6a',
@@ -189,8 +189,8 @@ ${header()}
   <h2>Hi ${data.firstName}! 👋</h2>
   <p>
     ${isEstimate
-      ? 'Thank you for requesting a free estimate from ABK Unlimited! We\'re excited about the opportunity to bring your vision to life.'
-      : 'Thank you for contacting ABK Unlimited! We received your message and our team is already reviewing it.'
+      ? 'Thank you for requesting a free estimate from Pittsburgh Roofing Company! We\'re excited about the opportunity to bring your vision to life.'
+      : 'Thank you for contacting Pittsburgh Roofing Company! We received your message and our team is already reviewing it.'
     }
   </p>
 
@@ -266,7 +266,7 @@ ${header()}
   </div>
 
   <div class="card" style="background: linear-gradient(135deg, ${BRAND.greenDark}, ${BRAND.green}); border: none; text-align: center;">
-    <p style="color: rgba(255,255,255,0.8); margin-bottom: 4px; font-size: 13px; text-transform: uppercase; letter-spacing: 1.5px;">Why Pittsburgh Chooses ABK</p>
+    <p style="color: rgba(255,255,255,0.8); margin-bottom: 4px; font-size: 13px; text-transform: uppercase; letter-spacing: 1.5px;">Why Pittsburgh Chooses Us</p>
     <div style="display: flex; justify-content: space-around; margin: 20px 0;">
       <div style="text-align: center;">
         <p style="color: #fff; font-size: 28px; font-weight: 700; margin: 0;">500+</p>
@@ -306,11 +306,11 @@ export function socialProofEmail(data: {
   service?: string
   sequenceId: string
 }): { subject: string; html: string } {
-  const subject = `${data.firstName}, here's what our clients say about working with ABK`
+  const subject = `${data.firstName}, here's what our clients say about working with Pittsburgh Roofing Company`
 
   const reviews = [
-    { name: 'Sarah M.', location: 'Mt. Lebanon', stars: 5, text: 'ABK transformed our outdated kitchen into a showpiece. The attention to detail was incredible, and they finished ahead of schedule. Couldn\'t be happier!' },
-    { name: 'James & Linda R.', location: 'Upper St. Clair', stars: 5, text: 'From the initial consultation to the final walkthrough, the ABK team was professional and communicative. Our basement is now our favorite room in the house.' },
+    { name: 'Sarah M.', location: 'Mt. Lebanon', stars: 5, text: 'Pittsburgh Roofing Company transformed our outdated kitchen into a showpiece. The attention to detail was incredible, and they finished ahead of schedule. Couldn\'t be happier!' },
+    { name: 'James & Linda R.', location: 'Upper St. Clair', stars: 5, text: 'From the initial consultation to the final walkthrough, the Pittsburgh Roofing Company team was professional and communicative. Our basement is now our favorite room in the house.' },
     { name: 'Tom K.', location: 'Bethel Park', stars: 5, text: 'Fair pricing, quality materials, and a crew that actually cleans up after themselves. ABK is the real deal. Already planning our next project with them.' },
   ]
 
@@ -319,7 +319,7 @@ ${header()}
 <div class="body-content">
   <h2>Don't just take our word for it.</h2>
   <p>
-    Hi ${data.firstName}, we know choosing a contractor is a big decision. Here's what real Pittsburgh homeowners have to say about working with ABK Unlimited:
+    Hi ${data.firstName}, we know choosing a contractor is a big decision. Here's what real Pittsburgh homeowners have to say about working with Pittsburgh Roofing Company:
   </p>
 
   ${reviews.map(r => `
@@ -345,7 +345,7 @@ ${header()}
   </div>
 </div>
 ${footer(data.sequenceId)}
-`, `4.9/5 stars from 200+ Pittsburgh homeowners. See why they trust ABK Unlimited.`)
+`, `4.9/5 stars from 200+ Pittsburgh homeowners. See why they trust Pittsburgh Roofing Company.`)
 
   return { subject, html }
 }

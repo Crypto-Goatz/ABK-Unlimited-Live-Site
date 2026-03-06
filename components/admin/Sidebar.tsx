@@ -46,12 +46,12 @@ export function Sidebar({ user }: { user?: User | null }) {
 
   return (
     <aside className="w-64 bg-[#0a1a14] text-white min-h-screen flex flex-col shrink-0 border-r border-white/[0.06]">
-      {/* ABK Logo */}
+      {/* Site Logo */}
       <div className="p-5 border-b border-white/[0.06]">
         <Link href="/admin" className="block">
           <Image
-            src="/abk-logo.png"
-            alt="ABK Unlimited"
+            src="/logo.svg"
+            alt="Pittsburgh Roofing Company"
             width={160}
             height={44}
             className="h-9 w-auto brightness-0 invert"
