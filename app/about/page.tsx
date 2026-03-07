@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     title: "About Pittsburgh Roofing Company | Pittsburgh General Contractor",
     description:
       "Family-owned Pittsburgh contractor. PA Licensed, BBB A+ Rated, Best of Houzz 2025. Kitchen remodeling, bathroom renovations, basement finishing, decks, and more.",
-    url: "https://pittsburghroofingcompany.com/about",
+    url: "https://roofing.nearpittsburgh.com/about",
     type: "website",
   },
 }

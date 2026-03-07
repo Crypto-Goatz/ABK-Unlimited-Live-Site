@@ -64,7 +64,7 @@ async function sendCRMEmail(contactId: string, subject: string, html: string): P
         contactId,
         subject,
         html,
-        emailFrom: process.env.CRM_FROM_EMAIL || 'info@pittsburghroofingcompany.com',
+        emailFrom: process.env.CRM_FROM_EMAIL || 'info@roofing.nearpittsburgh.com',
       }),
     })
     return res.ok
@@ -159,7 +159,7 @@ export async function POST(request: NextRequest) {
           subject: '{{contact.first_name}}, thank you for reaching out!',
           templateKey: 'prc_email_1_thank_you',
           fromName: 'Pittsburgh Roofing Company',
-          fromEmail: 'info@pittsburghroofingcompany.com',
+          fromEmail: 'info@roofing.nearpittsburgh.com',
         },
       },
       {
@@ -186,7 +186,7 @@ export async function POST(request: NextRequest) {
           subject: '{{contact.first_name}}, see what we\'ve built for Pittsburgh homeowners',
           templateKey: 'prc_email_2_portfolio',
           fromName: 'Pittsburgh Roofing Company',
-          fromEmail: 'info@pittsburghroofingcompany.com',
+          fromEmail: 'info@roofing.nearpittsburgh.com',
         },
       },
       {
@@ -209,7 +209,7 @@ export async function POST(request: NextRequest) {
           subject: '{{contact.first_name}}, here\'s what our clients say about working with Pittsburgh Roofing Company',
           templateKey: 'prc_email_3_social_proof',
           fromName: 'Pittsburgh Roofing Company',
-          fromEmail: 'info@pittsburghroofingcompany.com',
+          fromEmail: 'info@roofing.nearpittsburgh.com',
         },
       },
       {
@@ -232,7 +232,7 @@ export async function POST(request: NextRequest) {
           subject: '{{contact.first_name}}, let\'s make your project a reality',
           templateKey: 'prc_email_4_consultation',
           fromName: 'Pittsburgh Roofing Company',
-          fromEmail: 'info@pittsburghroofingcompany.com',
+          fromEmail: 'info@roofing.nearpittsburgh.com',
         },
       },
       {

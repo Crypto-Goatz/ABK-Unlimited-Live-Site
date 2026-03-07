@@ -71,7 +71,7 @@ async function sendViaCRM(contactId: string, subject: string, html: string): Pro
         contactId,
         subject,
         html,
-        emailFrom: process.env.CRM_FROM_EMAIL || 'info@pittsburghroofingcompany.com',
+        emailFrom: process.env.CRM_FROM_EMAIL || 'info@roofing.nearpittsburgh.com',
       }),
     })
 
@@ -91,7 +91,7 @@ async function sendViaGmail(to: string, subject: string, html: string): Promise<
     const gmail = getGmailClient()
     if (!gmail) return false
 
-    const fromEmail = process.env.GOOGLE_IMPERSONATE_EMAIL || 'brian@pittsburghroofingcompany.com'
+    const fromEmail = process.env.GOOGLE_IMPERSONATE_EMAIL || 'brian@roofing.nearpittsburgh.com'
     const raw = Buffer.from(
       `From: Pittsburgh Roofing Company <${fromEmail}>\r\n` +
       `To: ${to}\r\n` +
@@ -121,7 +121,7 @@ async function sendViaGmail(to: string, subject: string, html: string): Promise<
 
 async function sendViaSendGrid(to: string, subject: string, html: string): Promise<boolean> {
   const apiKey = process.env.SENDGRID_API_KEY
-  const fromEmail = process.env.SENDGRID_FROM_EMAIL || 'info@pittsburghroofingcompany.com'
+  const fromEmail = process.env.SENDGRID_FROM_EMAIL || 'info@roofing.nearpittsburgh.com'
   const fromName = process.env.SENDGRID_FROM_NAME || 'Pittsburgh Roofing Company'
 
   if (!apiKey) return false

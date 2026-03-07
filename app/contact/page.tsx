@@ -270,10 +270,10 @@ export default function ContactPage() {
                     <div>
                       <h3 className="font-semibold text-foreground mb-1">Email</h3>
                       <a
-                        href="mailto:info@pittsburghroofingcompany.com"
+                        href="mailto:info@roofing.nearpittsburgh.com"
                         className="text-lg text-primary hover:underline font-medium"
                       >
-                        info@pittsburghroofingcompany.com
+                        info@roofing.nearpittsburgh.com
                       </a>
                       <p className="text-sm text-muted-foreground mt-1">
                         We respond within one business day

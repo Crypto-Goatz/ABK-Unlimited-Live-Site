@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     title: "Our Services | Pittsburgh Roofing Company",
     description:
       "Complete home remodeling services from Pittsburgh's most trusted contractor. Kitchen, bathroom, basement, deck, additions, flooring, and more.",
-    url: "https://pittsburghroofingcompany.com/services",
+    url: "https://roofing.nearpittsburgh.com/services",
     type: "website",
   },
 }

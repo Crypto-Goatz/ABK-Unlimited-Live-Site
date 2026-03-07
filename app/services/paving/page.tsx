@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     title: "Paving Services | Pittsburgh Roofing Company Pittsburgh",
     description:
       "Upgrade your driveway, patio, and walkways with professional paving. Interlocking pavers, stamped concrete, and natural stone installed with precision.",
-    url: "https://pittsburghroofingcompany.com/services/paving",
+    url: "https://roofing.nearpittsburgh.com/services/paving",
     type: "website",
   },
 }

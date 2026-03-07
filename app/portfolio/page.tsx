@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     title: "Our Portfolio | Pittsburgh Roofing Company",
     description:
       "See the quality of our work. Browse completed kitchen, bathroom, basement, deck, and home addition projects across Pittsburgh.",
-    url: "https://pittsburghroofingcompany.com/portfolio",
+    url: "https://roofing.nearpittsburgh.com/portfolio",
     type: "website",
   },
 }

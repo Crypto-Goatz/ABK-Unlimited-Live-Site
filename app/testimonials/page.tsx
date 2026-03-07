@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     title: "Reviews & Testimonials | Pittsburgh Roofing Company",
     description:
       "5-star rated Pittsburgh contractor. Read verified reviews from real homeowners. 200+ reviews across Google, Houzz, and BBB.",
-    url: "https://pittsburghroofingcompany.com/testimonials",
+    url: "https://roofing.nearpittsburgh.com/testimonials",
     type: "website",
   },
 }

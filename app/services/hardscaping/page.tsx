@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     title: "Hardscaping Services | Pittsburgh Roofing Company Pittsburgh",
     description:
       "Transform your outdoor space with custom stone patios, retaining walls, walkways, and outdoor kitchens built to last through Pittsburgh's four seasons.",
-    url: "https://pittsburghroofingcompany.com/services/hardscaping",
+    url: "https://roofing.nearpittsburgh.com/services/hardscaping",
     type: "website",
   },
 }

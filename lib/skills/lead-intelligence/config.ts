@@ -25,8 +25,8 @@ export const config: LeadIntelligenceConfig = {
   business: {
     name: 'Pittsburgh Roofing Company',
     phone: '(412) 944-1683',
-    email: 'info@pittsburghroofingcompany.com',
-    website: 'https://pittsburghroofingcompany.com',
+    email: 'info@roofing.nearpittsburgh.com',
+    website: 'https://roofing.nearpittsburgh.com',
     address: {
       street: '138 Balver Ave',
       city: 'Pittsburgh',

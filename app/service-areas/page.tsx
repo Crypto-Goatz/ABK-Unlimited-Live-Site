@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     title: "Service Areas | Pittsburgh Roofing Company Pittsburgh",
     description:
       "Serving Pittsburgh's finest communities with award-winning home remodeling. Find your area.",
-    url: "https://pittsburghroofingcompany.com/service-areas",
+    url: "https://roofing.nearpittsburgh.com/service-areas",
   },
 }
 

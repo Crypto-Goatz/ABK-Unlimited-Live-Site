@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     title: "Outdoor Firepits & Fire Features | Pittsburgh Roofing Company Pittsburgh",
     description:
       "Create the ultimate gathering spot with a custom-built firepit. Stone, gas, and wood-burning options with built-in seating designed for Pittsburgh living.",
-    url: "https://pittsburghroofingcompany.com/services/outdoor-firepits",
+    url: "https://roofing.nearpittsburgh.com/services/outdoor-firepits",
     type: "website",
   },
 }

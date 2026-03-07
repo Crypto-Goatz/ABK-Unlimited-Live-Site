@@ -11,7 +11,7 @@ const TEAM_ID = 'team_VtbfSzhDgB6OwglLfuPDFcd2';
 
 const CRM_API_KEY = process.env.CRM_API_KEY;
 const CRM_LOCATION_ID = '497AdD39erWgmOu8JTCw';
-const WEBHOOK_URL = 'https://pittsburghroofingcompany.com/api/webhooks/crm';
+const WEBHOOK_URL = 'https://roofing.nearpittsburgh.com/api/webhooks/crm';
 
 function vercelApi(method, path, body) {
   return new Promise((resolve) => {

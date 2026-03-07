@@ -176,9 +176,9 @@ export default function RoofingPage() {
               name: "Pittsburgh Roofing Company",
               description:
                 "Expert roofing services in Pittsburgh including asphalt shingles, metal roofing, flat/TPO, slate & tile. Storm damage repair, inspections, and full replacements.",
-              url: "https://pittsburghroofingcompany.com/services/roofing",
+              url: "https://roofing.nearpittsburgh.com/services/roofing",
               telephone: "+1-412-944-1683",
-              email: "info@pittsburghroofingcompany.com",
+              email: "info@roofing.nearpittsburgh.com",
               address: {
                 "@type": "PostalAddress",
                 streetAddress: "138 Balver Ave",

@@ -201,7 +201,7 @@ export async function generateMetadata({
     openGraph: {
       title: `${area.name} Home Remodeling | Pittsburgh Roofing Company`,
       description: `Trusted contractor serving ${area.name} homeowners. ${area.description}`,
-      url: `https://pittsburghroofingcompany.com/service-areas/${slug}`,
+      url: `https://roofing.nearpittsburgh.com/service-areas/${slug}`,
     },
   }
 }

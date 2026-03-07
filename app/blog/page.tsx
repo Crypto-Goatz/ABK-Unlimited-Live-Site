@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     title: "Home Remodeling Blog | Pittsburgh Roofing Company",
     description:
       "Expert tips and guides for your next home renovation project. Kitchen trends, bathroom ROI, basement ideas, and more from Pittsburgh's trusted contractor.",
-    url: "https://pittsburghroofingcompany.com/blog",
+    url: "https://roofing.nearpittsburgh.com/blog",
     type: "website",
   },
 }

@@ -72,7 +72,7 @@ export function getGmailClient() {
   );
 
   const impersonateEmail =
-    process.env.GOOGLE_IMPERSONATE_EMAIL || "brian@pittsburghroofingcompany.com";
+    process.env.GOOGLE_IMPERSONATE_EMAIL || "brian@roofing.nearpittsburgh.com";
 
   const auth = new google.auth.JWT({
     email: credentials.client_email,

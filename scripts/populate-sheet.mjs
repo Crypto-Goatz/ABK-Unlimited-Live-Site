@@ -11,7 +11,7 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
 // --- Config ---
 const SA = JSON.parse(fs.readFileSync('/Users/rocketopp/prc-service-account.json', 'utf8'));
-const BRIAN = 'brian@pittsburghroofingcompany.com';
+const BRIAN = 'brian@roofing.nearpittsburgh.com';
 const SHEET_ID = '10_Xv6J_V8uWIAmDY5HnBrCseXlfrfUW7BuJiDkcTtfc';
 
 // CRM config
@@ -106,9 +106,9 @@ const CONTENT = {
     ["tagline", "Pittsburgh's Trusted General Contractor"],
     ["phone", "(412) 944-1683"],
     ["phone_raw", "+14129441683"],
-    ["email", "info@pittsburghroofingcompany.com"],
+    ["email", "info@roofing.nearpittsburgh.com"],
     ["address", "138 Balver Ave, Pittsburgh, PA 15205"],
-    ["website", "https://pittsburghroofingcompany.com"],
+    ["website", "https://roofing.nearpittsburgh.com"],
     ["founded_year", "2020"],
     ["license_number", "PA163301"],
     ["primary_color", "#14664f"],

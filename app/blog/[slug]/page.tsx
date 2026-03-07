@@ -363,8 +363,8 @@ export async function generateMetadata({
       title: post.title,
       description: post.excerpt,
       type: "article",
-      url: `https://pittsburghroofingcompany.com/blog/${post.slug}`,
-      images: [{ url: `https://pittsburghroofingcompany.com${post.image}` }],
+      url: `https://roofing.nearpittsburgh.com/blog/${post.slug}`,
+      images: [{ url: `https://roofing.nearpittsburgh.com${post.image}` }],
     },
   }
 }
@@ -410,7 +410,7 @@ export default async function BlogPostPage({
     notFound()
   }
 
-  const shareUrl = `https://pittsburghroofingcompany.com/blog/${post.slug}`
+  const shareUrl = `https://roofing.nearpittsburgh.com/blog/${post.slug}`
   const shareTitle = encodeURIComponent(post.title)
 
   return (

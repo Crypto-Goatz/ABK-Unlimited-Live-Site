@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     title: "Free Planning Tools | Pittsburgh Roofing Company",
     description:
       "Plan your home remodel with our free tools. AI visualizer, cost calculator, timeline estimator, and design gallery.",
-    url: "https://pittsburghroofingcompany.com/tools",
+    url: "https://roofing.nearpittsburgh.com/tools",
     type: "website",
   },
 }

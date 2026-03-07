@@ -12,8 +12,8 @@
 const BRAND = {
   name: 'Pittsburgh Roofing Company',
   phone: '(412) 944-1683',
-  email: 'info@pittsburghroofingcompany.com',
-  url: 'https://pittsburghroofingcompany.com',
+  email: 'info@roofing.nearpittsburgh.com',
+  url: 'https://roofing.nearpittsburgh.com',
   address: 'Pittsburgh, PA 15205',
   green: '#14664f',
   greenLight: '#1a8a6a',

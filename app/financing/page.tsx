@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     title: "Financing Options | Pittsburgh Roofing Company Pittsburgh",
     description:
       "Make your dream remodel affordable with our flexible financing. 0% APR for 12 months, payments from $199/mo.",
-    url: "https://pittsburghroofingcompany.com/financing",
+    url: "https://roofing.nearpittsburgh.com/financing",
   },
 }
 

@@ -12,7 +12,7 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
 const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono" })
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://pittsburghroofingcompany.com"),
+  metadataBase: new URL("https://roofing.nearpittsburgh.com"),
   title: {
     default: "Pittsburgh Roofing Company | Pittsburgh's Trusted General Contractor | Kitchen & Bath Remodeling",
     template: "%s | Pittsburgh Roofing Company Pittsburgh",
@@ -34,13 +34,13 @@ export const metadata: Metadata = {
     google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || undefined,
   },
   alternates: {
-    canonical: "https://pittsburghroofingcompany.com",
+    canonical: "https://roofing.nearpittsburgh.com",
   },
   openGraph: {
     title: "Pittsburgh Roofing Company | Pittsburgh's Trusted General Contractor",
     description:
       "Award-winning contractor serving Greater Pittsburgh. Kitchen remodeling, bathroom renovations, basement finishing, deck building, and more.",
-    url: "https://pittsburghroofingcompany.com",
+    url: "https://roofing.nearpittsburgh.com",
     type: "website",
     siteName: "Pittsburgh Roofing Company",
     locale: "en_US",
@@ -74,10 +74,10 @@ export default function RootLayout({
               name: "Pittsburgh Roofing Company",
               description:
                 "Full-service residential and commercial general contractor serving Greater Pittsburgh. Kitchen remodeling, bathroom renovations, basement finishing, deck building, and custom home construction.",
-              url: "https://pittsburghroofingcompany.com",
-              logo: "https://pittsburghroofingcompany.com/logo.svg",
+              url: "https://roofing.nearpittsburgh.com",
+              logo: "https://roofing.nearpittsburgh.com/logo.svg",
               telephone: "+1-412-944-1683",
-              email: "info@pittsburghroofingcompany.com",
+              email: "info@roofing.nearpittsburgh.com",
               address: {
                 "@type": "PostalAddress",
                 streetAddress: "138 Balver Ave",

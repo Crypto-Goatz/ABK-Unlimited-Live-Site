@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     title: "Home Remodeling Services | Pittsburgh Roofing Company Pittsburgh",
     description:
       "Complete indoor and outdoor remodeling from Pittsburgh's trusted general contractor. Quality craftsmanship guaranteed.",
-    url: "https://pittsburghroofingcompany.com/remodelling",
+    url: "https://roofing.nearpittsburgh.com/remodelling",
   },
 }
 
@@ -176,9 +176,9 @@ export default function RemodellingPage() {
               name: "Pittsburgh Roofing Company",
               description:
                 "Full-service home remodeling contractor in Pittsburgh, PA. Kitchen, bathroom, basement, decks, additions, hardscaping, paving, and custom homes.",
-              url: "https://pittsburghroofingcompany.com/remodelling",
+              url: "https://roofing.nearpittsburgh.com/remodelling",
               telephone: "+1-412-944-1683",
-              email: "info@pittsburghroofingcompany.com",
+              email: "info@roofing.nearpittsburgh.com",
               address: {
                 "@type": "PostalAddress",
                 streetAddress: "138 Balver Ave",

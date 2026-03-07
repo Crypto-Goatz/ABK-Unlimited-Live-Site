@@ -61,7 +61,7 @@ const PRC_EMAIL_SEQUENCE = {
       params: {
         contactId: '{{inputs.crmContactId}}',
         subject: '{{inputs.firstName}}, thank you for reaching out!',
-        emailFrom: 'info@pittsburghroofingcompany.com',
+        emailFrom: 'info@roofing.nearpittsburgh.com',
       },
       output: 'crm_email_result',
       conditions: [{ if: '{{inputs.crmContactId}}' }],
@@ -73,7 +73,7 @@ const PRC_EMAIL_SEQUENCE = {
       action: 'mail.send',
       params: {
         to: '{{inputs.email}}',
-        from: 'info@pittsburghroofingcompany.com',
+        from: 'info@roofing.nearpittsburgh.com',
         fromName: 'Pittsburgh Roofing Company',
         subject: '{{inputs.firstName}}, thank you for reaching out!',
         trackClicks: true,

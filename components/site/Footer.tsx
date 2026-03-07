@@ -61,13 +61,13 @@ export function Footer() {
                 <span className="font-medium">(412) 944-1683</span>
               </a>
               <a
-                href="mailto:info@pittsburghroofingcompany.com"
+                href="mailto:info@roofing.nearpittsburgh.com"
                 className="flex items-center gap-3 text-secondary-foreground/80 hover:text-secondary-foreground transition-colors"
               >
                 <div className="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center">
                   <Mail className="h-4 w-4 text-primary" />
                 </div>
-                <span>info@pittsburghroofingcompany.com</span>
+                <span>info@roofing.nearpittsburgh.com</span>
               </a>
               <div className="flex items-center gap-3 text-secondary-foreground/80">
                 <div className="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center">

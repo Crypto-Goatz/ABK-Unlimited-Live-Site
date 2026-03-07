@@ -73,8 +73,8 @@ export function CtaSection() {
                 </div>
                 <div>
                   <p className="font-medium text-foreground">Email</p>
-                  <a href="mailto:info@pittsburghroofingcompany.com" className="text-primary hover:underline">
-                    info@pittsburghroofingcompany.com
+                  <a href="mailto:info@roofing.nearpittsburgh.com" className="text-primary hover:underline">
+                    info@roofing.nearpittsburgh.com
                   </a>
                 </div>
               </div>
